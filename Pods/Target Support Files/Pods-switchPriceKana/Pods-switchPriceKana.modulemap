@@ -1,0 +1,6 @@
+framework module Pods_switchPriceKana {
+  umbrella header "Pods-switchPriceKana-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,469 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5F2C609A250C3485007DBF0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2C6099250C3485007DBF0F /* AppDelegate.swift */; };
+		5F2C609C250C3485007DBF0F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2C609B250C3485007DBF0F /* SceneDelegate.swift */; };
+		5F2C609E250C3485007DBF0F /* SwitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2C609D250C3485007DBF0F /* SwitchViewController.swift */; };
+		5F2C60A1250C3485007DBF0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F2C609F250C3485007DBF0F /* Main.storyboard */; };
+		5F2C60A4250C3485007DBF0F /* switchPriceKana.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5F2C60A2250C3485007DBF0F /* switchPriceKana.xcdatamodeld */; };
+		5F2C60A6250C3487007DBF0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F2C60A5250C3487007DBF0F /* Assets.xcassets */; };
+		5F2C60A9250C3487007DBF0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F2C60A7250C3487007DBF0F /* LaunchScreen.storyboard */; };
+		5F64D140251171DB003BE57C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F64D13F251171DB003BE57C /* DetailViewController.swift */; };
+		5F9D3D9E2515BAAF00A17D30 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F9D3D9D2515BAAF00A17D30 /* GoogleService-Info.plist */; };
+		5F9D3DA22515E1A700A17D30 /* CountryNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9D3DA12515E1A700A17D30 /* CountryNames.swift */; };
+		5F9D3DA52516248900A17D30 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5F9D3DA42516248900A17D30 /* Kingfisher */; };
+		6888FBC918DB2C34E628E93F /* Pods_switchPriceKana.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A6CEB1289C0FDDE51CB2B05 /* Pods_switchPriceKana.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		209381B866D2F66C1952E7F4 /* Pods-switchPriceKana.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-switchPriceKana.debug.xcconfig"; path = "Target Support Files/Pods-switchPriceKana/Pods-switchPriceKana.debug.xcconfig"; sourceTree = "<group>"; };
+		4A6CEB1289C0FDDE51CB2B05 /* Pods_switchPriceKana.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_switchPriceKana.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C1E8CEBE7CF82C0125183A9 /* Pods-switchPriceKana.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-switchPriceKana.release.xcconfig"; path = "Target Support Files/Pods-switchPriceKana/Pods-switchPriceKana.release.xcconfig"; sourceTree = "<group>"; };
+		5F2C6096250C3485007DBF0F /* switchPriceKana.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = switchPriceKana.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F2C6099250C3485007DBF0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5F2C609B250C3485007DBF0F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		5F2C609D250C3485007DBF0F /* SwitchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchViewController.swift; sourceTree = "<group>"; };
+		5F2C60A0250C3485007DBF0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5F2C60A3250C3485007DBF0F /* switchPriceKana.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = switchPriceKana.xcdatamodel; sourceTree = "<group>"; };
+		5F2C60A5250C3487007DBF0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5F2C60A8250C3487007DBF0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5F2C60AA250C3487007DBF0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5F64D13F251171DB003BE57C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		5F9D3D9D2515BAAF00A17D30 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		5F9D3DA12515E1A700A17D30 /* CountryNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryNames.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5F2C6093250C3485007DBF0F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F9D3DA52516248900A17D30 /* Kingfisher in Frameworks */,
+				6888FBC918DB2C34E628E93F /* Pods_switchPriceKana.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3D96E59A27ED38511D2DDE74 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				209381B866D2F66C1952E7F4 /* Pods-switchPriceKana.debug.xcconfig */,
+				4C1E8CEBE7CF82C0125183A9 /* Pods-switchPriceKana.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		5F2C608D250C3485007DBF0F = {
+			isa = PBXGroup;
+			children = (
+				5F2C6098250C3485007DBF0F /* switchPriceKana */,
+				5F2C6097250C3485007DBF0F /* Products */,
+				3D96E59A27ED38511D2DDE74 /* Pods */,
+				83D15E6D173F30D91E680FEB /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		5F2C6097250C3485007DBF0F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5F2C6096250C3485007DBF0F /* switchPriceKana.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5F2C6098250C3485007DBF0F /* switchPriceKana */ = {
+			isa = PBXGroup;
+			children = (
+				5F2C6099250C3485007DBF0F /* AppDelegate.swift */,
+				5F2C609B250C3485007DBF0F /* SceneDelegate.swift */,
+				5F2C609D250C3485007DBF0F /* SwitchViewController.swift */,
+				5F64D13F251171DB003BE57C /* DetailViewController.swift */,
+				5F2C609F250C3485007DBF0F /* Main.storyboard */,
+				5F9D3DA12515E1A700A17D30 /* CountryNames.swift */,
+				5F2C60A5250C3487007DBF0F /* Assets.xcassets */,
+				5F2C60A7250C3487007DBF0F /* LaunchScreen.storyboard */,
+				5F2C60AA250C3487007DBF0F /* Info.plist */,
+				5F9D3D9D2515BAAF00A17D30 /* GoogleService-Info.plist */,
+				5F2C60A2250C3485007DBF0F /* switchPriceKana.xcdatamodeld */,
+			);
+			path = switchPriceKana;
+			sourceTree = "<group>";
+		};
+		83D15E6D173F30D91E680FEB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4A6CEB1289C0FDDE51CB2B05 /* Pods_switchPriceKana.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5F2C6095250C3485007DBF0F /* switchPriceKana */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F2C60AD250C3487007DBF0F /* Build configuration list for PBXNativeTarget "switchPriceKana" */;
+			buildPhases = (
+				97C2EBA6B92AA6CA48171BBF /* [CP] Check Pods Manifest.lock */,
+				5F2C6092250C3485007DBF0F /* Sources */,
+				5F2C6093250C3485007DBF0F /* Frameworks */,
+				5F2C6094250C3485007DBF0F /* Resources */,
+				31B6E28D98A2BA70C5B497EF /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = switchPriceKana;
+			packageProductDependencies = (
+				5F9D3DA42516248900A17D30 /* Kingfisher */,
+			);
+			productName = switchPriceKana;
+			productReference = 5F2C6096250C3485007DBF0F /* switchPriceKana.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5F2C608E250C3485007DBF0F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1170;
+				LastUpgradeCheck = 1170;
+				ORGANIZATIONNAME = "Woohyun Kim";
+				TargetAttributes = {
+					5F2C6095250C3485007DBF0F = {
+						CreatedOnToolsVersion = 11.7;
+					};
+				};
+			};
+			buildConfigurationList = 5F2C6091250C3485007DBF0F /* Build configuration list for PBXProject "switchPriceKana" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5F2C608D250C3485007DBF0F;
+			packageReferences = (
+				5F9D3DA32516248900A17D30 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
+			productRefGroup = 5F2C6097250C3485007DBF0F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5F2C6095250C3485007DBF0F /* switchPriceKana */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5F2C6094250C3485007DBF0F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F2C60A9250C3487007DBF0F /* LaunchScreen.storyboard in Resources */,
+				5F2C60A6250C3487007DBF0F /* Assets.xcassets in Resources */,
+				5F2C60A1250C3485007DBF0F /* Main.storyboard in Resources */,
+				5F9D3D9E2515BAAF00A17D30 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		31B6E28D98A2BA70C5B497EF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-switchPriceKana/Pods-switchPriceKana-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-switchPriceKana/Pods-switchPriceKana-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-switchPriceKana/Pods-switchPriceKana-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		97C2EBA6B92AA6CA48171BBF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-switchPriceKana-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5F2C6092250C3485007DBF0F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F2C60A4250C3485007DBF0F /* switchPriceKana.xcdatamodeld in Sources */,
+				5F9D3DA22515E1A700A17D30 /* CountryNames.swift in Sources */,
+				5F2C609E250C3485007DBF0F /* SwitchViewController.swift in Sources */,
+				5F64D140251171DB003BE57C /* DetailViewController.swift in Sources */,
+				5F2C609A250C3485007DBF0F /* AppDelegate.swift in Sources */,
+				5F2C609C250C3485007DBF0F /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5F2C609F250C3485007DBF0F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5F2C60A0250C3485007DBF0F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5F2C60A7250C3487007DBF0F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5F2C60A8250C3487007DBF0F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5F2C60AB250C3487007DBF0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5F2C60AC250C3487007DBF0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5F2C60AE250C3487007DBF0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 209381B866D2F66C1952E7F4 /* Pods-switchPriceKana.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MMT8T7BSNF;
+				INFOPLIST_FILE = switchPriceKana/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Woohyun-kim.switchPriceKana";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5F2C60AF250C3487007DBF0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C1E8CEBE7CF82C0125183A9 /* Pods-switchPriceKana.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MMT8T7BSNF;
+				INFOPLIST_FILE = switchPriceKana/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Woohyun-kim.switchPriceKana";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5F2C6091250C3485007DBF0F /* Build configuration list for PBXProject "switchPriceKana" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F2C60AB250C3487007DBF0F /* Debug */,
+				5F2C60AC250C3487007DBF0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5F2C60AD250C3487007DBF0F /* Build configuration list for PBXNativeTarget "switchPriceKana" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F2C60AE250C3487007DBF0F /* Debug */,
+				5F2C60AF250C3487007DBF0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5F9D3DA32516248900A17D30 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.15.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5F9D3DA42516248900A17D30 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5F9D3DA32516248900A17D30 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		5F2C60A2250C3485007DBF0F /* switchPriceKana.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5F2C60A3250C3485007DBF0F /* switchPriceKana.xcdatamodel */,
+			);
+			currentVersion = 5F2C60A3250C3485007DBF0F /* switchPriceKana.xcdatamodel */;
+			path = switchPriceKana.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 5F2C608E250C3485007DBF0F /* Project object */;
+}
