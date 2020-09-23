@@ -50,23 +50,22 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet var imgView: UIImageView!
     
     
-    
-    
     var countryArray = [String]()
+    var noDigitalCountryArray = [String]()
     var priceArray = [String]()
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return countryArray.count
+        return noDigitalCountryArray.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListCell else {
             return UITableViewCell()
         }
-        cell.countryLabel.text = countryArray[indexPath.row]
+        cell.countryLabel.text = noDigitalCountryArray[indexPath.row]
         cell.priceLabel.text = priceArray[indexPath.row]
-        cell.flagimg.image = UIImage(named: countryNames.key(from: countryArray[indexPath.row]) ?? "") 
+        cell.flagimg.image = UIImage(named: countryNames.key(from: noDigitalCountryArray[indexPath.row]) ?? "")
         return cell
     }
     
@@ -100,7 +99,7 @@ extension SwitchViewController: UISearchBarDelegate {
       
     func search(term: String) {
             var titleUrl: String = ""
-            var currency = "₩"
+            let currency = "₩"
             let noEmptyWithloweredTerm = term.replacingOccurrences(of: " ", with: "+").lowercased()
         
             let myURLString = "https://eshop-prices.com/games?q=\(noEmptyWithloweredTerm)"
@@ -118,7 +117,6 @@ extension SwitchViewController: UISearchBarDelegate {
             let itemHTMLString = try? String(contentsOf: itemURL, encoding: .utf8)
             let itemDoc = try? HTML(html: itemHTMLString!, encoding: .utf8)
             let itemDocBody = itemDoc!.body
-//        print(itemDocBody?.content)
             
             if let itemNodesForCountry = itemDocBody?.xpath("/html/body/div[2]/div[1]/table/tbody//td/text()") {
                 for country in itemNodesForCountry {
@@ -127,9 +125,8 @@ extension SwitchViewController: UISearchBarDelegate {
                         countryArray.append(trimmedCountry)
                     }
                 }
-                if let digitalIndex = countryArray.firstIndex(of: "Digital code available at Eneba") {
-                    countryArray.remove(at: digitalIndex)
-                }
+                noDigitalCountryArray = countryArray.filter { $0 != "Digital code available at Eneba" }
+                print(noDigitalCountryArray)
             }
             
             if let itemNodesForPrice2 = itemDocBody?.xpath("/html/body/div[2]/div[1]/table/tbody//div/text()") {
@@ -154,12 +151,7 @@ extension SwitchViewController: UISearchBarDelegate {
                 imgView.kf.setImage(with: url)
             }
 
-        
-//        if countryArray.count > 1 {
-//            for name in countryArray {
-//                let countryName = decoder.de
-//            }
-//        }
+
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -168,13 +160,16 @@ extension SwitchViewController: UISearchBarDelegate {
         
         priceArray.removeAll()
         countryArray.removeAll()
+        noDigitalCountryArray.removeAll()
 
+    
         search(term: searchTerm)
         self.db.childByAutoId().setValue(searchTerm)
         
         self.tableView.reloadData()
+//        print(countryArray)
         
-        if countryArray.count < 1 {
+        if noDigitalCountryArray.count < 1 {
             SCLAlertView().showError("검색결과가 없습니다", subTitle: "게임명을 다시 확인해주세요")
         }
     }

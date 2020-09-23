@@ -14,6 +14,7 @@
 		5F2C60A4250C3485007DBF0F /* switchPriceKana.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5F2C60A2250C3485007DBF0F /* switchPriceKana.xcdatamodeld */; };
 		5F2C60A6250C3487007DBF0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F2C60A5250C3487007DBF0F /* Assets.xcassets */; };
 		5F2C60A9250C3487007DBF0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F2C60A7250C3487007DBF0F /* LaunchScreen.storyboard */; };
+		5F3D8D4F251B593300F3389C /* Kanna in Frameworks */ = {isa = PBXBuildFile; productRef = 5F3D8D4E251B593300F3389C /* Kanna */; };
 		5F64D140251171DB003BE57C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F64D13F251171DB003BE57C /* DetailViewController.swift */; };
 		5F9D3D9E2515BAAF00A17D30 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F9D3D9D2515BAAF00A17D30 /* GoogleService-Info.plist */; };
 		5F9D3DA22515E1A700A17D30 /* CountryNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9D3DA12515E1A700A17D30 /* CountryNames.swift */; };
@@ -44,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F3D8D4F251B593300F3389C /* Kanna in Frameworks */,
 				5F9D3DA52516248900A17D30 /* Kingfisher in Frameworks */,
 				6888FBC918DB2C34E628E93F /* Pods_switchPriceKana.framework in Frameworks */,
 			);
@@ -125,6 +127,7 @@
 			name = switchPriceKana;
 			packageProductDependencies = (
 				5F9D3DA42516248900A17D30 /* Kingfisher */,
+				5F3D8D4E251B593300F3389C /* Kanna */,
 			);
 			productName = switchPriceKana;
 			productReference = 5F2C6096250C3485007DBF0F /* switchPriceKana.app */;
@@ -137,7 +140,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1170;
-				LastUpgradeCheck = 1170;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Woohyun Kim";
 				TargetAttributes = {
 					5F2C6095250C3485007DBF0F = {
@@ -156,6 +159,7 @@
 			mainGroup = 5F2C608D250C3485007DBF0F;
 			packageReferences = (
 				5F9D3DA32516248900A17D30 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				5F3D8D4D251B593300F3389C /* XCRemoteSwiftPackageReference "Kanna" */,
 			);
 			productRefGroup = 5F2C6097250C3485007DBF0F /* Products */;
 			projectDirPath = "";
@@ -284,6 +288,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -344,6 +349,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -434,6 +440,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		5F3D8D4D251B593300F3389C /* XCRemoteSwiftPackageReference "Kanna" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tid-kijyun/Kanna";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.2;
+			};
+		};
 		5F9D3DA32516248900A17D30 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher";
@@ -445,6 +459,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5F3D8D4E251B593300F3389C /* Kanna */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5F3D8D4D251B593300F3389C /* XCRemoteSwiftPackageReference "Kanna" */;
+			productName = Kanna;
+		};
 		5F9D3DA42516248900A17D30 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5F9D3DA32516248900A17D30 /* XCRemoteSwiftPackageReference "Kingfisher" */;
