@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2WG-Wo-450">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Switch View Controller-->
+        <!--검색-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="SwitchViewController" id="BYZ-38-t0r" customClass="SwitchViewController" customModule="switchPriceKana" customModuleProvider="target" sceneMemberID="viewController">
@@ -29,8 +32,8 @@
                                 </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="X9f-t1-6gW">
-                                <rect key="frame" x="0.0" y="371.5" width="414" height="490.5"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <rect key="frame" x="0.0" y="371.5" width="414" height="441.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="XRQ-bg-GSf" customClass="ListCell" customModule="switchPriceKana" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="60"/>
@@ -91,7 +94,8 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="bJm-ZM-pcw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5HV-GI-kQa"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="X9f-t1-6gW" secondAttribute="trailing" id="BTC-3B-CJO"/>
@@ -107,8 +111,10 @@
                             <constraint firstItem="2rK-tT-H6x" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="qXj-AA-Qk1"/>
                             <constraint firstItem="bJm-ZM-pcw" firstAttribute="centerX" secondItem="2rK-tT-H6x" secondAttribute="centerX" id="ua6-zN-iIC"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="검색" id="9tD-CU-w8w">
+                        <imageReference key="image" image="magnifyingglass" catalog="system" symbolScale="large"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="imgView" destination="8yt-46-FDx" id="rQp-4U-NOS"/>
                         <outlet property="searchBar" destination="bJm-ZM-pcw" id="uLs-Hb-bOL"/>
@@ -118,7 +124,89 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131.8840579710145" y="123.88392857142857"/>
+            <point key="canvasLocation" x="1952.1739130434785" y="123.88392857142857"/>
+        </scene>
+        <!--기록-->
+        <scene sceneID="B5p-hB-O38">
+            <objects>
+                <viewController id="JCP-Kg-6vc" customClass="RecordViewController" customModule="switchPriceKana" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="f4g-Fi-2fY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="RfK-iL-j00">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="recordCell" rowHeight="70" id="oS8-kv-smh" customClass="RecordCell" customModule="switchPriceKana" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oS8-kv-smh" id="0TZ-dE-hGr">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NZP-Py-yRh">
+                                                    <rect key="frame" x="10" y="15" width="135.5" height="40"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <state key="normal" title="Splatoon 2"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brazil" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R4N-dQ-ghw">
+                                                    <rect key="frame" x="160.5" y="26" width="38.5" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020.09.25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IFb-o7-iqq">
+                                                    <rect key="frame" x="249" y="26.5" width="73" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="₩54,123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBP-Wv-w5d">
+                                                    <rect key="frame" x="337" y="24.5" width="67" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="nBP-Wv-w5d" firstAttribute="leading" secondItem="IFb-o7-iqq" secondAttribute="trailing" constant="15" id="KAN-OI-ZbF"/>
+                                                <constraint firstItem="R4N-dQ-ghw" firstAttribute="leading" secondItem="NZP-Py-yRh" secondAttribute="trailing" constant="15" id="Ohu-Ey-ld7"/>
+                                                <constraint firstItem="NZP-Py-yRh" firstAttribute="centerY" secondItem="0TZ-dE-hGr" secondAttribute="centerY" id="Ywi-g7-9C1"/>
+                                                <constraint firstItem="IFb-o7-iqq" firstAttribute="leading" secondItem="R4N-dQ-ghw" secondAttribute="trailing" constant="50" id="f7P-mR-edn"/>
+                                                <constraint firstAttribute="bottom" secondItem="NZP-Py-yRh" secondAttribute="bottom" constant="15" id="hsn-2I-GV5"/>
+                                                <constraint firstItem="R4N-dQ-ghw" firstAttribute="centerY" secondItem="NZP-Py-yRh" secondAttribute="centerY" id="kU7-7L-Tv7"/>
+                                                <constraint firstAttribute="trailing" secondItem="nBP-Wv-w5d" secondAttribute="trailing" constant="10" id="qQq-sp-Tmd"/>
+                                                <constraint firstItem="nBP-Wv-w5d" firstAttribute="centerY" secondItem="NZP-Py-yRh" secondAttribute="centerY" id="qe8-7m-d5Z"/>
+                                                <constraint firstItem="NZP-Py-yRh" firstAttribute="top" secondItem="0TZ-dE-hGr" secondAttribute="top" constant="15" id="r1k-VH-m4z"/>
+                                                <constraint firstItem="NZP-Py-yRh" firstAttribute="leading" secondItem="0TZ-dE-hGr" secondAttribute="leading" constant="10" id="vRo-u5-lCS"/>
+                                                <constraint firstItem="IFb-o7-iqq" firstAttribute="centerY" secondItem="NZP-Py-yRh" secondAttribute="centerY" id="wnT-NW-jUr"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="recordCountryName" destination="R4N-dQ-ghw" id="GSA-qo-xe9"/>
+                                            <outlet property="recordMinPrice" destination="nBP-Wv-w5d" id="hS1-QU-cKV"/>
+                                            <outlet property="recordTime" destination="IFb-o7-iqq" id="ndw-5A-rxd"/>
+                                            <outlet property="recordTitle" destination="NZP-Py-yRh" id="crY-1j-k3s"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="JCP-Kg-6vc" id="Afj-mg-b6y"/>
+                                    <outlet property="delegate" destination="JCP-Kg-6vc" id="D2B-cp-VGc"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Wmb-2Y-S2i"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="기록" image="book" catalog="system" id="Jtx-Wp-S87"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bHk-OO-cah" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1988" y="885"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="Hbe-3m-fSb">
@@ -141,7 +229,7 @@
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcj-xE-lXH">
                                 <rect key="frame" x="10" y="150" width="394" height="458"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <string key="text">다른 국가 계정으로 게임 구매하는 방법
 
 1. 해당 국가 계정 설정
@@ -152,12 +240,13 @@
 4. 해당 국가에서 사용할 수 있는 신용카드 준비
 5. 닌텐도 본체에서 eShop으로 들어가면 해당국가로 다시 로그인하게 됩니다
 6. 해당국가 eShop에서 해외 신용카드로 결제하면 완료</string>
-                                <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" systemColor="secondaryLabelColor"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="D0W-ol-20J"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="tcj-xE-lXH" firstAttribute="leading" secondItem="D0W-ol-20J" secondAttribute="leading" constant="10" id="2jl-ac-F07"/>
                             <constraint firstItem="tcj-xE-lXH" firstAttribute="top" secondItem="D0W-ol-20J" secondAttribute="top" constant="150" id="OgR-We-EVn"/>
@@ -167,16 +256,46 @@
                             <constraint firstItem="aR8-bd-fKa" firstAttribute="top" secondItem="D0W-ol-20J" secondAttribute="top" constant="20" id="jUi-hK-AnD"/>
                             <constraint firstItem="D0W-ol-20J" firstAttribute="bottom" secondItem="tcj-xE-lXH" secondAttribute="bottom" constant="200" id="r7M-5d-k7s"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="D0W-ol-20J"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qxp-q8-HVG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1353.6231884057972" y="123.88392857142857"/>
+            <point key="canvasLocation" x="3173.913043478261" y="123.88392857142857"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Sig-NW-kEs">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="2WG-Wo-450" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sbk-j0-17U">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" systemColor="systemPinkColor"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="At6-eB-2FV"/>
+                        <segue destination="JCP-Kg-6vc" kind="relationship" relationship="viewControllers" id="JYm-xd-ic8"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ze8-3V-Khl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1078" y="530"/>
         </scene>
     </scenes>
     <resources>
+        <image name="book" catalog="system" width="128" height="102"/>
         <image name="close_ic" width="128" height="128"/>
         <image name="kr" width="60" height="40"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
