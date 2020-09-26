@@ -43,6 +43,7 @@ import Kingfisher
 //[]booking한 데이터는 기기에 저장?(filemanager가 app에도 적용되는지 확인)
 //[]구매방법, 사용설명 페이지는 별도의 tab var로 분리
 //[]기록scene의 셀을 스와이프하면 삭제할 수 있도록하고, 위치 조정도 추가(<-애플 도서 참고)
+//[]영문명으로 게임명 입력하면 크래쉬발생
 
 class SwitchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -54,14 +55,12 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet var tableView: UITableView!
     @IBOutlet var imgView: UIImageView!
     
-    
     var countryArray = [String]()
     var noDigitalCountryArray = [String]()
     var priceArray = [String]()
     var gameTitle: String = ""
 
     var userDatas = [UserData]()
-
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return noDigitalCountryArray.count
@@ -80,12 +79,9 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedData = UserData(recordTitle: gameTitle, recordCountryName: noDigitalCountryArray[indexPath.row], recordMinPrice: priceArray[indexPath.row])
         userDatas.append(selectedData)
-        print(userDatas)
-//        SCLAlertView().showInfo("저장되었습니다", subTitle: "기록 탭을 확인해주세요")
+        performSegue(withIdentifier: "showRecord", sender: nil)
     }
     
-
-
     var countryPrice: [String: String] = [:]
     var array = [String]()
 
@@ -100,7 +96,16 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
-
+  
+    
+//    override func performSegue(withIdentifier identifier: String, sender: Any?) {
+//        if identifier == "showRecord" {
+//            let rvc = RecordViewController()
+//            searchBar.text = rvc.returnData
+//            search(term: rvc.returnData)
+//        }
+//    }
+    
 }
 
 
@@ -200,6 +205,8 @@ extension SwitchViewController: UISearchBarDelegate {
             SCLAlertView().showError("검색결과가 없습니다", subTitle: "게임명을 다시 확인해주세요")
         }
     }
+    
+    
 }
 
 

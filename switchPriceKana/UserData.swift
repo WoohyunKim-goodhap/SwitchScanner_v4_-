@@ -1,36 +1,13 @@
 //
-//  BaseTabBarViewController.swift
+//  UserData.swift
 //  switchPriceKana
 //
 //  Created by Woohyun Kim on 2020/09/26.
 //  Copyright © 2020 Woohyun Kim. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-class BaseTabBarViewController: UITabBarController {
-
-    var userDatas = [UserData]()
-    
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}
 
 struct UserData{
     var recordTitle: String

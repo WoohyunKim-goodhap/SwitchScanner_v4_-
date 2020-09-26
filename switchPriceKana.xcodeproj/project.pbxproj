@@ -20,7 +20,7 @@
 		5F9D3D9E2515BAAF00A17D30 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F9D3D9D2515BAAF00A17D30 /* GoogleService-Info.plist */; };
 		5F9D3DA22515E1A700A17D30 /* CountryNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9D3DA12515E1A700A17D30 /* CountryNames.swift */; };
 		5F9D3DA52516248900A17D30 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5F9D3DA42516248900A17D30 /* Kingfisher */; };
-		5FCEC87D251F1B8700456E5F /* BaseTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCEC87C251F1B8700456E5F /* BaseTabBarViewController.swift */; };
+		5FCEC881251F3A4C00456E5F /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCEC880251F3A4C00456E5F /* UserData.swift */; };
 		6888FBC918DB2C34E628E93F /* Pods_switchPriceKana.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A6CEB1289C0FDDE51CB2B05 /* Pods_switchPriceKana.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,7 +41,7 @@
 		5F6DDE0A251D4D9F0096B86B /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		5F9D3D9D2515BAAF00A17D30 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		5F9D3DA12515E1A700A17D30 /* CountryNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryNames.swift; sourceTree = "<group>"; };
-		5FCEC87C251F1B8700456E5F /* BaseTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarViewController.swift; sourceTree = "<group>"; };
+		5FCEC880251F3A4C00456E5F /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +92,7 @@
 				5F2C609B250C3485007DBF0F /* SceneDelegate.swift */,
 				5F2C609D250C3485007DBF0F /* SwitchViewController.swift */,
 				5F6DDE0A251D4D9F0096B86B /* RecordViewController.swift */,
-				5FCEC87C251F1B8700456E5F /* BaseTabBarViewController.swift */,
+				5FCEC880251F3A4C00456E5F /* UserData.swift */,
 				5F64D13F251171DB003BE57C /* DetailViewController.swift */,
 				5F2C609F250C3485007DBF0F /* Main.storyboard */,
 				5F9D3DA12515E1A700A17D30 /* CountryNames.swift */,
@@ -240,11 +240,11 @@
 				5F6DDDFC251D44DF0096B86B /* SwitchViewController.swift in Sources */,
 				5F2C60A4250C3485007DBF0F /* switchPriceKana.xcdatamodeld in Sources */,
 				5F9D3DA22515E1A700A17D30 /* CountryNames.swift in Sources */,
+				5FCEC881251F3A4C00456E5F /* UserData.swift in Sources */,
 				5F6DDE0B251D4D9F0096B86B /* RecordViewController.swift in Sources */,
 				5F64D140251171DB003BE57C /* DetailViewController.swift in Sources */,
 				5F2C609A250C3485007DBF0F /* AppDelegate.swift in Sources */,
 				5F2C609C250C3485007DBF0F /* SceneDelegate.swift in Sources */,
-				5FCEC87D251F1B8700456E5F /* BaseTabBarViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

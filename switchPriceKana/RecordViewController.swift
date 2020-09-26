@@ -16,6 +16,7 @@ class RecordViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var price: String?
     
     var userDatas = [UserData]()
+    var returnData = String()
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -27,12 +28,7 @@ class RecordViewController: UIViewController, UITableViewDelegate, UITableViewDa
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "recordCell", for: indexPath) as? RecordCell else {
             return UITableViewCell()
         }
-//        let tabBar = BaseTabBarViewController()
- 
-//        cell.recordCountryName.text = "123"
-//        cell.recordMinPrice.text = "456"
-//        cell.recordTitle.setTitle(tabBar.userDatas[indexPath.row].recordTitle, for: .normal)
-        
+
         cell.recordCountryName.text = userDatas[indexPath.row].recordCountryName
         cell.recordMinPrice.text = userDatas[indexPath.row].recordMinPrice
         cell.recordTitle.setTitle(userDatas[indexPath.row].recordTitle, for: .normal)
@@ -42,14 +38,10 @@ class RecordViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(userDatas)
     }
     
-    func updatUI() {
-        
-    }
-    
-    @IBAction func saveSegue(segue: UIStoryboardSegue) {
+    @IBAction func close(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
     
 }
