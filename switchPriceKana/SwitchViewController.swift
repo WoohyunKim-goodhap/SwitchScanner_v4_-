@@ -58,6 +58,9 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     var countryArray = [String]()
     var noDigitalCountryArray = [String]()
     var priceArray = [String]()
+    var gameTitle: String = ""
+
+    var userDatas = [UserData]()
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -75,16 +78,29 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        SCLAlertView().showInfo("저장되었습니다", subTitle: "기록 탭을 확인해주세요")
+        let selectedData = UserData(recordTitle: gameTitle, recordCountryName: noDigitalCountryArray[indexPath.row], recordMinPrice: priceArray[indexPath.row])
+        userDatas.append(selectedData)
+        print(userDatas)
+//        SCLAlertView().showInfo("저장되었습니다", subTitle: "기록 탭을 확인해주세요")
     }
+    
+
 
     var countryPrice: [String: String] = [:]
     var array = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let rvc = segue.destination as? RecordViewController {
+            rvc.userDatas = userDatas
+            print(rvc.userDatas)
+        }
+    }
+    
+
 }
 
 
@@ -122,6 +138,14 @@ extension SwitchViewController: UISearchBarDelegate {
             let itemHTMLString = try? String(contentsOf: itemURL, encoding: .utf8)
             let itemDoc = try? HTML(html: itemHTMLString!, encoding: .utf8)
             let itemDocBody = itemDoc!.body
+        
+            if let itemNodesForCountry = itemDocBody?.xpath("/html/body/div[1]/div[2]/div/h1/text()") {
+                for item in itemNodesForCountry {
+                    if let itemText = item.text{
+                        gameTitle = itemText
+                    }
+                }
+            }
             
             if let itemNodesForCountry = itemDocBody?.xpath("/html/body/div[2]/div[1]/table/tbody//td/text()") {
                 for country in itemNodesForCountry {
@@ -131,7 +155,6 @@ extension SwitchViewController: UISearchBarDelegate {
                     }
                 }
                 noDigitalCountryArray = countryArray.filter { $0 != "Digital code available at Eneba" }
-                print(noDigitalCountryArray)
             }
             
             if let itemNodesForPrice2 = itemDocBody?.xpath("/html/body/div[2]/div[1]/table/tbody//div/text()") {

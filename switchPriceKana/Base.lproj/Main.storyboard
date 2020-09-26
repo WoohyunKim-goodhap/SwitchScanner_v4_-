@@ -49,7 +49,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="₩57,000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AGq-7w-oHi">
-                                                    <rect key="frame" x="323.5" y="20" width="70.5" height="20.5"/>
+                                                    <rect key="frame" x="293.5" y="20" width="70.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -60,11 +60,24 @@
                                                         <constraint firstAttribute="width" secondItem="vz4-TC-V0h" secondAttribute="height" multiplier="60:40" id="WBx-FV-YS7"/>
                                                     </constraints>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rpv-m0-Pt4">
+                                                    <rect key="frame" x="379" y="15" width="25" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                    <state key="normal" image="bookmark" catalog="system"/>
+                                                    <connections>
+                                                        <segue destination="U7V-bD-rUE" kind="unwind" unwindAction="saveSegueWithSegue:" id="FJS-vn-H0V"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="rpv-m0-Pt4" firstAttribute="top" secondItem="tqM-X9-s1S" secondAttribute="top" constant="15" id="Gpq-4A-98C"/>
+                                                <constraint firstAttribute="trailing" secondItem="rpv-m0-Pt4" secondAttribute="trailing" constant="10" id="Ive-hn-Y73"/>
+                                                <constraint firstItem="rpv-m0-Pt4" firstAttribute="leading" secondItem="AGq-7w-oHi" secondAttribute="trailing" constant="15" id="LKr-is-AEL"/>
+                                                <constraint firstAttribute="bottom" secondItem="rpv-m0-Pt4" secondAttribute="bottom" constant="15" id="OmI-dx-E5R"/>
                                                 <constraint firstItem="AGq-7w-oHi" firstAttribute="centerY" secondItem="FE2-5L-yHh" secondAttribute="centerY" id="PPz-BG-CPG"/>
                                                 <constraint firstItem="FE2-5L-yHh" firstAttribute="leading" secondItem="vz4-TC-V0h" secondAttribute="trailing" constant="20" id="RCA-El-Gan"/>
-                                                <constraint firstAttribute="trailing" secondItem="AGq-7w-oHi" secondAttribute="trailing" constant="20" id="UBL-mT-wfp"/>
+                                                <constraint firstAttribute="trailing" secondItem="AGq-7w-oHi" secondAttribute="trailing" constant="50" id="UBL-mT-wfp"/>
+                                                <constraint firstItem="rpv-m0-Pt4" firstAttribute="centerY" secondItem="AGq-7w-oHi" secondAttribute="centerY" id="bV0-OL-ssW"/>
                                                 <constraint firstAttribute="bottom" secondItem="vz4-TC-V0h" secondAttribute="bottom" constant="10" id="c2e-Dj-bSO"/>
                                                 <constraint firstItem="vz4-TC-V0h" firstAttribute="centerY" secondItem="tqM-X9-s1S" secondAttribute="centerY" id="f10-sX-Cmd"/>
                                                 <constraint firstItem="AGq-7w-oHi" firstAttribute="baseline" secondItem="FE2-5L-yHh" secondAttribute="firstBaseline" id="j1b-uW-8Ji"/>
@@ -123,6 +136,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="U7V-bD-rUE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1952.1739130434785" y="123.88392857142857"/>
         </scene>
@@ -194,8 +208,8 @@
                                 </prototypes>
                                 <sections/>
                                 <connections>
-                                    <outlet property="dataSource" destination="JCP-Kg-6vc" id="Afj-mg-b6y"/>
-                                    <outlet property="delegate" destination="JCP-Kg-6vc" id="D2B-cp-VGc"/>
+                                    <outlet property="dataSource" destination="JCP-Kg-6vc" id="twY-OJ-AY4"/>
+                                    <outlet property="delegate" destination="JCP-Kg-6vc" id="hco-lu-GJP"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -285,6 +299,7 @@
     </scenes>
     <resources>
         <image name="book" catalog="system" width="128" height="102"/>
+        <image name="bookmark" catalog="system" width="112" height="128"/>
         <image name="close_ic" width="128" height="128"/>
         <image name="kr" width="60" height="40"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
