@@ -32,6 +32,7 @@ class RecordViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.recordCountryName.text = userDatas[indexPath.row].recordCountryName
         cell.recordMinPrice.text = userDatas[indexPath.row].recordMinPrice
         cell.recordTitle.setTitle(userDatas[indexPath.row].recordTitle, for: .normal)
+        cell.recordTime.text = UserData.recordTime
 
         return cell
     }

@@ -37,13 +37,12 @@ import Kingfisher
 //[0]다크모드 적용
 //[0]국기 json 활용해서 앞에 추가
 //[0]게임 아이콘 만들기
-//[]검색 scene에 게임타이틀 label 추가
-//[]해당 국가 셀을 클릭하면 '저장되었습니다. 기록 탭에서 확인 팝업' + 클릭한 셀의 정보를 기록 scene으로 전달하기 위해서는 "Swift4: Sharing Data Model across Views in Tab Bar Controller" 유투브 확인
-//[]빈 book label을 클릭하면 기록 scene으로 데이터 전달+꽉찬 이미지로 변경
-//[]booking한 데이터는 기기에 저장?(filemanager가 app에도 적용되는지 확인)
-//[]구매방법, 사용설명 페이지는 별도의 tab var로 분리
+//[0]검색 scene에 게임타이틀 label 추가
+//[0]빈 book label을 클릭하면 기록 scene으로 데이터 전달+꽉찬 이미지로 변경
 //[]기록scene의 셀을 스와이프하면 삭제할 수 있도록하고, 위치 조정도 추가(<-애플 도서 참고)
 //[]영문명으로 게임명 입력하면 크래쉬발생
+//[]게임명, 가격 따옴표로 표시되는 문제
+//[]기기별로 constraint깨지는지 확인 필요
 
 class SwitchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -54,6 +53,8 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var imgView: UIImageView!
+    @IBOutlet var searchedGemeTitle: UILabel!
+    
     
     var countryArray = [String]()
     var noDigitalCountryArray = [String]()
@@ -95,17 +96,6 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
             print(rvc.userDatas)
         }
     }
-    
-  
-    
-//    override func performSegue(withIdentifier identifier: String, sender: Any?) {
-//        if identifier == "showRecord" {
-//            let rvc = RecordViewController()
-//            searchBar.text = rvc.returnData
-//            search(term: rvc.returnData)
-//        }
-//    }
-    
 }
 
 
@@ -199,6 +189,7 @@ extension SwitchViewController: UISearchBarDelegate {
         search(term: searchTerm)
         self.db.childByAutoId().setValue(searchTerm)
         
+        searchedGemeTitle.text = gameTitle
         self.tableView.reloadData()
         
         if noDigitalCountryArray.count < 1 {
