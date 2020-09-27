@@ -17,7 +17,6 @@ class RecordViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var userDatas = [UserData]()
     var returnData = String()
-
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        
@@ -42,10 +41,6 @@ class RecordViewController: UIViewController, UITableViewDelegate, UITableViewDa
             userDatas.remove(at: indexPath.row)
          
             tableView.deleteRows(at: [indexPath], with: . automatic)
-       
-//            let svc = SwitchViewController()
-//            svc.userDatas.remove(at: indexPath.row)
-//            print(svc.userDatas.count)
         }
     }
     

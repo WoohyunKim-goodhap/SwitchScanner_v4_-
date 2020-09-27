@@ -12,38 +12,6 @@ import SCLAlertView
 import Firebase
 import Kingfisher
 
-// * 나중에 업데이트 및 알림 기능을 구현할 때 DB가 필요, 지금은 앱내에서 그대로 값만 보여주는 것으로 런칭
-//[] 패캠 강의 중 Firebase 처음부터 들으면서 현재 프로젝트에 신규 DB 연결
-//[] Firebase 101 수업과 같이 '읽기, 쓰기, 지우기, 업데이트' viewContrßoller에 만들기
-//[] 게임타이틀을 textField가 아니라 스크롤 해서 선택할 수 있도록
-//[] 최종적으로는 검색창에 단어를 입력하면 관련 타이틀을 노출
-//[]국기이미지는 flagpedia에서 다운로드 -> assets에 넣을 것 -> 국기 파일명을 countryArray와 동일하게 맞추어 주어야 함 -> ML을 활용?
-//[]currency 변경 옵션 추가 -> 리스트로 선택할 수 있도록
-//[]fire base 혹은 로컬 파일로 즐겨찾는 타이틀 저장할 수 있게하자
-
-// * ver.1 단순하게 보여주는 형태
-// [O](1)user가 검색창에 게임 타이틀을 쓰면 -> [o](2)searchTitle로 읽어 옴 -> [o](3)searchTitle로 countryPrice dictionary를 산출 -> [o](4)value가 낮은 순서대로 보여 줌
-//[O](1) 검색창 -> 강의 내용 중 검색 창있었던 강의 참고, 넷플릭스? 그 전에도 있었음
-// -[O]테이블뷰 셀은 /가격/국가명 순으로
-
-//[O](3) countryPrice를 보여주는 tableViewCell이 필요 reuse해야할 것임
-//[o]대소문자는 상관 없는 듯. for loop와 enumerate character를 사용하여 공백은 "+"로 바꿔줄 것
-//[o]searchTitle로 검색어 전달
-
-//[O]셀 클릭시 모달뷰로 구매방법 설명 띄우기(현상금 랭킹앱 참조)
-//[O]검색어 오류, 검색 결과 없을 때 띄울 모달뷰 만들기(현상금 랭킹앱 참조)
-//[O]타이틀에 'switch'넣고 밑에 한글 헤더 달기
-//[0]fire base 연결하기
-//[0]다크모드 적용
-//[0]국기 json 활용해서 앞에 추가
-//[0]게임 아이콘 만들기
-//[0]검색 scene에 게임타이틀 label 추가
-//[0]빈 book label을 클릭하면 기록 scene으로 데이터 전달+꽉찬 이미지로 변경
-//[]기록scene의 셀을 스와이프하면 삭제할 수 있도록하고, 위치 조정도 추가(<-애플 도서 참고)
-//[]영문명으로 게임명 입력하면 크래쉬발생
-//[]게임명, 가격 따옴표로 표시되는 문제
-//[]기기별로 constraint깨지는지 확인 필요
-
 class SwitchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
@@ -97,7 +65,6 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue){
-        
     }
 }
 
@@ -175,8 +142,6 @@ extension SwitchViewController: UISearchBarDelegate {
                 let url = URL(string: itemImage.content!)
                 imgView.kf.setImage(with: url)
             }
-
-
     }
     
     func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
@@ -205,8 +170,6 @@ extension SwitchViewController: UISearchBarDelegate {
             SCLAlertView().showError("검색결과가 없습니다", subTitle: "게임명을 다시 확인해주세요")
         }
     }
-    
-    
 }
 
 
