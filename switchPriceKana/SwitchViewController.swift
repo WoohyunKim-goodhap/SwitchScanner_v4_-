@@ -61,7 +61,7 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     var priceArray = [String]()
     var gameTitle: String = ""
 
-    var userDatas = [UserData]()
+    var selectDatas = [UserData]()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return noDigitalCountryArray.count
@@ -79,7 +79,7 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedData = UserData(recordTitle: gameTitle, recordCountryName: noDigitalCountryArray[indexPath.row], recordMinPrice: priceArray[indexPath.row])
-        userDatas.append(selectedData)
+        selectDatas.append(selectedData)
         performSegue(withIdentifier: "showRecord", sender: nil)
     }
     
@@ -92,15 +92,17 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let rvc = segue.destination as? RecordViewController {
-            rvc.userDatas = userDatas
-            print(rvc.userDatas)
+            rvc.userDatas = selectDatas
         }
+    }
+    
+    @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue){
+        
     }
 }
 
 
 class ListCell: UITableViewCell {
-//    @IBOutlet weak var flagView: UIImageView!
     @IBOutlet weak var countryLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet var flagimg: UIImageView!

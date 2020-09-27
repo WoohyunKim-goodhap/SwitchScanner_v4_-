@@ -36,13 +36,27 @@ class RecordViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         return cell
     }
+        
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            userDatas.remove(at: indexPath.row)
+         
+            tableView.deleteRows(at: [indexPath], with: . automatic)
+       
+//            let svc = SwitchViewController()
+//            svc.userDatas.remove(at: indexPath.row)
+//            print(svc.userDatas.count)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    @IBAction func close(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let svc = segue.destination as? SwitchViewController{
+            svc.selectDatas = userDatas
+        }
     }
     
 }

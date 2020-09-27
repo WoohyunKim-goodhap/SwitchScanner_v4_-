@@ -109,7 +109,7 @@
                                     <color key="titleColor" systemColor="systemBlueColor"/>
                                 </state>
                                 <connections>
-                                    <segue destination="JCP-Kg-6vc" kind="show" id="EDe-Gj-Ehx"/>
+                                    <segue destination="JCP-Kg-6vc" kind="show" identifier="" id="EDe-Gj-Ehx"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -165,7 +165,7 @@
                                     <color key="titleColor" systemColor="systemBlueColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="close:" destination="JCP-Kg-6vc" eventType="touchUpInside" id="xE9-AV-1P4"/>
+                                    <segue destination="VB4-Nd-8xB" kind="unwind" unwindAction="myUnwindActionWithUnwindSegue:" id="WsE-36-JiP"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="RfK-iL-j00">
@@ -186,7 +186,9 @@
                                                         <constraint firstAttribute="height" constant="20" id="EsT-1b-oMj"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <state key="normal" title="Splatoon 2"/>
+                                                    <state key="normal" title="Splatoon 2">
+                                                        <color key="titleColor" systemColor="labelColor"/>
+                                                    </state>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brazil" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R4N-dQ-ghw">
                                                     <rect key="frame" x="15" y="35" width="32" height="15"/>
@@ -265,6 +267,7 @@
                     <navigationItem key="navigationItem" id="X74-6V-b25"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bHk-OO-cah" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="VB4-Nd-8xB" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2866.666666666667" y="123.88392857142857"/>
         </scene>
@@ -326,11 +329,14 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="d77-bh-kq3"/>
+        <segue reference="EDe-Gj-Ehx"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="close_ic" width="128" height="128"/>
         <image name="kr" width="60" height="40"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
