@@ -179,6 +179,14 @@ extension SwitchViewController: UISearchBarDelegate {
 
     }
     
+    func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let allowedCharacters = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1234567890-\n "
+        let allowedCharacterSet = CharacterSet(charactersIn: allowedCharacters)
+        let typedCharacterSet = CharacterSet(charactersIn: text)
+        
+        return allowedCharacterSet.isSuperset(of: typedCharacterSet)
+    }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         dismissKeyboard()
         guard let searchTerm = searchBar.text, searchTerm.isEmpty == false else {return}
@@ -186,7 +194,6 @@ extension SwitchViewController: UISearchBarDelegate {
         priceArray.removeAll()
         countryArray.removeAll()
         noDigitalCountryArray.removeAll()
-
     
         search(term: searchTerm)
         self.db.childByAutoId().setValue(searchTerm)
