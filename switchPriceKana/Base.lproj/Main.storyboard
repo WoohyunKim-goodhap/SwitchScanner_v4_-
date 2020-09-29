@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RxL-Ja-cqf">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -9,6 +9,34 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Search Table View Controller-->
+        <scene sceneID="CmE-Os-pcv">
+            <objects>
+                <tableViewController id="RxL-Ja-cqf" customClass="SearchTableViewController" customModule="switchPriceKana" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="v2y-Gt-pLO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="q4h-K0-gAd">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="q4h-K0-gAd" id="kBT-10-ZWf">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="RxL-Ja-cqf" id="4hS-Ci-JUJ"/>
+                            <outlet property="delegate" destination="RxL-Ja-cqf" id="Gym-Uv-aOC"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OSB-JW-hsj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="949" y="136"/>
+        </scene>
         <!--Switch View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -79,8 +107,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="dYu-pA-kOZ"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Wne-bN-rRn"/>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="esc-aY-HmU"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="tIR-Zm-e3Q"/>
                                 </connections>
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8yt-46-FDx">
@@ -138,7 +166,7 @@
                         <outlet property="imgView" destination="8yt-46-FDx" id="rQp-4U-NOS"/>
                         <outlet property="searchBar" destination="bJm-ZM-pcw" id="uLs-Hb-bOL"/>
                         <outlet property="searchedGemeTitle" destination="CgR-tv-bHF" id="zvF-ZT-DKk"/>
-                        <outlet property="tableView" destination="X9f-t1-6gW" id="pap-Hc-obp"/>
+                        <outlet property="tableView" destination="X9f-t1-6gW" id="XYV-dy-XgA"/>
                         <segue destination="JCP-Kg-6vc" kind="show" identifier="showRecord" id="d77-bh-kq3"/>
                     </connections>
                 </viewController>

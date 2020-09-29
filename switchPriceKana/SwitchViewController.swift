@@ -12,50 +12,59 @@ import SCLAlertView
 import Firebase
 import Kingfisher
 
+//[]블로그 내용과 같이 별도의 UItableviewcontroller를 만들어서 사용
+//[]스위치 게임리스트를 가져오고, lowercase로 필터링 할 것
+
+
 class SwitchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
-    
+
     let db = Database.database().reference().child("searchHistory")
-    
-    
+
     @IBOutlet var searchBar: UISearchBar!
-    @IBOutlet var tableView: UITableView!
     @IBOutlet var imgView: UIImageView!
     @IBOutlet var searchedGemeTitle: UILabel!
+    @IBOutlet var tableView: UITableView!
     
     
     var countryArray = [String]()
     var noDigitalCountryArray = [String]()
     var priceArray = [String]()
     var gameTitle: String = ""
-
+    var totalGameList: [String] = Array()
     var selectDatas = [UserData]()
-    
+
+ 
+    // 각 테이블 별 갯수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return noDigitalCountryArray.count
+            return noDigitalCountryArray.count
     }
 
+    //각 테이블 별 내용
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListCell else {
-            return UITableViewCell()
-        }
-        cell.countryLabel.text = noDigitalCountryArray[indexPath.row]
-        cell.priceLabel.text = priceArray[indexPath.row]
-        cell.flagimg.image = UIImage(named: countryNames.key(from: noDigitalCountryArray[indexPath.row]) ?? "")
-        return cell
+
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListCell else { return UITableViewCell()}
+            cell.countryLabel.text = noDigitalCountryArray[indexPath.row]
+            cell.priceLabel.text = priceArray[indexPath.row]
+            cell.flagimg.image = UIImage(named: countryNames.key(from: noDigitalCountryArray[indexPath.row]) ?? "")
+            return cell
     }
     
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //price cell 눌렀을 때
         let selectedData = UserData(recordTitle: gameTitle, recordCountryName: noDigitalCountryArray[indexPath.row], recordMinPrice: priceArray[indexPath.row])
         selectDatas.append(selectedData)
-        performSegue(withIdentifier: "showRecord", sender: nil)
+            performSegue(withIdentifier: "showRecord", sender: nil)
+        
     }
+        
     
     var countryPrice: [String: String] = [:]
     var array = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -68,13 +77,16 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     }
 }
 
-
 class ListCell: UITableViewCell {
     @IBOutlet weak var countryLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet var flagimg: UIImageView!
-    
 }
+
+class searchCell: UITableViewCell {
+    @IBOutlet var matchTitle: UILabel!
+}
+
 
 extension SwitchViewController: UISearchBarDelegate {
     
