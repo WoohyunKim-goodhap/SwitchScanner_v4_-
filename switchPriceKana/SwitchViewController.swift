@@ -12,8 +12,10 @@ import SCLAlertView
 import Firebase
 import Kingfisher
 
-//[]블로그 내용과 같이 별도의 UItableviewcontroller를 만들어서 사용
 //[]스위치 게임리스트를 가져오고, lowercase로 필터링 할 것
+//[]영어로 내용 바꾸고 런칭도 전세계로 할 것
+//[]한글화 localization은 2.0에서 추가 우선 영어로
+//[]SearchTVC에서 검색한 결과를 클릭하면 바로 검색되도록 구현
 
 
 class SwitchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -24,7 +26,21 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet var imgView: UIImageView!
     @IBOutlet var searchedGemeTitle: UILabel!
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var menuView: UIView!
+    @IBOutlet var menuButton: UIButton!
+    @IBOutlet var menuViewContraints: NSLayoutConstraint!
     
+    
+    @IBAction func menuButtonPressed(_ sender: Any) {
+        getList()
+        if menuView.isHidden == true{
+            menuView.isHidden = false
+            showAnimation()
+        }else {
+            menuView.isHidden = true
+            prepareAnimation()
+        }
+    }
     
     var countryArray = [String]()
     var noDigitalCountryArray = [String]()
@@ -64,7 +80,25 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        prepareAnimation()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        menuView.isHidden = true
+        prepareAnimation()
+    }
+    
+    private func prepareAnimation(){
+        menuViewContraints.constant = -60
+    }
+    
+    private func showAnimation(){
+        menuViewContraints.constant = 5
+        UIView.animate(withDuration: 0.2) {self.view.layoutIfNeeded()}
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -83,9 +117,9 @@ class ListCell: UITableViewCell {
     @IBOutlet var flagimg: UIImageView!
 }
 
-class searchCell: UITableViewCell {
-    @IBOutlet var matchTitle: UILabel!
-}
+//class searchCell: UITableViewCell {
+//    @IBOutlet var matchTitle: UILabel!
+//}
 
 
 extension SwitchViewController: UISearchBarDelegate {

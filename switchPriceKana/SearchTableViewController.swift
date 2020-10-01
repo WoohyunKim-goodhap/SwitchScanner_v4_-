@@ -13,6 +13,8 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     
     var filteredData: [String] = []
     var resultSearchController: UISearchController!
+    var selectedGame: String = ""
+    var selectedIndex: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +22,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         resultSearchController.searchResultsUpdater = self
         resultSearchController.hidesNavigationBarDuringPresentation = false
         self.tableView.tableHeaderView = resultSearchController.searchBar
+        resultSearchController.obscuresBackgroundDuringPresentation = false
         resultSearchController.searchBar.searchBarStyle = UISearchBar.Style.prominent
         resultSearchController.searchBar.sizeToFit()
         self.definesPresentationContext = true
@@ -65,4 +68,27 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
                  tableView.reloadData()
              }
          }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        if filteredData.count > 0 {
+            selectedGame = filteredData[indexPath.row]
+            resultSearchController.dismiss(animated: true, completion: {
+                self.performSegue(withIdentifier: "unwindSegue", sender: self)
+            })
+        }else{
+            selectedGame = switchTitles[indexPath.row]
+            self.performSegue(withIdentifier: "unwindSegue", sender: self)
+        }
+            resultSearchController.searchBar.text = selectedGame
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "unwindSegue"{
+            if let svc = segue.destination as? SwitchViewController {
+                svc.searchBar.text = selectedGame
+                svc.searchBarSearchButtonClicked(svc.searchBar)
+            }
+        }
+    }
 }
