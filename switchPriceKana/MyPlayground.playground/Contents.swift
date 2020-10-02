@@ -3,32 +3,8 @@ import Kanna
 
 var str = "Hello, playground"
 
+var switchTitles = ["1001 Ultimate Mahjong ™ 2","103","10 Second Run RETURNS","112th Seed","12 is Better Than 6","12 Labours of Hercules","12 Labours of Hercules II: The Cretan Bull","12 orbits","1-2-Switch™","140","1917 - The Alien Invasion DX","1971 Project Helios","1979 Revolution: Black Friday","198X","1993 Shenandoah","2048 Battles","2048 CAT","2064: Read Only Memories INTEGRAL","20XX","2weistein – The Curse of the Red Dragon","3000th Duel","30-in-1 Game Collection","36 Fragments of Midnight","39 Days to Mars","3D Billiards - Pool & Snooker","3D MiniGolf","3 Little Pigs & Bad Wolf","4x4 Dirt Track","60 Parsecs!","60 Seconds!","6180 the moon","64.0","7 Billion Humans","7th Sector","80 DAYS","80's OVERDRIVE","88 Heroes - 98 Heroes Edition","8-Ball Pocket","911 Operator","911 Operator Deluxe Edition","99Moves","99Seconds","99Vidas - Definitive Edition","9 Monkeys of Shaolin","9th Dawn III","Aaero: Complete Edition","A blessing to this wonderful world!","A blessing to this wonderful world!","Aborigenus","Absolute class school","Absurdity turbulence","Abyss","ABZÃ"," 2020 SUPER BASEBALL"," 3 COUNT BOUT"," AERO FIGHTERS 2"," AERO FIGHTERS 3"," AGGRESSORS OF DARK KOMBAT"," ALPHA MISSION II"," ART OF FIGHTING"," ART OF FIGHTING 2"," ART OF FIGHTING 3"," BASEBALL STARS 2"," BASEBALL STARS PROFESSIONAL"," BLAZING STAR"," BLUE'S JOURNEY"," BURNING FIGHT"," CROSSED SWORDS"," CYBER-LIP"," FATAL FURY"," FATAL FURY 2"," FATAL FURY 3"," FATAL FURY SPECIAL"," FOOTBALL FRENZY"," GALAXY FIGHT: UNIVERSAL WARRIORS"," GAROU: MARK OF THE WOLVES"," GHOST PILOTS"," Gururin"," KARNOV'S REVENGE"," KING OF THE MONSTERS"," KING OF THE MONSTERS 2"," KIZUNA ENCOUNTER"," LAST RESORT"," LEAGUE BOWLING"," MAGICAL DROP II"," MAGICAL DROP III"," MAGICIAN LORD"," METAL SLUG"," METAL SLUG 2"," METAL SLUG 3"," METAL SLUG 4"," METAL SLUG 5"," METAL SLUG X"," Money Puzzle Exchanger"," MUTATION NATION"," NAM-1975"," NEO TURF MASTERS"," NINJA COMBAT"," NINJA COMMANDO"," NINJA MASTER'S"," OVER TOP"," PLEASURE GOALï¼ 5 ON 5 MINI SOCCER"," POWER SPIKES II"," PREHISTORIC ISLE 2"," PULSTAR"," PUZZLE BOBBLE"," PUZZLE BOBBLE 2"," PUZZLED"," RAGNAGARD"," REAL BOUT FATAL FURY"," REAL BOUT FATAL FURY 2"," REAL BOUT FATAL FURY SPECIAL"," RIDING HERO"," ROBO ARMY"," SAMURAI SHODOWN"," SAMURAI SHODOWN II"," SAMURAI SHODOWN III"," SAMURAI SHODOWN IV"," SAMURAI SHODOWN V"," SAMURAI SHODOWN V SPECIAL"," SAVAGE REIGN"," SENGOKU"," SENGOKU 2"," SENGOKU 3"," SHOCK TROOPERS"," SHOCK TROOPERS 2nd Squad"," SOCCER BRAWL"," SPIN MASTER"," STAKES WINNER"," STAKES WINNER 2"," STREET HOOP"," STRIKERS 1945 PLUS"," SUPER SIDEKICKS"," THE KING OF FIGHTERS 2000"," THE KING OF FIGHTERS 2001"," THE KING OF FIGHTERS 2002"," THE KING OF FIGHTERS 2003"," THE KING OF FIGHTERS '94"," THE KING OF FIGHTERS '95"," THE KING OF FIGHTERS '96","Aces of the Luftwaffe - Squadron","A challenge from Greco! Kanji Hall and ghosts 1st grade","A challenge from Greco! Kanji Hall and ghosts 2nd grade","A challenge from Greco! Kanji Hall and ghosts 3rd grade","A challenge from Greco! Kanji Hall and ghosts 4th grade","A challenge from Greco! Kanji Hall and ghosts 5th grade","A challenge from Greco! Kanji Hall and ghosts 6th grade","A Ch'ti Bundle","Achtung! Cthulhu Tactics","ACORN Tactics","Across the Grooves","Active Neurons 2","Active Neurons - Puzzle game","Active Soccer 2019","Actual Sunlight","Adam's Venture™: Origins","A Dark Room","Adrenaline Rush - Miami Drive","A Duel Hand Disaster: Trackher","Adventure Pinball Bundle","Adventures of Bertram Fiddle Episode 2: A Bleaker Predicklement","Adventures of Chris","Adventures of Pip","Adventure Time: Pirates of the Enchiridion","Aegis Defenders","Aeolis Tournament","AER Memories of Old","Aery - Broken Memories","Aery - Little Bird Adventure","Aery - Sky Castle","AeternoBlade","AeternoBlade II","AFL Evolution 2","A Fold Apart","Afterparty","AGARTHA-S","Agatha Christie - The ABC Murders","Agatha Knife","Ageless","Agent A: A puzzle in disguise"]
 
-///html/body/div/div/div/div[1]/div[1]/article/div/div[3]/ul[3]/li[6]/text()[1]
-///html/body/div/div/div/div[1]/div[1]/article/div/div[3]/ul[3]/li[33]/text()[1]
-
-
-var switchTitles: [String] = []
-
-
-let itemURLString = "http://www.geekyhobbies.com/nintendo-switch-games-physical-releases-the-complete-list/"
-let itemURL = URL(string: itemURLString)!
-let itemHTMLString = try? String(contentsOf: itemURL, encoding: .utf8)
-let itemDoc = try? HTML(html: itemHTMLString!, encoding: .utf8)
-let itemDocBody = itemDoc!.body
-
-print(itemDocBody?.content!)
-
-if let itemNodes = itemDocBody?.xpath("html/body/div/div/div/div[1]/div[1]/article/div/div[3]/ul[3]//text()") {
-    print(itemNodes)
-    for item in itemNodes {
-        print(item.content!)
-//        let trimmed = item.content!.trimmingCharacters(in: .whitespacesAndNewlines)
-//        switchTitles.append(trimmed)
-    }
-//    var filtered = switchTitles.filter { $0 != "" }
-//    let removeRange = 0 ... 8
-//    filtered.removeSubrange(removeRange)
-//    switchTitles = filtered
-}
+switchTitles.count
+//}
 
