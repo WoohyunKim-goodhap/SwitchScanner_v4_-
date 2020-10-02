@@ -32,7 +32,6 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     
     
     @IBAction func menuButtonPressed(_ sender: Any) {
-        getList()
         if menuView.isHidden == true{
             menuView.isHidden = false
             showAnimation()
@@ -134,8 +133,9 @@ extension SwitchViewController: UISearchBarDelegate {
             let noEmptyWithloweredTerm = term.replacingOccurrences(of: " ", with: "+").lowercased()
         
             let myURLString = "https://eshop-prices.com/games?q=\(noEmptyWithloweredTerm)"
-            let myURL = URL(string: myURLString)
-            let myHTMLString = try? String(contentsOf: myURL!, encoding: .utf8)
+            guard let addPercentURL = myURLString.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.urlQueryAllowed) else { return }
+            guard let myURL = URL(string: addPercentURL) else {return}
+            let myHTMLString = try? String(contentsOf: myURL, encoding: .utf8)
             let preDoc = try? HTML(html: myHTMLString!, encoding: .utf8)
             
             for link in preDoc!.xpath("//a/@href") {

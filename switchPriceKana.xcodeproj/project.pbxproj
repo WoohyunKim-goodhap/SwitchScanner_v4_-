@@ -44,7 +44,6 @@
 		5F6DDE0A251D4D9F0096B86B /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		5F9D3D9D2515BAAF00A17D30 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		5F9D3DA12515E1A700A17D30 /* CountryNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryNames.swift; sourceTree = "<group>"; };
-		5FA44DAF2525D0FE006A4339 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5FBAB4042523278D0096BB5F /* switchTitles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = switchTitles.swift; sourceTree = "<group>"; };
 		5FCEC880251F3A4C00456E5F /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,7 +96,6 @@
 				5F2C609B250C3485007DBF0F /* SceneDelegate.swift */,
 				5F2C609D250C3485007DBF0F /* SwitchViewController.swift */,
 				5F4731B525236F6900650CC2 /* SearchTableViewController.swift */,
-				5FA44DAF2525D0FE006A4339 /* MyPlayground.playground */,
 				5F6DDE0A251D4D9F0096B86B /* RecordViewController.swift */,
 				5F64D13F251171DB003BE57C /* DetailViewController.swift */,
 				5F2C609F250C3485007DBF0F /* Main.storyboard */,
