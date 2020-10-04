@@ -1,21 +1,5 @@
-//
-//  File.swift
-//  switchPriceKana
-//
-//  Created by Woohyun Kim on 2020/09/19.
-//  Copyright © 2020 Woohyun Kim. All rights reserved.
-//
-
-import Foundation
 import UIKit
-
-
-extension Dictionary where Value: Equatable {
-    func key(from value: Value) -> Key? {
-        return self.first(where: { $0.value == value })?.key
-    }
-}
-
+import Kanna
 
 let countryNames = [ "ad": "Andorra",
 "ae": "United Arab Emirates",
@@ -326,8 +310,121 @@ let countryNames = [ "ad": "Andorra",
 
 var onlyCountryNames: [String] = []
 
-func getCountryNames(){
-    for i in countryNames.values{
-        onlyCountryNames.append(i)
+for i in countryNames.values{
+    onlyCountryNames.append(i)
+}
+
+
+var term = "chameleon"
+var currency = "KRW"
+
+var countryArray = [String]()
+var noDigitalCountryArray = [String]()
+var priceArray = [String]()
+var gameTitle: String = ""
+var totalGameList: [String] = Array()
+var trimmedPriceArray = [String]()
+
+
+var titleUrl = [String]()
+let noEmptyWithloweredTerm = term.replacingOccurrences(of: " ", with: "+").lowercased()
+
+let myURLString = "https://eshop-prices.com/games?q=\(noEmptyWithloweredTerm)"
+let addPercentURL = myURLString.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.urlQueryAllowed)
+let myURL = URL(string: addPercentURL!)
+let myHTMLString = try? String(contentsOf: myURL!, encoding: .utf8)
+let preDoc = try? HTML(html: myHTMLString!, encoding: .utf8)
+
+for link in preDoc!.xpath("//a/@href") {
+    if !link.content!.contains("https") {
+        titleUrl.append(link.content!)
     }
 }
+
+//svc에서는 firstTitle을 optional binding으로 풀어서 써야함(func 내부이므로 return사용가능)
+let itemURLString = "https://eshop-prices.com/\(titleUrl.first!)?currency=\(currency)"
+let itemURL = URL(string: itemURLString)
+let itemHTMLString = try? String(contentsOf: itemURL!, encoding: .utf8)
+let itemDoc = try? Kanna.HTML(html: itemHTMLString!, encoding: .utf8)
+let itemDocBody = itemDoc!.body
+let itemDocXML = try? Kanna.XML(xml: itemHTMLString!, encoding: .utf8)
+
+if let itemNodesForCountry = itemDocBody?.xpath("/html/body/div[1]/div[2]/div/h1/text()") {
+    for item in itemNodesForCountry {
+    }
+}
+
+//if country.content!.count > 0 && !country.content!.contains("₩")
+
+if let itemNodesForCountry = itemDocBody?.xpath("/html/body/div[2]/div[1]/table/tbody//td/text()") {
+    for country in itemNodesForCountry {
+        if country.content!.count > 0 {
+            let trimmedCountry = country.content!.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            //수정필요
+            if onlyCountryNames.contains(trimmedCountry){
+                countryArray.append(trimmedCountry)
+            }
+        }
+    }
+    noDigitalCountryArray = countryArray.filter { $0 != "Digital code available at Eneba" }
+
+}
+
+//현재 읽어오는 path
+///html/body/div[2]/div[1]/table/tbody/tr[4]/td/div
+//
+//
+//할인 없는 가격
+///html/body/div[2]/div[1]/table/tbody/tr[1]/td[4]
+///html/body/div[2]/div[1]/table/tbody/tr[5]/td[4]
+//
+//할인한 가격
+///html/body/div[2]/div[1]/table/tbody/tr[2]/td[4]/div/text()
+///html/body/div[2]/div[1]/table/tbody/tr[8]/td[4]/div/text()
+
+//할인한 가격
+
+//let discountPrice = itemDoc?.xpath("//tr")
+//print(discountPrice)
+//print("discountPrice in \(discountPrice)")
+
+
+///html/body/div[2]/div[1]/table/tbody/tr[1]/td[4]/div/text()
+///html/body/div[2]/div[1]/table/tbody/tr[1]/td[4]/div/text()
+
+//let item = itemDocXML!.at_xpath("//tbody//td[4]")
+//print(item?.innerHTML)
+
+
+if let itemHtml = itemDocBody?.xpath("/html/body/div[2]/div[1]/table/tbody//div/text()"){
+    for price in itemHtml{
+        let trimmedPrice = price.content!.trimmingCharacters(in: .whitespacesAndNewlines)
+        trimmedPriceArray.append(trimmedPrice)
+    }
+
+    let onlyPriceArray = trimmedPriceArray.filter{ $0 != "List continues after this ad" && $0 != "" }
+    priceArray.append(contentsOf: onlyPriceArray)
+    print(priceArray)
+}
+
+
+
+
+//할인 없는 가격
+
+if let originalPrice = itemDocBody?.xpath("/html/body/div[2]/div[1]/table/tbody//td[4]/text()") {
+    for price in originalPrice {
+//        let trimmedPrice = price.content!.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        let trimmedPrice = price.content!.trimmingCharacters(in: .whitespacesAndNewlines)
+        if trimmedPrice.hasPrefix(currency){
+            priceArray.append(trimmedPrice)
+        }
+    }
+}
+
+
+
+
+

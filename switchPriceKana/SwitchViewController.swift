@@ -44,11 +44,12 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     var countryArray = [String]()
     var noDigitalCountryArray = [String]()
     var priceArray = [String]()
+    var trimmedPriceArray = [String]()
     var gameTitle: String = ""
     var totalGameList: [String] = Array()
     var selectDatas = [UserData]()
+    var currency = "USD"
 
- 
     // 각 테이블 별 갯수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return noDigitalCountryArray.count
@@ -59,20 +60,19 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
 
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListCell else { return UITableViewCell()}
             cell.countryLabel.text = noDigitalCountryArray[indexPath.row]
+        
+        //여기서 fatal error index out range
             cell.priceLabel.text = priceArray[indexPath.row]
             cell.flagimg.image = UIImage(named: countryNames.key(from: noDigitalCountryArray[indexPath.row]) ?? "")
             return cell
     }
     
-
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //price cell 눌렀을 때
         let selectedData = UserData(recordTitle: gameTitle, recordCountryName: noDigitalCountryArray[indexPath.row], recordMinPrice: priceArray[indexPath.row])
         selectDatas.append(selectedData)
             performSegue(withIdentifier: "showRecord", sender: nil)
-        
     }
-        
     
     var countryPrice: [String: String] = [:]
     var array = [String]()
@@ -116,11 +116,7 @@ class ListCell: UITableViewCell {
     @IBOutlet var flagimg: UIImageView!
 }
 
-//class searchCell: UITableViewCell {
-//    @IBOutlet var matchTitle: UILabel!
-//}
-
-
+//search 관련 구문
 extension SwitchViewController: UISearchBarDelegate {
     
     private func dismissKeyboard() {
@@ -128,8 +124,8 @@ extension SwitchViewController: UISearchBarDelegate {
     }
       
     func search(term: String) {
-            var titleUrl: String = ""
-            let currency = "₩"
+            getCountryNames()
+            var titleUrl = [String]()
             let noEmptyWithloweredTerm = term.replacingOccurrences(of: " ", with: "+").lowercased()
         
             let myURLString = "https://eshop-prices.com/games?q=\(noEmptyWithloweredTerm)"
@@ -140,11 +136,13 @@ extension SwitchViewController: UISearchBarDelegate {
             
             for link in preDoc!.xpath("//a/@href") {
                 if !link.content!.contains("https") {
-                    titleUrl = link.content!
+                    titleUrl.removeAll()
+                    titleUrl.append(link.content!)
                 }
             }
-            let itemURLString = "https://eshop-prices.com/\(titleUrl)?currency=KRW"
-            let itemURL = URL(string: itemURLString)!
+            guard let firstUrl = titleUrl.first else { return }
+            let itemURLString = "https://eshop-prices.com/\(firstUrl)?currency=\(currency)"
+            guard let itemURL = URL(string: itemURLString) else {return}
             let itemHTMLString = try? String(contentsOf: itemURL, encoding: .utf8)
             let itemDoc = try? HTML(html: itemHTMLString!, encoding: .utf8)
             let itemDocBody = itemDoc!.body
@@ -159,29 +157,34 @@ extension SwitchViewController: UISearchBarDelegate {
             
             if let itemNodesForCountry = itemDocBody?.xpath("/html/body/div[2]/div[1]/table/tbody//td/text()") {
                 for country in itemNodesForCountry {
-                    if country.content!.count > 2 && !country.content!.contains("₩") {
+                    if country.content!.count > 0 {
                         let trimmedCountry = country.content!.trimmingCharacters(in: .whitespacesAndNewlines)
-                        countryArray.append(trimmedCountry)
+                        if onlyCountryNames.contains(trimmedCountry){
+                            countryArray.append(trimmedCountry)
+                        }
                     }
                 }
                 noDigitalCountryArray = countryArray.filter { $0 != "Digital code available at Eneba" }
             }
-            
-            if let itemNodesForPrice2 = itemDocBody?.xpath("/html/body/div[2]/div[1]/table/tbody//div/text()") {
-                for price in itemNodesForPrice2 {
+            print(trimmedPriceArray)
+            trimmedPriceArray.removeAll()
+            print(trimmedPriceArray)
+
+            if let discountedPrice = itemDocBody?.xpath("/html/body/div[2]/div[1]/table/tbody//div/text()") {
+                for price in discountedPrice{
                     let trimmedPrice = price.content!.trimmingCharacters(in: .whitespacesAndNewlines)
-                    if trimmedPrice.hasPrefix(currency){
-                        priceArray.append(trimmedPrice)
-                    }
+                    trimmedPriceArray.append(trimmedPrice)
                 }
+                let onlyPriceArray = trimmedPriceArray.filter{ $0 != "List continues after this ad" && $0 != "" }
+                priceArray.append(contentsOf: onlyPriceArray)
             }
-            if let itemNodesForPrice1 = itemDocBody?.xpath("/html/body/div[2]/div[1]/table/tbody//td[4]/text()") {
-                for price in itemNodesForPrice1 {
+            if let originalPrice = itemDocBody?.xpath("/html/body/div[2]/div[1]/table/tbody//td[4]/text()") {
+                for price in originalPrice{
                     let trimmedPrice = price.content!.trimmingCharacters(in: .whitespacesAndNewlines)
-                    if trimmedPrice.hasPrefix(currency){
-                        priceArray.append(trimmedPrice)
-                    }
+                    trimmedPriceArray.append(trimmedPrice)
                 }
+                let onlyPriceArray = trimmedPriceArray.filter{ $0 != "List continues after this ad" && $0 != "" }
+                priceArray.append(contentsOf: onlyPriceArray)
             }
         
             if let itemImage = itemDocBody?.at_xpath("/html/body/div[1]/div[2]/picture/img/@src") {
@@ -201,12 +204,16 @@ extension SwitchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         dismissKeyboard()
         guard let searchTerm = searchBar.text, searchTerm.isEmpty == false else {return}
-        
+        print("seachButtonClicked\(priceArray)")
         priceArray.removeAll()
+        print("seachButtonClickedAndRemoveAll\(priceArray)")
+
         countryArray.removeAll()
         noDigitalCountryArray.removeAll()
     
         search(term: searchTerm)
+        print("seachButtonClickedAfterSearch\(priceArray)")
+
         self.db.childByAutoId().setValue(searchTerm)
         
         searchedGemeTitle.text = gameTitle
