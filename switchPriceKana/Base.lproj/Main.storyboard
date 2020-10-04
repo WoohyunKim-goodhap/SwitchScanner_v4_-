@@ -378,29 +378,8 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcj-xE-lXH">
                                 <rect key="frame" x="10" y="118" width="394" height="704"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <mutableString key="text">How to buy a game with an account with another country
-
-1. Set up your country in account.
-  -Go to https://accounts.nintendo.com.
-  -login.
-  -if you don't have an account, create one.
-
-2. Edit ‘User Info’ above → Country/Region.
-
-3. Change country that you want.
-
-4. Prepare a credit card for international.
-
-5. Enter the eShop from the Nintendo game console. And you will have to login again to changed country.
-
-6. The language will be changed to corresponding country. Get help with Google Translator.After purchasing the game, it will be available on the console in the original language.
-
-7. Find the game and complete the payment by international credit card at the eShop in the console.
-
-8. You can download the game in the home screen.
-</mutableString>
                                 <color key="textColor" systemColor="secondaryLabelColor"/>
-                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="19"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -416,6 +395,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="Agc-iK-BZP"/>
                     <navigationItem key="navigationItem" id="tU7-le-EKs"/>
+                    <connections>
+                        <outlet property="DetaliTextView" destination="tcj-xE-lXH" id="Wun-6P-1VK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qxp-q8-HVG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

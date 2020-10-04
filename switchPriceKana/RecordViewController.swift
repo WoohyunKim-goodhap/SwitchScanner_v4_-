@@ -14,12 +14,10 @@ class RecordViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var countryName: String?
     var gameTitle: String?
     var price: String?
-    
     var userDatas = [UserData]()
     var returnData = String()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       
         return userDatas.count
     }
     

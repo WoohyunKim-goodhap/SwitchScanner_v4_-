@@ -1,0 +1,54 @@
+
+/* Class = "UILabel"; text = "South Korea"; ObjectID = "1ho-yW-L31"; */
+"1ho-yW-L31.text" = "South Korea";
+
+/* Class = "UILabel"; text = "KRW"; ObjectID = "3P8-rE-3m2"; */
+"3P8-rE-3m2.text" = "KRW";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "Agc-iK-BZP"; */
+"Agc-iK-BZP.title" = "Item";
+
+/* Class = "UIButton"; normalTitle = "Go to purchase"; ObjectID = "GLJ-LE-G3u"; */
+"GLJ-LE-G3u.normalTitle" = "Go to purchase";
+
+/* Class = "UILabel"; text = "2020.09.25"; ObjectID = "IFb-o7-iqq"; */
+"IFb-o7-iqq.text" = "2020.09.25";
+
+/* Class = "UIButton"; normalTitle = "Find"; ObjectID = "NXD-3E-IkX"; */
+"NXD-3E-IkX.normalTitle" = "Find";
+
+/* Class = "UIButton"; normalTitle = "Splatoon 2"; ObjectID = "NZP-Py-yRh"; */
+"NZP-Py-yRh.normalTitle" = "Splatoon 2";
+
+/* Class = "UILabel"; text = "South Korea Won"; ObjectID = "Oxm-cP-buS"; */
+"Oxm-cP-buS.text" = "South Korea Won";
+
+/* Class = "UILabel"; text = "Brazil"; ObjectID = "R4N-dQ-ghw"; */
+"R4N-dQ-ghw.text" = "Brazil";
+
+/* Class = "UIButton"; normalTitle = "Go to Save"; ObjectID = "Wvx-RQ-mup"; */
+"Wvx-RQ-mup.normalTitle" = "Go to Save";
+
+/* Class = "UIButton"; normalTitle = "Menu"; ObjectID = "ZIR-dZ-Lrf"; */
+"ZIR-dZ-Lrf.normalTitle" = "Menu";
+
+/* Class = "UISearchBar"; placeholder = "Input game title or Find game in menu"; ObjectID = "bJm-ZM-pcw"; */
+"bJm-ZM-pcw.placeholder" = "Input game title or Find game in menu";
+
+/* Class = "UILabel"; text = "₩57,000"; ObjectID = "loY-vY-sit"; */
+"loY-vY-sit.text" = "₩57,000";
+
+/* Class = "UILabel"; text = "₩54,123"; ObjectID = "nBP-Wv-w5d"; */
+"nBP-Wv-w5d.text" = "₩54,123";
+
+/* Class = "UINavigationItem"; title = "Find Game"; ObjectID = "tHX-4N-icp"; */
+"tHX-4N-icp.title" = "Find Game";
+
+/* Class = "UITextView"; text = "How to buy a game with an account with another country\n\n1. Set up your country in account.\n  -Go to https://accounts.nintendo.com.\n  -login.\n  -if you don't have an account, create one.\n\n2. Edit ‘User Info’ above → Country/Region.\n\n3. Change country that you want.\n\n4. Prepare a credit card for international.\n\n5. Enter the eShop from the Nintendo game console. And you will have to login again to changed country.\n\n6. The language will be changed to corresponding country. Get help with Google Translator.After purchasing the game, it will be available on the console in the original language.\n\n7. Find the game and complete the payment by international credit card at the eShop in the console.\n\n8. You can download the game in the home screen.\n"; ObjectID = "tcj-xE-lXH"; */
+"tcj-xE-lXH.text" = "How to buy a game with an account with another country\n\n1. Set up your country in account.\n  -Go to https://accounts.nintendo.com.\n  -login.\n  -if you don't have an account, create one.\n\n2. Edit ‘User Info’ above → Country/Region.\n\n3. Change country that you want.\n\n4. Prepare a credit card for international.\n\n5. Enter the eShop from the Nintendo game console. And you will have to login again to changed country.\n\n6. The language will be changed to corresponding country. Get help with Google Translator.After purchasing the game, it will be available on the console in the original language.\n\n7. Find the game and complete the payment by international credit card at the eShop in the console.\n\n8. You can download the game in the home screen.\n";
+
+/* Class = "UINavigationItem"; title = "Switch e shop Scanner"; ObjectID = "xlh-y6-aGr"; */
+"xlh-y6-aGr.title" = "Switch e shop Scanner";
+
+/* Class = "UIButton"; normalTitle = "Change currency"; ObjectID = "zYy-Nh-5oF"; */
+"zYy-Nh-5oF.normalTitle" = "Change currency";

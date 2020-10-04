@@ -61,8 +61,6 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
 
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListCell else { return UITableViewCell()}
             cell.countryLabel.text = noDigitalCountryArray[indexPath.row]
-        
-        //여기서 fatal error index out range
             cell.priceLabel.text = priceArray[indexPath.row]
             cell.flagimg.image = UIImage(named: countryNames.key(from: noDigitalCountryArray[indexPath.row]) ?? "")
             return cell
@@ -81,6 +79,7 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareAnimation()
+        searchBar.placeholder = LocalizaionClass.Placeholder.searchBarPlaceholder
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -10,7 +10,6 @@ import UIKit
 
 class SearchTableViewController: UITableViewController, UISearchResultsUpdating {
 
-    
     var filteredData: [String] = []
     var resultSearchController: UISearchController!
     var selectedGame: String = ""
@@ -28,9 +27,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         self.definesPresentationContext = true
     }
 
-
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
@@ -46,7 +43,6 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
     
-        // Configure the cell...
         if resultSearchController.isActive{
             cell.textLabel?.text = filteredData[indexPath.row]
         }else{
@@ -56,18 +52,18 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     }
     
     func updateSearchResults(for searchController: UISearchController) {
-             if (searchController.searchBar.text?.count)! > 0{
-                 filteredData.removeAll(keepingCapacity: false)
-                 let searchPredicate = NSPredicate(format: "SELF CONTAINS %@", searchController.searchBar.text!)
-                 let array = (switchTitles as NSArray).filtered(using: searchPredicate)
-                 filteredData = array as! [String]
-                 tableView.reloadData()
-             }else{
-                 filteredData.removeAll(keepingCapacity: false)
-                 filteredData = switchTitles
-                 tableView.reloadData()
-             }
-         }
+        if (searchController.searchBar.text?.count)! > 0{
+            filteredData.removeAll(keepingCapacity: false)
+            let searchPredicate = NSPredicate(format: "SELF CONTAINS %@", searchController.searchBar.text!)
+            let array = (switchTitles as NSArray).filtered(using: searchPredicate)
+            filteredData = array as! [String]
+            tableView.reloadData()
+        }else{
+            filteredData.removeAll(keepingCapacity: false)
+            filteredData = switchTitles
+            tableView.reloadData()
+        }
+    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 

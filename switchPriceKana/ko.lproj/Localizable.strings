@@ -1,0 +1,31 @@
+/* 
+  Localizable.strings
+  switchPriceKana
+
+  Created by Woohyun Kim on 2020/10/04.
+  Copyright © 2020 Woohyun Kim. All rights reserved.
+*/
+"SwitchViewController.seachBar.Placeholder" = "영어로 입력하거나,Menu-Find에서 찾으세요";
+"DetalViewController.textView.text" =
+
+"다른 국가 계정으로 게임 구매하는 방법
+
+
+1. 해당 국가 계정 설정
+ -https://accounts.nintendo.com 으로 이동
+ -로그인. 만약 계정이 없으면 새로 만듭니다
+
+2. 위에 있는 유저 정보 편집 → 국가/지역
+
+3. 원하는 국가로 변경
+
+4. 해당 국가에서 사용할 수 있는 신용카드 준비
+
+5. 닌텐도 게임기에서 eShop으로 들어가면 해당국가로 다시 로그인하게 됩니다
+
+6. 언어가 해당 국가 언어로 바뀌게 되는데 구글 번역기로 도움을 받으세요^^
+    게임 구매 후 게임기에서 원래 언어로 사용 가능합니다
+
+7. 해당국가 eShop에서 원하는 게임을 찾고 해외 신용카드로 결제
+
+8. 콘솔 홈화면에서 다운로드하면 완료";
