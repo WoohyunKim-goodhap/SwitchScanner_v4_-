@@ -43,7 +43,6 @@
 		5F2C60AA250C3487007DBF0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F4731B525236F6900650CC2 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		5F64D13F251171DB003BE57C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		5F65DEE42527F9F70012B9A9 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5F6DDE0A251D4D9F0096B86B /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		5F7A04BB252747A30086F993 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		5F7A04BE25274C010086F993 /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
@@ -100,7 +99,6 @@
 				5F2C6099250C3485007DBF0F /* AppDelegate.swift */,
 				5F2C609B250C3485007DBF0F /* SceneDelegate.swift */,
 				5F2C609D250C3485007DBF0F /* SwitchViewController.swift */,
-				5F65DEE42527F9F70012B9A9 /* MyPlayground.playground */,
 				5F4731B525236F6900650CC2 /* SearchTableViewController.swift */,
 				5F6DDE0A251D4D9F0096B86B /* RecordViewController.swift */,
 				5F7A04BE25274C010086F993 /* CurrencyViewController.swift */,

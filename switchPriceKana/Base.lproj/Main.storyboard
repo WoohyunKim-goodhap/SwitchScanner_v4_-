@@ -69,7 +69,7 @@
                                             <constraint firstAttribute="height" constant="25" id="A4i-TC-oT4"/>
                                             <constraint firstAttribute="width" constant="90" id="QNS-7c-SGk"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                         <color key="tintColor" systemColor="systemBlueColor"/>
                                         <state key="normal" title="Find">
                                             <color key="titleColor" systemColor="systemBlueColor"/>
@@ -84,7 +84,7 @@
                                             <constraint firstAttribute="height" constant="25" id="WKq-1d-QuY"/>
                                             <constraint firstAttribute="width" constant="100" id="tCh-z7-fha"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                         <color key="tintColor" systemColor="systemBlueColor"/>
                                         <state key="normal" title="Go to Save">
                                             <color key="titleColor" systemColor="systemBlueColor"/>
@@ -99,7 +99,7 @@
                                             <constraint firstAttribute="height" constant="25" id="VaC-XE-aUF"/>
                                             <constraint firstAttribute="width" constant="120" id="ueZ-87-KmC"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                         <color key="tintColor" systemColor="systemBlueColor"/>
                                         <state key="normal" title="Go to purchase">
                                             <color key="titleColor" systemColor="systemBlueColor"/>
@@ -214,7 +214,7 @@
                                     <constraint firstAttribute="width" constant="70" id="K9P-q2-uFn"/>
                                     <constraint firstAttribute="height" constant="30" id="b88-s9-Qfb"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="16"/>
                                 <state key="normal" title="Menu">
                                     <color key="titleColor" systemColor="systemBlueColor"/>
                                 </state>
@@ -376,22 +376,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcj-xE-lXH">
-                                <rect key="frame" x="10" y="188" width="394" height="527"/>
+                                <rect key="frame" x="10" y="118" width="394" height="704"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <string key="text">다른 국가 계정으로 게임 구매하는 방법
+                                <mutableString key="text">How to buy a game with an account with another country
 
-1. 해당 국가 계정 설정
- -https://accounts.nintendo.com 으로 이동
- -로그인. 만약 계정이 없으면 새로 만듭니다
-2. 위에 있는 유저 정보 편집 → 국가/지역
-3. 원하는 국가로 변경
-4. 해당 국가에서 사용할 수 있는 신용카드 준비
-5. 닌텐도 게임기에서 eShop으로 들어가면 해당국가로 다시 로그인하게 됩니다
-6. 언어가 해당 국가 언어로 바뀌게 되는데 구글 번역기로 도움을 받으세요^^
-    게임 구매 후 게임기에서 원래 언어로 사용 가능합니다
-7. 해당국가 eShop에서 해외 신용카드로 결제하면 완료</string>
+1. Set up your country in account.
+  -Go to https://accounts.nintendo.com.
+  -login.
+  -if you don't have an account, create one.
+
+2. Edit ‘User Info’ above → Country/Region.
+
+3. Change country that you want.
+
+4. Prepare a credit card for international.
+
+5. Enter the eShop from the Nintendo game console. And you will have to login again to changed country.
+
+6. The language will be changed to corresponding country. Get help with Google Translator.After purchasing the game, it will be available on the console in the original language.
+
+7. Find the game and complete the payment by international credit card at the eShop in the console.
+
+8. You can download the game in the home screen.
+</mutableString>
                                 <color key="textColor" systemColor="secondaryLabelColor"/>
-                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="19"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -399,8 +408,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="tcj-xE-lXH" firstAttribute="leading" secondItem="D0W-ol-20J" secondAttribute="leading" constant="10" id="2jl-ac-F07"/>
-                            <constraint firstItem="D0W-ol-20J" firstAttribute="bottom" secondItem="tcj-xE-lXH" secondAttribute="bottom" constant="147" id="JUe-ge-T27"/>
-                            <constraint firstItem="tcj-xE-lXH" firstAttribute="top" secondItem="D0W-ol-20J" secondAttribute="top" constant="100" id="OgR-We-EVn"/>
+                            <constraint firstItem="D0W-ol-20J" firstAttribute="bottom" secondItem="tcj-xE-lXH" secondAttribute="bottom" constant="40" id="JUe-ge-T27"/>
+                            <constraint firstItem="tcj-xE-lXH" firstAttribute="top" secondItem="D0W-ol-20J" secondAttribute="top" constant="30" id="OgR-We-EVn"/>
                             <constraint firstItem="tcj-xE-lXH" firstAttribute="centerX" secondItem="D0W-ol-20J" secondAttribute="centerX" id="Pw4-cA-X82"/>
                             <constraint firstItem="D0W-ol-20J" firstAttribute="trailing" secondItem="tcj-xE-lXH" secondAttribute="trailing" constant="10" id="dss-lQ-PzF"/>
                         </constraints>
@@ -420,20 +429,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="kv5-HZ-N37">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="kv5-HZ-N37">
                                 <rect key="frame" x="0.0" y="75" width="414" height="804"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CurrencyCell" rowHeight="60" id="0nw-b2-qtE" customClass="CurrencyCell" customModule="switchPriceKana" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="60"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CurrencyCell" rowHeight="50" id="0nw-b2-qtE" customClass="CurrencyCell" customModule="switchPriceKana" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0nw-b2-qtE" id="PHm-x4-tXa">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="KRW" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3P8-rE-3m2">
-                                                    <rect key="frame" x="360" y="5" width="44" height="50"/>
+                                                    <rect key="frame" x="366.66666666666669" y="0.0" width="37.333333333333314" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="3uk-ap-ymw"/>
                                                     </constraints>
@@ -442,10 +451,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="South Korea Won" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oxm-cP-buS">
-                                                    <rect key="frame" x="10" y="5" width="300" height="50"/>
+                                                    <rect key="frame" x="10" y="0.0" width="250" height="50"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="300" id="PLE-O3-xbL"/>
                                                         <constraint firstAttribute="height" constant="50" id="giS-lu-mGq"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="lZl-Cc-1Ab"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                     <color key="textColor" systemColor="systemBlueColor"/>
@@ -453,10 +462,10 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="3P8-rE-3m2" firstAttribute="leading" secondItem="Oxm-cP-buS" secondAttribute="trailing" constant="50" id="1SD-Xu-C8q"/>
                                                 <constraint firstItem="Oxm-cP-buS" firstAttribute="centerY" secondItem="PHm-x4-tXa" secondAttribute="centerY" id="3lb-cU-aJP"/>
                                                 <constraint firstItem="Oxm-cP-buS" firstAttribute="leading" secondItem="PHm-x4-tXa" secondAttribute="leading" constant="10" id="HBL-K8-GQ3"/>
                                                 <constraint firstItem="3P8-rE-3m2" firstAttribute="top" secondItem="Oxm-cP-buS" secondAttribute="top" id="XHU-03-u01"/>
+                                                <constraint firstItem="3P8-rE-3m2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Oxm-cP-buS" secondAttribute="trailing" constant="8" symbolic="YES" id="tFv-E4-IJm"/>
                                                 <constraint firstAttribute="trailing" secondItem="3P8-rE-3m2" secondAttribute="trailing" constant="10" id="vgV-fj-0oy"/>
                                             </constraints>
                                         </tableViewCellContentView>

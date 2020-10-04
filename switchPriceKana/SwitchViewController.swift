@@ -90,16 +90,15 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewWillAppear(_ animated: Bool) {
         menuView.isHidden = true
         prepareAnimation()
-        print("currencyInWillAppear\(currency)")
     }
     
     private func prepareAnimation(){
-        menuViewContraints.constant = -60
+        menuViewContraints.constant = -80
     }
     
     private func showAnimation(){
         menuViewContraints.constant = 5
-        UIView.animate(withDuration: 0.2) {self.view.layoutIfNeeded()}
+        UIView.animate(withDuration: 0.3) {self.view.layoutIfNeeded()}
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -208,10 +207,7 @@ extension SwitchViewController: UISearchBarDelegate {
         countryArray.removeAll()
         noDigitalCountryArray.removeAll()
         
-        print("searchBeforeCurrency\(currency)")
         search(term: searchTerm)
-        print("searchAfterCurrency\(currency)")
-
 
         self.db.childByAutoId().setValue(searchTerm)
         
@@ -219,7 +215,7 @@ extension SwitchViewController: UISearchBarDelegate {
         self.tableView.reloadData()
         
         if noDigitalCountryArray.count < 1 {
-            SCLAlertView().showError("검색결과가 없습니다", subTitle: "게임명을 다시 확인해주세요")
+            SCLAlertView().showError("No result", subTitle: "You better find in Menu")
         }
     }
 }
