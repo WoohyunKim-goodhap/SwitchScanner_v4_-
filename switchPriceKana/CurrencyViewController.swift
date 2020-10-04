@@ -8,17 +8,12 @@
 
 import UIKit
 
-class CurrencyViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
+class CurrencyViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-
-
     var selectedCurrency = ""
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -29,27 +24,32 @@ class CurrencyViewController: UIViewController,UITableViewDelegate, UITableViewD
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CurrencyCell", for: indexPath) as? CurrencyCell else {
             return UITableViewCell()
         }
-        cell.currencyCountryButton.setTitle(currencyCountry[indexPath.row], for: .normal)
+        cell.currencyCountry.text = currencyCountry[indexPath.row]
         cell.currencyLabel.text = currencyDic[currencyCountry[indexPath.row]]
         return cell
     }
+
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let userCurrency = currencyDic[currencyCountry[indexPath.row]]{
             selectedCurrency = userCurrency
         }
         self.performSegue(withIdentifier: "unwindSegue", sender: self)
-
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let svc = segue.destination as? SwitchViewController{
-            svc.currency = selectedCurrency
+        if segue.identifier == "unwindSegue"{
+            if let svc = segue.destination as? SwitchViewController{
+                svc.currency = selectedCurrency
+                if svc.searchBar.text?.isEmpty == false{
+                    svc.searchBarSearchButtonClicked(svc.searchBar)
+                }else{ return }
+            }
         }
     }
 }
 
 class CurrencyCell: UITableViewCell {
-    @IBOutlet var currencyCountryButton: UIButton!
+    @IBOutlet var currencyCountry: UILabel!
     @IBOutlet var currencyLabel: UILabel!
 }

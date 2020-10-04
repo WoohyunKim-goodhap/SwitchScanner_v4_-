@@ -12,10 +12,12 @@ import SCLAlertView
 import Firebase
 import Kingfisher
 
-//[]스위치 게임리스트를 가져오고, lowercase로 필터링 할 것
+//[0]스위치 게임리스트를 가져오고, lowercase로 필터링 할 것
 //[]영어로 내용 바꾸고 런칭도 전세계로 할 것
 //[]한글화 localization은 2.0에서 추가 우선 영어로
-//[]SearchTVC에서 검색한 결과를 클릭하면 바로 검색되도록 구현
+//[0]SearchTVC에서 검색한 결과를 클릭하면 바로 검색되도록 구현
+//[]alert message change to english->'please use menu'
+//[]icon change to 'menu' text
 
 
 class SwitchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -29,7 +31,6 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet var menuView: UIView!
     @IBOutlet var menuButton: UIButton!
     @IBOutlet var menuViewContraints: NSLayoutConstraint!
-    
     
     @IBAction func menuButtonPressed(_ sender: Any) {
         if menuView.isHidden == true{
@@ -89,6 +90,7 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewWillAppear(_ animated: Bool) {
         menuView.isHidden = true
         prepareAnimation()
+        print("currencyInWillAppear\(currency)")
     }
     
     private func prepareAnimation(){
@@ -166,9 +168,7 @@ extension SwitchViewController: UISearchBarDelegate {
                 }
                 noDigitalCountryArray = countryArray.filter { $0 != "Digital code available at Eneba" }
             }
-            print(trimmedPriceArray)
             trimmedPriceArray.removeAll()
-            print(trimmedPriceArray)
 
             if let discountedPrice = itemDocBody?.xpath("/html/body/div[2]/div[1]/table/tbody//div/text()") {
                 for price in discountedPrice{
@@ -204,15 +204,14 @@ extension SwitchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         dismissKeyboard()
         guard let searchTerm = searchBar.text, searchTerm.isEmpty == false else {return}
-        print("seachButtonClicked\(priceArray)")
         priceArray.removeAll()
-        print("seachButtonClickedAndRemoveAll\(priceArray)")
-
         countryArray.removeAll()
         noDigitalCountryArray.removeAll()
-    
+        
+        print("searchBeforeCurrency\(currency)")
         search(term: searchTerm)
-        print("seachButtonClickedAfterSearch\(priceArray)")
+        print("searchAfterCurrency\(currency)")
+
 
         self.db.childByAutoId().setValue(searchTerm)
         

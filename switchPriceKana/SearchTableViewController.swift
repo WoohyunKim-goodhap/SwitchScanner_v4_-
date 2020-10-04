@@ -86,7 +86,6 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "unwindSegue"{
             if let svc = segue.destination as? SwitchViewController {
-//                svc.search(term: selectedGame)
                 svc.searchBar.text = selectedGame.replacingOccurrences(of: " ", with: "+").lowercased()
                 svc.searchBarSearchButtonClicked(svc.searchBar)
             }
