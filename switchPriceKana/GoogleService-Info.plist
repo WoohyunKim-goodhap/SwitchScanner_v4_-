@@ -19,18 +19,20 @@
 	<key>STORAGE_BUCKET</key>
 	<string>switchscanner2.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:289869815288:ios:9f4cb5c54c8866f46c0a0d</string>
 	<key>DATABASE_URL</key>
 	<string>https://switchscanner2.firebaseio.com</string>
+	<key>ADMOB_APP_ID</key>
+	<string>ca-app-pub-8456076322553323~1166983141</string>
 </dict>
 </plist>

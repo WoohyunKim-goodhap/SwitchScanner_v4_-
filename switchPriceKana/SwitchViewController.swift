@@ -11,16 +11,10 @@ import Kanna
 import SCLAlertView
 import Firebase
 import Kingfisher
-
-//[0]스위치 게임리스트를 가져오고, lowercase로 필터링 할 것
-//[]영어로 내용 바꾸고 런칭도 전세계로 할 것
-//[]한글화 localization은 2.0에서 추가 우선 영어로
-//[0]SearchTVC에서 검색한 결과를 클릭하면 바로 검색되도록 구현
-//[]alert message change to english->'please use menu'
-//[]icon change to 'menu' text
+import GoogleMobileAds
 
 
-class SwitchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SwitchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, GADBannerViewDelegate {
 
     let db = Database.database().reference().child("searchHistory")
 
@@ -32,6 +26,7 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet var menuButton: UIButton!
     @IBOutlet var menuViewContraints: NSLayoutConstraint!
     
+    
     @IBAction func menuButtonPressed(_ sender: Any) {
         if menuView.isHidden == true{
             menuView.isHidden = false
@@ -41,6 +36,10 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
             prepareAnimation()
         }
     }
+    
+    //admob
+    var bannerView: GADBannerView!
+
     
     var countryArray = [String]()
     var noDigitalCountryArray = [String]()
@@ -80,7 +79,74 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         prepareAnimation()
         searchBar.placeholder = LocalizaionClass.Placeholder.searchBarPlaceholder
+        
+        //Admob
+        bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+        bannerView.adUnitID = "ca-app-pub-8456076322553323/9940053753"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        bannerView.delegate = self
+        
     }
+    
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bannerView)
+        view.addConstraints(
+          [NSLayoutConstraint(item: bannerView,
+                              attribute: .bottom,
+                              relatedBy: .equal,
+                              toItem: bottomLayoutGuide,
+                              attribute: .top,
+                              multiplier: 1,
+                              constant: 0),
+           NSLayoutConstraint(item: bannerView,
+                              attribute: .centerX,
+                              relatedBy: .equal,
+                              toItem: view,
+                              attribute: .centerX,
+                              multiplier: 1,
+                              constant: 0)
+          ])
+       }
+
+    //GADBannerViewDelegate 메소드
+    /// Tells the delegate an ad request loaded an ad.
+    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+      print("adViewDidReceiveAd")
+        //화면에 베너뷰를 추가
+      addBannerViewToView(bannerView)
+
+    }
+
+    /// Tells the delegate an ad request failed.
+    func adView(_ bannerView: GADBannerView,
+        didFailToReceiveAdWithError error: GADRequestError) {
+      print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+    }
+
+    /// Tells the delegate that a full-screen view will be presented in response
+    /// to the user clicking on an ad.
+    func adViewWillPresentScreen(_ bannerView: GADBannerView) {
+      print("adViewWillPresentScreen")
+    }
+
+    /// Tells the delegate that the full-screen view will be dismissed.
+    func adViewWillDismissScreen(_ bannerView: GADBannerView) {
+      print("adViewWillDismissScreen")
+    }
+
+    /// Tells the delegate that the full-screen view has been dismissed.
+    func adViewDidDismissScreen(_ bannerView: GADBannerView) {
+      print("adViewDidDismissScreen")
+    }
+
+    /// Tells the delegate that a user click will open another app (such as
+    /// the App Store), backgrounding the current app.
+    func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
+      print("adViewWillLeaveApplication")
+    }
+
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

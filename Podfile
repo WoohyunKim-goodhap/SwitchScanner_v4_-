@@ -10,6 +10,9 @@ target 'switchPriceKana' do
   pod 'SCLAlertView'
   pod 'Firebase/Analytics'
   pod 'Firebase/Database'
+  pod 'Google-Mobile-Ads-SDK'
+  pod 'Firebase/Core'
+  pod 'Firebase/AdMob'
   
   post_install do |installer|
     installer.pods_project.targets.each do |target|

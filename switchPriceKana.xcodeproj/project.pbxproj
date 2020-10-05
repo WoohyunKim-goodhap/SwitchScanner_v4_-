@@ -18,11 +18,11 @@
 		5F64D140251171DB003BE57C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F64D13F251171DB003BE57C /* DetailViewController.swift */; };
 		5F65DEFC25299CD80012B9A9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5F65DEFE25299CD80012B9A9 /* Localizable.strings */; };
 		5F65DF0725299E010012B9A9 /* LocalizaionClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F65DF0625299E010012B9A9 /* LocalizaionClass.swift */; };
+		5F65DF1F252A05B00012B9A9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F65DF1E252A05B00012B9A9 /* GoogleService-Info.plist */; };
 		5F6DDDFC251D44DF0096B86B /* SwitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2C609D250C3485007DBF0F /* SwitchViewController.swift */; };
 		5F6DDE0B251D4D9F0096B86B /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6DDE0A251D4D9F0096B86B /* RecordViewController.swift */; };
 		5F7A04BC252747A30086F993 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7A04BB252747A30086F993 /* Currency.swift */; };
 		5F7A04BF25274C010086F993 /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7A04BE25274C010086F993 /* CurrencyViewController.swift */; };
-		5F9D3D9E2515BAAF00A17D30 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F9D3D9D2515BAAF00A17D30 /* GoogleService-Info.plist */; };
 		5F9D3DA22515E1A700A17D30 /* CountryNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9D3DA12515E1A700A17D30 /* CountryNames.swift */; };
 		5F9D3DA52516248900A17D30 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5F9D3DA42516248900A17D30 /* Kingfisher */; };
 		5FBAB4052523278D0096BB5F /* switchTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBAB4042523278D0096BB5F /* switchTitles.swift */; };
@@ -49,10 +49,10 @@
 		5F65DEFD25299CD80012B9A9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5F65DF0025299CDE0012B9A9 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5F65DF0625299E010012B9A9 /* LocalizaionClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizaionClass.swift; sourceTree = "<group>"; };
+		5F65DF1E252A05B00012B9A9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5F6DDE0A251D4D9F0096B86B /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		5F7A04BB252747A30086F993 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		5F7A04BE25274C010086F993 /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
-		5F9D3D9D2515BAAF00A17D30 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		5F9D3DA12515E1A700A17D30 /* CountryNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryNames.swift; sourceTree = "<group>"; };
 		5FBAB4042523278D0096BB5F /* switchTitles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = switchTitles.swift; sourceTree = "<group>"; };
 		5FCEC880251F3A4C00456E5F /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
@@ -119,7 +119,7 @@
 				5F2C60A5250C3487007DBF0F /* Assets.xcassets */,
 				5F2C60A7250C3487007DBF0F /* LaunchScreen.storyboard */,
 				5F2C60AA250C3487007DBF0F /* Info.plist */,
-				5F9D3D9D2515BAAF00A17D30 /* GoogleService-Info.plist */,
+				5F65DF1E252A05B00012B9A9 /* GoogleService-Info.plist */,
 				5F2C60A2250C3485007DBF0F /* switchPriceKana.xcdatamodeld */,
 			);
 			path = switchPriceKana;
@@ -206,7 +206,7 @@
 				5F2C60A9250C3487007DBF0F /* LaunchScreen.storyboard in Resources */,
 				5F2C60A6250C3487007DBF0F /* Assets.xcassets in Resources */,
 				5F2C60A1250C3485007DBF0F /* Main.storyboard in Resources */,
-				5F9D3D9E2515BAAF00A17D30 /* GoogleService-Info.plist in Resources */,
+				5F65DF1F252A05B00012B9A9 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,12 +431,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.1;
 				DEVELOPMENT_TEAM = MMT8T7BSNF;
 				INFOPLIST_FILE = switchPriceKana/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Woohyun-kim.switchPriceKana";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -450,12 +452,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.1;
 				DEVELOPMENT_TEAM = MMT8T7BSNF;
 				INFOPLIST_FILE = switchPriceKana/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Woohyun-kim.switchPriceKana";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
