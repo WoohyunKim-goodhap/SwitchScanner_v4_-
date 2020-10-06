@@ -1,0 +1,36 @@
+/*
+  Localizable.strings
+  switchPriceKana
+
+  Created by Woohyun Kim on 2020/10/04.
+  Copyright © 2020 Woohyun Kim. All rights reserved.
+*/
+"SwitchViewController.seachBar.Placeholder" = "Ingrese el título del juego o Buscar juego en el menú";
+
+"SwitchViewController.SCalert.Error" = "Sin resultados";
+
+"SwitchViewController.SCalert.ErrorDetail" = "Es mejor que uses Menú-Buscar";
+
+"DetalViewController.textView.text" =
+
+"Cómo comprar un juego con una cuenta en otro país
+
+
+1. Configure su país en la cuenta.
+  -Vaya a https://accounts.nintendo.com.
+  -iniciar sesión.
+  -si no tiene una cuenta, cree una.
+
+2. Edite 'Información de usuario' arriba → País / Región.
+
+3. Cambie el país que desee.
+
+4. Prepare una tarjeta de crédito para internacionales.
+
+5. Ingrese a la eShop desde la consola de juegos de Nintendo. Y tendrá que volver a iniciar sesión para cambiar de país.
+
+6. El idioma se cambiará al país correspondiente. Obtén ayuda con Google Translator. Después de comprar el juego, estará disponible en la consola en el idioma original.
+
+7. Busque el juego y complete el pago con tarjeta de crédito internacional en la eShop de la consola.
+
+8. Puede descargar el juego en la pantalla de inicio.";

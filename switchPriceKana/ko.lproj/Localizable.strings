@@ -6,6 +6,11 @@
   Copyright © 2020 Woohyun Kim. All rights reserved.
 */
 "SwitchViewController.seachBar.Placeholder" = "영어로 입력하거나,Menu-Find에서 찾으세요";
+
+"SwitchViewController.SCalert.Error" = "검색 결과가 없습니다";
+
+"SwitchViewController.SCalert.ErrorDetail" = "Menu-Find를 이용하세요";
+
 "DetalViewController.textView.text" =
 
 "다른 국가 계정으로 게임 구매하는 방법

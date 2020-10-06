@@ -15,5 +15,11 @@ class LocalizaionClass {
     class DetailViewText{
         static let textViewPurchase = NSLocalizedString("DetalViewController.textView.text", comment: "")
     }
+    class SCalertText{
+        static let error = NSLocalizedString("SwitchViewController.SCalert.Error", comment: "")
+        static let errorDetail = NSLocalizedString("SwitchViewController.SCalert.ErrorDetail", comment: "")
+    }
+    
+    
     
 }

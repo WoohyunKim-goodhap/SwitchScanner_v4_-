@@ -1,0 +1,36 @@
+/*
+  Localizable.strings
+  switchPriceKana
+
+  Created by Woohyun Kim on 2020/10/04.
+  Copyright © 2020 Woohyun Kim. All rights reserved.
+*/
+"SwitchViewController.seachBar.Placeholder" = "输入游戏标题或在菜单中查找游戏";
+
+"SwitchViewController.SCalert.Error" = "没有结果";
+
+"SwitchViewController.SCalert.ErrorDetail" = "您最好使用菜单查找";
+
+"DetalViewController.textView.text" =
+
+"如何使用其他国家的帐户购买游戏
+
+
+1.在帐户中设置您的国家/地区。
+  -前往https://accounts.nintendo.com。
+  -登录。
+  -如果您没有帐户，请创建一个。
+
+2.编辑上方的“用户信息”→国家（地区）。
+
+3.更改您想要的国家。
+
+4.准备国际信用卡。
+
+5.从Nintendo游戏控制台进入eShop。 并且您将不得不再次登录更改的国家。
+
+6.语言将更改为相应的国家/地区。 获取有关Google翻译的帮助。购买游戏后，它将以原始语言在控制台上提供。
+
+7.在控制台中的eShop上找到游戏并用国际信用卡完成付款。
+
+8.您可以在主屏幕上下载游戏。";

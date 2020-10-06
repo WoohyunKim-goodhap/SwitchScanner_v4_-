@@ -79,6 +79,8 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         prepareAnimation()
         searchBar.placeholder = LocalizaionClass.Placeholder.searchBarPlaceholder
+        UILabel.appearance(whenContainedInInstancesOf: [UISearchBar.self]).font = UIFont.systemFont(ofSize: 13)
+
         
         //Admob
         bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
@@ -280,7 +282,7 @@ extension SwitchViewController: UISearchBarDelegate {
         self.tableView.reloadData()
         
         if noDigitalCountryArray.count < 1 {
-            SCLAlertView().showError("No result", subTitle: "You better find in Menu")
+            SCLAlertView().showError("\(LocalizaionClass.SCalertText.error)", subTitle: "\(LocalizaionClass.SCalertText.errorDetail)")
         }
     }
 }

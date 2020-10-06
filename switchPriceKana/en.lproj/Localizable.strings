@@ -6,6 +6,11 @@
   Copyright © 2020 Woohyun Kim. All rights reserved.
 */
 "SwitchViewController.seachBar.Placeholder" = "Input game title or Find game in menu";
+
+"SwitchViewController.SCalert.Error" = "No result";
+
+"SwitchViewController.SCalert.ErrorDetail" = "You better use Menu-Find";
+
 "DetalViewController.textView.text" =
 
 "How to buy a game with an account with another country

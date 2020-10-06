@@ -14,6 +14,8 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     var resultSearchController: UISearchController!
     var selectedGame: String = ""
     var selectedIndex: Int = 0
+    let lowercasedTitles = switchTitles.map { $0.lowercased() }
+    let SC = UISearchController.self
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,10 +54,11 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     }
     
     func updateSearchResults(for searchController: UISearchController) {
+        let lowercasedSearch = searchController.searchBar.text?.lowercased()
         if (searchController.searchBar.text?.count)! > 0{
             filteredData.removeAll(keepingCapacity: false)
-            let searchPredicate = NSPredicate(format: "SELF CONTAINS %@", searchController.searchBar.text!)
-            let array = (switchTitles as NSArray).filtered(using: searchPredicate)
+            let searchPredicate = NSPredicate(format: "SELF CONTAINS %@", lowercasedSearch!)
+            let array = (lowercasedTitles as NSArray).filtered(using: searchPredicate)
             filteredData = array as! [String]
             tableView.reloadData()
         }else{
