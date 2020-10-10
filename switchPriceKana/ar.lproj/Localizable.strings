@@ -1,0 +1,36 @@
+/*
+  Localizable.strings
+  switchPriceKana
+
+  Created by Woohyun Kim on 2020/10/04.
+  Copyright © 2020 Woohyun Kim. All rights reserved.
+*/
+"SwitchViewController.seachBar.Placeholder" = "أدخل عنوان اللعبة أو ابحث عن اللعبة في القائمة";
+
+"SwitchViewController.SCalert.Error" = "لا نتيجة";
+
+"SwitchViewController.SCalert.ErrorDetail" = "من الأفضل لك استخدام قائمة البحث";
+
+"DetalViewController.textView.text" =
+
+"كيف تشتري لعبة بحساب في دولة أخرى
+
+
+1. قم بإعداد حساب بلدك.
+  -الذهاب إلى https://accounts.nintendo.com.
+  -تسجيل الدخول.
+  - إذا لم يكن لديك حساب ، قم بإنشاء حساب.
+
+2. قم بتحرير 'معلومات المستخدم' أعلاه → البلد / المنطقة.
+
+3. تغيير البلد الذي تريده.
+
+4. تجهيز بطاقة ائتمان دولية.
+
+5. ادخل إلى متجر eShop من وحدة تحكم ألعاب Nintendo. وسيتعين عليك تسجيل الدخول مرة أخرى لتغيير البلد.
+
+6. سيتم تغيير اللغة إلى البلد المقابل. احصل على مساعدة بشأن Google Translator. بعد شراء اللعبة ، ستكون متاحة على وحدة التحكم باللغة الأصلية.
+
+7. ابحث عن اللعبة وأكمل الدفع ببطاقة الائتمان الدولية في متجر eShop في وحدة التحكم.
+
+8. يمكنك تنزيل اللعبة على الشاشة الرئيسية.";
