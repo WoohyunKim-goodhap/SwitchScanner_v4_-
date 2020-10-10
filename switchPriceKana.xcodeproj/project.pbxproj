@@ -59,6 +59,7 @@
 		5F9DBBFB252C985D00843939 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5F9DBBFC252C98FB00843939 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5F9DBBFD252C99A800843939 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		5F9DBC2925314C2700843939 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5FBAB4042523278D0096BB5F /* switchTitles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = switchTitles.swift; sourceTree = "<group>"; };
 		5FCEC880251F3A4C00456E5F /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -192,6 +193,7 @@
 				de,
 				ja,
 				"zh-Hans",
+				ar,
 			);
 			mainGroup = 5F2C608D250C3485007DBF0F;
 			packageReferences = (
@@ -315,6 +317,7 @@
 				5F9DBBFB252C985D00843939 /* de */,
 				5F9DBBFC252C98FB00843939 /* ja */,
 				5F9DBBFD252C99A800843939 /* zh-Hans */,
+				5F9DBC2925314C2700843939 /* ar */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
