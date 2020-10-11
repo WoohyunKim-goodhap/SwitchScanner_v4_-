@@ -13,7 +13,6 @@ target 'switchPriceKana' do
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Core'
   pod 'Firebase/AdMob'
-  pod 'GoogleMobileAdsMediationAdColony'
   
   post_install do |installer|
     installer.pods_project.targets.each do |target|

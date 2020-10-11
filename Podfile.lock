@@ -1,5 +1,4 @@
 PODS:
-  - AdColony (4.4.0)
   - Firebase/AdMob (6.31.1):
     - Firebase/CoreOnly
     - Google-Mobile-Ads-SDK (~> 7.50)
@@ -50,9 +49,6 @@ PODS:
     - nanopb (~> 1.30906.0)
   - GoogleDataTransport (7.3.0):
     - nanopb (~> 1.30906.0)
-  - GoogleMobileAdsMediationAdColony (4.4.0.0):
-    - AdColony (= 4.4.0)
-    - Google-Mobile-Ads-SDK (>= 7.65.0)
   - GoogleUserMessagingPlatform (1.2.0)
   - GoogleUtilities/AppDelegateSwizzler (6.7.2):
     - GoogleUtilities/Environment
@@ -89,13 +85,11 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Google-Mobile-Ads-SDK
-  - GoogleMobileAdsMediationAdColony
   - Kanna (~> 5.2.2)
   - SCLAlertView
 
 SPEC REPOS:
   trunk:
-    - AdColony
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -105,7 +99,6 @@ SPEC REPOS:
     - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
     - GoogleDataTransport
-    - GoogleMobileAdsMediationAdColony
     - GoogleUserMessagingPlatform
     - GoogleUtilities
     - Kanna
@@ -115,7 +108,6 @@ SPEC REPOS:
     - SCLAlertView
 
 SPEC CHECKSUMS:
-  AdColony: 03c713bc6fedcaf3fc92f21f89276bc8a332e9c6
   Firebase: 658370fa0181826a74b7cfca8d68c5856ca749ae
   FirebaseAnalytics: 0ca9aa2af7cc4dc92392b7a78bfc49feaa2eb60f
   FirebaseCore: 6fb954e350af0885803d5aa49865d15d9a6b264c
@@ -125,7 +117,6 @@ SPEC CHECKSUMS:
   Google-Mobile-Ads-SDK: 7d7074359c040f5add4e0963bf860e14690060d0
   GoogleAppMeasurement: ecc30d0ab5b66d7d18e85ce1b8e2b345db60626d
   GoogleDataTransport: e85fb700c9b027079ce182c3d08e12e0f9618bb4
-  GoogleMobileAdsMediationAdColony: 10edb22908eab4a66db2ba00c49a120265b5b663
   GoogleUserMessagingPlatform: c85530d930ba509583aa5a6d50a10aca22cf8502
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
   Kanna: 2c4eddaaa4bfb9a1ed19e53c0b3d42ef02838046
@@ -134,6 +125,6 @@ SPEC CHECKSUMS:
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
   SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
 
-PODFILE CHECKSUM: e243ce57f7f21368589626d0d0ed57954dc9f14e
+PODFILE CHECKSUM: e6b2b545ed3454aad2e3135fbe449f5beab8c092
 
 COCOAPODS: 1.8.4
