@@ -84,10 +84,14 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
         
         //Admob
         bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
-        bannerView.adUnitID = "ca-app-pub-8456076322553323/9940053753"
+        bannerView.adUnitID = "ca-app-pub-8456076322553323/1569435686"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
         bannerView.delegate = self
+        addBannerViewToView(bannerView)
+
+        
+        //addbannerviewto...없음
         
     }
     
@@ -117,7 +121,6 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     func adViewDidReceiveAd(_ bannerView: GADBannerView) {
       print("adViewDidReceiveAd")
         //화면에 베너뷰를 추가
-      addBannerViewToView(bannerView)
 
     }
 
