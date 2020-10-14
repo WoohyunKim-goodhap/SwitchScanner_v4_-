@@ -6,6 +6,15 @@
 //  Copyright © 2020 Woohyun Kim. All rights reserved.
 //
 
+// 파싱한 값 보다 뷰 컨트롤러가 먼저 읽힘. 그래서 차트 컨트롤러에 빈 어레이를 전달
+// 뷰를 두개로 나눠서 버튼 눌러서 이동하는 방법 실패 -> 버튼 앞에 웹뷰가 놓이므로 실패
+// 남은 방법은 차트뷰 안에 웹뷰를 구겨 넣되 위치나 사이즈를 작게 만들어 보이지 않도록 하는 방법. 한개의 화면에 두개의 컨트롤러를 넣어서 값이 전달되도록 만듬 -> 일단은 성공
+// 그외 방법은 파이어 베이스를 사용하여 사용자가 클릭하면 값을 보내고, 읽어오는 것. 하지만 너무 어렵다 -> 포기
+//[ ] 동영상 광고 추가하여 로딩 시간 대체
+//[ ] 스위치스캐너에 webkit과 chart 페이지 구현하기
+//[ ] 뷰 왼쪽에 차트 아이콘 누르면 이동, 게임 타이틀 썸네일이 나타난 이후 차트 아이콘 표시
+//[ ] e shop 화면은 까만색 덮고, 로딩 이미지로 덮어 줌-> 광고 노출->그사이에 값 읽어오고->차트 보기 버튼으로 변경-> 차트 화면에서 'close'누르면 switchViewcontroller
+
 import UIKit
 import Kanna
 import SCLAlertView
@@ -25,6 +34,8 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet var menuView: UIView!
     @IBOutlet var menuButton: UIButton!
     @IBOutlet var menuViewContraints: NSLayoutConstraint!
+    
+    @IBOutlet var MoveChart: UIButton!
     
     
     @IBAction func menuButtonPressed(_ sender: Any) {

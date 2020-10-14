@@ -29,3 +29,8 @@ struct UserData{
         return "\(dateTimeComponents.year!)/\(dateTimeComponents.month!)/\(dateTimeComponents.day!)"
     }
 }
+
+var chartPrices = [Double]()
+var dateSeparator = [String]()
+
+

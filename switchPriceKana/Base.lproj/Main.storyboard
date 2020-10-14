@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -41,6 +42,63 @@
                 <exit id="yBd-uv-CNp" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2958" y="-109"/>
+        </scene>
+        <!--Web Chart View Controller-->
+        <scene sceneID="E6J-GI-GCq">
+            <objects>
+                <viewController id="Lej-zJ-qdh" customClass="WebChartViewController" customModule="switchPriceKana" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mRn-g9-JId">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z35-dP-pwP">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eCp-AY-z8X">
+                                        <rect key="frame" x="184" y="353" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <segue destination="8bB-eo-yDG" kind="show" id="nvb-2Q-BvZ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="82G-mP-aWJ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="82G-mP-aWJ" firstAttribute="bottom" secondItem="Z35-dP-pwP" secondAttribute="bottom" id="4a4-xK-Hgl"/>
+                            <constraint firstItem="Z35-dP-pwP" firstAttribute="top" secondItem="82G-mP-aWJ" secondAttribute="top" id="94n-gS-lvz"/>
+                            <constraint firstItem="82G-mP-aWJ" firstAttribute="trailing" secondItem="Z35-dP-pwP" secondAttribute="trailing" id="C3l-xP-2xl"/>
+                            <constraint firstItem="Z35-dP-pwP" firstAttribute="leading" secondItem="82G-mP-aWJ" secondAttribute="leading" id="TVo-HV-1cj"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Pkd-rg-g0s"/>
+                    <connections>
+                        <outlet property="coverView" destination="Z35-dP-pwP" id="OIz-Hi-yXc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lHP-6e-aaW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="935" y="-629"/>
+        </scene>
+        <!--Chart View Controller-->
+        <scene sceneID="N7h-bt-ie3">
+            <objects>
+                <viewController id="8bB-eo-yDG" customClass="ChartViewController" customModule="switchPriceKana" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tck-b7-fPQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="czi-bd-3VA"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="AsH-u5-dqg"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sxF-ys-iad" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1868" y="-626"/>
         </scene>
         <!--Switch e shop Scanner-->
         <scene sceneID="tne-QT-ifu">
@@ -222,11 +280,22 @@
                                     <action selector="menuButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="L3q-dR-FcD"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sk6-mf-Fcz">
+                                <rect key="frame" x="50" y="220" width="27" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="chart.bar.xaxis" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Lej-zJ-qdh" kind="show" id="tiA-xG-lqM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="bJm-ZM-pcw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5HV-GI-kQa"/>
+                            <constraint firstItem="Sk6-mf-Fcz" firstAttribute="centerY" secondItem="8yt-46-FDx" secondAttribute="centerY" id="BPe-wC-roc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="X9f-t1-6gW" secondAttribute="trailing" id="BTC-3B-CJO"/>
                             <constraint firstItem="bJm-ZM-pcw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="CvA-m7-1DI"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZIR-dZ-Lrf" secondAttribute="trailing" id="DcM-Uq-mRk"/>
@@ -235,6 +304,7 @@
                             <constraint firstItem="8yt-46-FDx" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="NOd-pS-qvk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eAv-MG-AEk" secondAttribute="trailing" constant="5" id="Oko-tO-ihg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bJm-ZM-pcw" secondAttribute="trailing" id="Q9n-RI-Dfb"/>
+                            <constraint firstItem="8yt-46-FDx" firstAttribute="leading" secondItem="Sk6-mf-Fcz" secondAttribute="trailing" constant="70" id="QUl-zf-KU5"/>
                             <constraint firstItem="X9f-t1-6gW" firstAttribute="top" secondItem="CgR-tv-bHF" secondAttribute="bottom" constant="10" id="cfL-3W-zY7"/>
                             <constraint firstItem="CgR-tv-bHF" firstAttribute="top" secondItem="8yt-46-FDx" secondAttribute="bottom" constant="10" id="ckn-FR-Eoq"/>
                             <constraint firstItem="ZIR-dZ-Lrf" firstAttribute="top" secondItem="bJm-ZM-pcw" secondAttribute="bottom" constant="3" id="mDV-ET-YQ8"/>
@@ -245,6 +315,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Switch e shop Scanner" largeTitleDisplayMode="always" id="xlh-y6-aGr"/>
                     <connections>
+                        <outlet property="MoveChart" destination="Sk6-mf-Fcz" id="xK9-ww-VRO"/>
                         <outlet property="imgView" destination="8yt-46-FDx" id="rQp-4U-NOS"/>
                         <outlet property="menuButton" destination="ZIR-dZ-Lrf" id="n3y-nJ-oGB"/>
                         <outlet property="menuView" destination="eAv-MG-AEk" id="0wa-Qa-8MH"/>
@@ -477,6 +548,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chart.bar.xaxis" catalog="system" width="128" height="98"/>
         <image name="kr" width="60" height="40"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -1,0 +1,36 @@
+/*
+  Localizable.strings
+  switchPriceKana
+
+  Created by Woohyun Kim on 2020/10/04.
+  Copyright © 2020 Woohyun Kim. All rights reserved.
+*/
+"SwitchViewController.seachBar.Placeholder" = "Nhập tiêu đề trò chơi hoặc Tìm trò chơi trong menu";
+
+"SwitchViewController.SCalert.Error" = "Không kết quả";
+
+"SwitchViewController.SCalert.ErrorDetail" = "Tốt hơn bạn nên sử dụng Menu-Find";
+
+"DetalViewController.textView.text" =
+
+"Cách mua game bằng tài khoản ở quốc gia khác
+
+
+1. Thiết lập quốc gia của bạn trong tài khoản.
+  -Truy cập https://accounts.nintendo.com.
+  -đăng nhập.
+  -nếu bạn chưa có tài khoản, hãy tạo một tài khoản.
+
+2. Chỉnh sửa ‘Thông tin người dùng’ ở trên → Quốc gia / Khu vực.
+
+3. Thay đổi quốc gia mà bạn muốn.
+
+4. Chuẩn bị một thẻ tín dụng cho quốc tế.
+
+5. Vào eShop từ bảng điều khiển trò chơi Nintendo. Và bạn sẽ phải đăng nhập lại vào quốc gia đã thay đổi.
+
+6. Ngôn ngữ sẽ được thay đổi thành quốc gia tương ứng. Nhận trợ giúp với Google Translator. Sau khi mua trò chơi, trò chơi sẽ có sẵn trên bảng điều khiển bằng ngôn ngữ gốc.
+
+7. Tìm trò chơi và hoàn tất thanh toán bằng thẻ tín dụng quốc tế tại eShop trong bảng điều khiển.
+
+8. Bạn có thể tải xuống trò chơi trong màn hình chính.";
