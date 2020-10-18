@@ -11,6 +11,10 @@
 
 "SwitchViewController.SCalert.ErrorDetail" = "Tốt hơn bạn nên sử dụng Menu-Find";
 
+"WebChartViewController.goToChart.text" = "Đi tới biểu đồ";
+
+"WebChartViewController.errorGuideLabel.text" = "Nếu biểu đồ không xuất hiện sau khi nhấn nút, hãy chuyển đến màn hình trước đó và thử lại.";
+
 "DetalViewController.textView.text" =
 
 "Cách mua game bằng tài khoản ở quốc gia khác

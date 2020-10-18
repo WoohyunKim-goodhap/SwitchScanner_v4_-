@@ -11,6 +11,10 @@
 
 "SwitchViewController.SCalert.ErrorDetail" = "您最好使用菜单查找";
 
+"WebChartViewController.goToChart.text" = "转到图表";
+
+"WebChartViewController.errorGuideLabel.text" = "如果按下按钮后图形仍未出现，请转到上一个屏幕，然后重试。";
+
 "DetalViewController.textView.text" =
 
 "如何使用其他国家的帐户购买游戏

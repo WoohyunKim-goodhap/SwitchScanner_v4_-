@@ -33,4 +33,7 @@ struct UserData{
 var chartPrices = [Double]()
 var dateSeparator = [String]()
 
+var selectedUrl = URL(string: "")
+var gameTitelForChart = ""
+
 

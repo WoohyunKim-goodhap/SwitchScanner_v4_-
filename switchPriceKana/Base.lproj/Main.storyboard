@@ -54,16 +54,36 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z35-dP-pwP">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eCp-AY-z8X">
-                                        <rect key="frame" x="184" y="353" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
+                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eCp-AY-z8X">
+                                        <rect key="frame" x="162" y="250" width="90" height="30"/>
+                                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="eCp-AY-z8X" secondAttribute="height" multiplier="3:1" id="js2-gV-MLB"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="그래프 보기"/>
                                         <connections>
-                                            <segue destination="8bB-eo-yDG" kind="show" id="nvb-2Q-BvZ"/>
+                                            <segue destination="8bB-eo-yDG" kind="show" identifier="goToChart" id="nvb-2Q-BvZ"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="버튼을 눌러도 그래프가 나오지 않으면 다시 시도해주세요" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ncZ-Lo-tE7">
+                                        <rect key="frame" x="57" y="330" width="300" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="9yk-C6-Frn"/>
+                                            <constraint firstAttribute="width" constant="300" id="KQD-fa-eFZ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" systemColor="systemGray2Color"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="ncZ-Lo-tE7" firstAttribute="top" secondItem="eCp-AY-z8X" secondAttribute="bottom" constant="50" id="SQd-Bf-ikm"/>
+                                    <constraint firstItem="ncZ-Lo-tE7" firstAttribute="centerX" secondItem="eCp-AY-z8X" secondAttribute="centerX" id="TF2-8w-w29"/>
+                                    <constraint firstItem="eCp-AY-z8X" firstAttribute="centerX" secondItem="Z35-dP-pwP" secondAttribute="centerX" id="swP-ja-h46"/>
+                                    <constraint firstItem="eCp-AY-z8X" firstAttribute="top" secondItem="Z35-dP-pwP" secondAttribute="top" constant="250" id="uy1-fH-Ylk"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="82G-mP-aWJ"/>
@@ -78,11 +98,13 @@
                     <navigationItem key="navigationItem" id="Pkd-rg-g0s"/>
                     <connections>
                         <outlet property="coverView" destination="Z35-dP-pwP" id="OIz-Hi-yXc"/>
+                        <outlet property="errorGuideLabel" destination="ncZ-Lo-tE7" id="20H-po-WcJ"/>
+                        <outlet property="goToChart" destination="eCp-AY-z8X" id="bYd-km-84L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lHP-6e-aaW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="935" y="-629"/>
+            <point key="canvasLocation" x="934.78260869565224" y="-629.46428571428567"/>
         </scene>
         <!--Chart View Controller-->
         <scene sceneID="N7h-bt-ie3">
@@ -144,7 +166,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                         <color key="tintColor" systemColor="systemBlueColor"/>
-                                        <state key="normal" title="Go to Save">
+                                        <state key="normal" title="Go To Save">
                                             <color key="titleColor" systemColor="systemBlueColor"/>
                                         </state>
                                         <connections>
@@ -159,7 +181,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                         <color key="tintColor" systemColor="systemBlueColor"/>
-                                        <state key="normal" title="Go to purchase">
+                                        <state key="normal" title="Go To Purchase">
                                             <color key="titleColor" systemColor="systemBlueColor"/>
                                         </state>
                                         <connections>
@@ -174,7 +196,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                         <color key="tintColor" systemColor="systemBlueColor"/>
-                                        <state key="normal" title="Change currency">
+                                        <state key="normal" title="Change Currency">
                                             <color key="titleColor" systemColor="systemBlueColor"/>
                                         </state>
                                         <connections>
@@ -281,7 +303,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sk6-mf-Fcz">
-                                <rect key="frame" x="50" y="220" width="27" height="36"/>
+                                <rect key="frame" x="41.666666666666664" y="161" width="26.999999999999993" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal">
                                     <imageReference key="image" image="chart.bar.xaxis" catalog="system" symbolScale="large"/>
@@ -290,32 +312,50 @@
                                     <segue destination="Lej-zJ-qdh" kind="show" id="tiA-xG-lqM"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sam-w2-oeE">
+                                <rect key="frame" x="5" y="197" width="100" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="2og-Ma-lGR"/>
+                                    <constraint firstAttribute="height" constant="15" id="Hiu-yZ-1wH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                <color key="tintColor" systemColor="systemBlueColor"/>
+                                <state key="normal" title="Price HIstory">
+                                    <color key="titleColor" systemColor="systemGray2Color"/>
+                                </state>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="bJm-ZM-pcw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5HV-GI-kQa"/>
-                            <constraint firstItem="Sk6-mf-Fcz" firstAttribute="centerY" secondItem="8yt-46-FDx" secondAttribute="centerY" id="BPe-wC-roc"/>
+                            <constraint firstItem="sam-w2-oeE" firstAttribute="top" secondItem="Sk6-mf-Fcz" secondAttribute="bottom" id="7f3-tg-Rug"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="X9f-t1-6gW" secondAttribute="trailing" id="BTC-3B-CJO"/>
                             <constraint firstItem="bJm-ZM-pcw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="CvA-m7-1DI"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZIR-dZ-Lrf" secondAttribute="trailing" id="DcM-Uq-mRk"/>
                             <constraint firstItem="eAv-MG-AEk" firstAttribute="top" secondItem="ZIR-dZ-Lrf" secondAttribute="bottom" id="EkJ-fm-guF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="X9f-t1-6gW" secondAttribute="bottom" id="M9Q-ti-LAh"/>
                             <constraint firstItem="8yt-46-FDx" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="NOd-pS-qvk"/>
+                            <constraint firstItem="Wvx-RQ-mup" firstAttribute="top" secondItem="NXD-3E-IkX" secondAttribute="bottom" constant="5" id="Nn3-Wk-Vqk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eAv-MG-AEk" secondAttribute="trailing" constant="5" id="Oko-tO-ihg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bJm-ZM-pcw" secondAttribute="trailing" id="Q9n-RI-Dfb"/>
-                            <constraint firstItem="8yt-46-FDx" firstAttribute="leading" secondItem="Sk6-mf-Fcz" secondAttribute="trailing" constant="70" id="QUl-zf-KU5"/>
+                            <constraint firstItem="sam-w2-oeE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="5" id="W4q-Bi-ugZ"/>
+                            <constraint firstItem="Sk6-mf-Fcz" firstAttribute="top" secondItem="bJm-ZM-pcw" secondAttribute="bottom" constant="3" id="YIQ-5l-gg4"/>
                             <constraint firstItem="X9f-t1-6gW" firstAttribute="top" secondItem="CgR-tv-bHF" secondAttribute="bottom" constant="10" id="cfL-3W-zY7"/>
                             <constraint firstItem="CgR-tv-bHF" firstAttribute="top" secondItem="8yt-46-FDx" secondAttribute="bottom" constant="10" id="ckn-FR-Eoq"/>
+                            <constraint firstItem="Sk6-mf-Fcz" firstAttribute="centerX" secondItem="sam-w2-oeE" secondAttribute="centerX" id="cre-5P-9fo"/>
+                            <constraint firstItem="zYy-Nh-5oF" firstAttribute="top" secondItem="Wvx-RQ-mup" secondAttribute="bottom" constant="5" id="gQm-kz-PVs"/>
                             <constraint firstItem="ZIR-dZ-Lrf" firstAttribute="top" secondItem="bJm-ZM-pcw" secondAttribute="bottom" constant="3" id="mDV-ET-YQ8"/>
                             <constraint firstItem="X9f-t1-6gW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="o31-m4-5P8"/>
                             <constraint firstItem="8yt-46-FDx" firstAttribute="top" secondItem="bJm-ZM-pcw" secondAttribute="bottom" constant="20" id="pNV-7Z-bHT"/>
                             <constraint firstItem="CgR-tv-bHF" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="wng-gH-QZE"/>
+                            <constraint firstAttribute="trailing" secondItem="Wvx-RQ-mup" secondAttribute="trailing" constant="5" id="x9h-RA-OzZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Switch e shop Scanner" largeTitleDisplayMode="always" id="xlh-y6-aGr"/>
                     <connections>
                         <outlet property="MoveChart" destination="Sk6-mf-Fcz" id="xK9-ww-VRO"/>
+                        <outlet property="chartLabel" destination="sam-w2-oeE" id="Zkj-UO-Urd"/>
                         <outlet property="imgView" destination="8yt-46-FDx" id="rQp-4U-NOS"/>
                         <outlet property="menuButton" destination="ZIR-dZ-Lrf" id="n3y-nJ-oGB"/>
                         <outlet property="menuView" destination="eAv-MG-AEk" id="0wa-Qa-8MH"/>
@@ -487,7 +527,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CurrencyCell" rowHeight="50" id="0nw-b2-qtE" customClass="CurrencyCell" customModule="switchPriceKana" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CurrencyCell" rowHeight="50" id="0nw-b2-qtE" customClass="CurrencyCell" customModule="switchPriceKana" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0nw-b2-qtE" id="PHm-x4-tXa">
@@ -561,6 +601,9 @@
         </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

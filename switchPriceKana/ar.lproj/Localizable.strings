@@ -11,6 +11,10 @@
 
 "SwitchViewController.SCalert.ErrorDetail" = "من الأفضل لك استخدام قائمة البحث";
 
+"WebChartViewController.goToChart.text" = "اذهب إلى الرسم البياني";
+
+"WebChartViewController.errorGuideLabel.text" = "إذا لم يظهر الرسم البياني بعد الضغط على الزر ، فانتقل إلى الشاشة السابقة وحاول مرة أخرى.";
+
 "DetalViewController.textView.text" =
 
 "كيف تشتري لعبة بحساب في دولة أخرى

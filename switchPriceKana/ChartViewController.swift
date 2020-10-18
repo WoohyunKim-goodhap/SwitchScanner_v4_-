@@ -6,29 +6,40 @@
 //  Copyright © 2020 Woohyun Kim. All rights reserved.
 //
 
+//[ ]currency 표시
+//[ ]game title 표시
+//[ ]검색한 url 값 끌고 오기
+
 import UIKit
 import Charts
+import SCLAlertView
 
 class ChartViewController: UIViewController, ChartViewDelegate {
 
     var lineChart = LineChartView()
     var entries = [ChartDataEntry]()
+    var currencyDetail = ""
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         lineChart.delegate = self
-        
-
+        if let key = currencyDic.somekey(from: "\(currencyForChart)"){
+            currencyDetail = key
+        }
         // Do any additional setup after loading the view.
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        dateSeparator.removeAll()
+    }
+    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         lineChart.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.width)
         
         lineChart.center = view.center
-        
         view.addSubview(lineChart)
         
                 
@@ -36,8 +47,6 @@ class ChartViewController: UIViewController, ChartViewDelegate {
             entries.append(ChartDataEntry(x: Double(x), y: y))
         }
 
-        
-        
         let xAxis = lineChart.xAxis
         let yAxis = lineChart.leftAxis
         yAxis.labelFont = .boldSystemFont(ofSize: 13)
@@ -55,18 +64,20 @@ class ChartViewController: UIViewController, ChartViewDelegate {
         xAxis.granularity = 1
         xAxis.axisMinimum = 0
         xAxis.avoidFirstLastClippingEnabled = true
+        
         xAxis.valueFormatter = ChartXAxisFormatter()
         
-        
         lineChart.rightAxis.enabled = false
-        lineChart.chartDescription?.text = "Game Title"
         lineChart.animate(xAxisDuration: 2.0)
+        
+        lineChart.chartDescription?.text = "\(gameTitelForChart)"
         
         setData()
     }
     
     func setData(){
-        let set1 = LineChartDataSet(entries: entries, label: "Currency")
+        
+        let set1 = LineChartDataSet(entries: entries, label: "\(currencyDetail)")
         
         set1.drawCirclesEnabled = false
         set1.drawHorizontalHighlightIndicatorEnabled = false
@@ -80,7 +91,7 @@ class ChartViewController: UIViewController, ChartViewDelegate {
 
 class ChartXAxisFormatter: NSObject, IAxisValueFormatter {
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-
+        
         let datePosition = value / Double(chartPrices.count - 1)
         
         switch datePosition {

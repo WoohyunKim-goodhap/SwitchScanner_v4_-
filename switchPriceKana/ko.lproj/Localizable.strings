@@ -11,6 +11,10 @@
 
 "SwitchViewController.SCalert.ErrorDetail" = "Menu-Find를 이용하세요";
 
+"WebChartViewController.goToChart.text" = "그래프 보기";
+
+"WebChartViewController.errorGuideLabel.text" = "버튼을 눌러도 그래프가 나오지 않으면 이전 화면으로 이동 후 다시 시도해주세요";
+
 "DetalViewController.textView.text" =
 
 "다른 국가 계정으로 게임 구매하는 방법

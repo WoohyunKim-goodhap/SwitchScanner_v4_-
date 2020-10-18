@@ -9,14 +9,42 @@
 import UIKit
 import WebKit
 import Kanna
+import SCLAlertView
 
 class WebChartViewController: UIViewController {
 
-
     @IBOutlet var coverView: UIView!
+    @IBOutlet var goToChart: UIButton!
+    @IBOutlet var errorGuideLabel: UILabel!
+    
+    
+    //activity indicator
+    func  showSpinner() {
+        coverView = UIView(frame: self.view.bounds)
+        coverView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 1.0)
+        
+        let ai = UIActivityIndicatorView(style: .large)
+        ai.center = coverView.center
+        ai.startAnimating()
+        coverView.addSubview(ai)
+        self.view.addSubview(coverView)
+    }
+    
+    func removeSpinner() {
+        coverView.removeFromSuperview()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.showSpinner()
+
+        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) {_ in
+            self.removeSpinner()
+            print("done")
+        }
+        
+        goToChart.setTitle("\(LocalizaionClass.WebChartText.goToChart)", for: .normal)
+        errorGuideLabel.text = LocalizaionClass.WebChartText.errorGuide
 
     }
     
@@ -36,13 +64,13 @@ class WebChartViewController: UIViewController {
         webViewController.didMove(toParent: self)
 
     }
-
-}
-
-
-
-class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHandler {
     
+    override func viewDidAppear(_ animated: Bool) {
+        print("count in viewDidAppear\(dateSeparator.count)")
+
+    }
+    
+class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHandler {
     
     var webView: WKWebView!
     var webViewContentIsLoaded = false
@@ -53,7 +81,6 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         self.webView = {
 
             let contentController = WKUserContentController()
-
             contentController.add(self, name: "WebViewControllerMessageHandler")
 
             let configuration = WKWebViewConfiguration()
@@ -83,18 +110,16 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        if !webViewContentIsLoaded {
-            let url = URL(string: "https://eshop-prices.com/games/2872-luigi-s-mansion-3?currency=KRW")!
-            let request = URLRequest(url: url)
-
-            webView.load(request)
-            webViewContentIsLoaded = true
-            
+        
+        DispatchQueue.main.async { [self] in
+            if !self.webViewContentIsLoaded {
+                let request = URLRequest(url: selectedUrl!)
+                self.webView.load(request)
+                webViewContentIsLoaded = true
+            }
         }
     }
     
-
     private func evaluateJavascript(_ javascript: String, sourceURL: String? = nil, completion: ((_ error: String?) -> Void)? = nil) {
         var javascript = javascript
 
@@ -153,14 +178,10 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
                     chartPrices.append(doublePrice!)
                 }
             }
-            print("userContentController in \(chartPrices)")
             
-            if let items = itemDocBody?.xpath("/html/body/div[2]/div[2]/div/div/svg/g[3]//text()") {
-                for item in items {
-                    dateSeparator.append(item.text!)
-                }
-            }
-            print("dateSeparator in \(dateSeparator)")
+            guard let items = itemDocBody?.xpath("/html/body/div[2]/div[2]/div/div/svg/g[3]//text()") else { return }
+            for item in items {
+                dateSeparator.append(item.text!)}
             
         //x축은 날짜 4개로만 구분 y축은 price 값으로 그래프 그리기
 
@@ -172,3 +193,4 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
     
 }
 
+}

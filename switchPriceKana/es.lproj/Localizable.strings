@@ -11,6 +11,10 @@
 
 "SwitchViewController.SCalert.ErrorDetail" = "Es mejor que uses Menú-Buscar";
 
+"WebChartViewController.goToChart.text" = "Ir al gráfico";
+
+"WebChartViewController.errorGuideLabel.text" = "Si el gráfico no aparece después de presionar el botón, vaya a la pantalla anterior y vuelva a intentarlo.";
+
 "DetalViewController.textView.text" =
 
 "Cómo comprar un juego con una cuenta en otro país

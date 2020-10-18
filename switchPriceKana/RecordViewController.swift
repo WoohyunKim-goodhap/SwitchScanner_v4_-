@@ -10,7 +10,6 @@ import UIKit
 
 class RecordViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    
     var countryName: String?
     var gameTitle: String?
     var price: String?

@@ -11,6 +11,10 @@
 
 "SwitchViewController.SCalert.ErrorDetail" = "Verwenden Sie besser Menu-Find";
 
+"WebChartViewController.goToChart.text" = "Gehe zum Diagramm";
+
+"WebChartViewController.errorGuideLabel.text" = "Wenn das Diagramm nach dem Drücken der Taste nicht angezeigt wird, wechseln Sie zum vorherigen Bildschirm und versuchen Sie es erneut.";
+
 "DetalViewController.textView.text" =
 
 "So kaufen Sie ein Spiel mit einem Konto in einem anderen Land

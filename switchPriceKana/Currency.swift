@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+var currencyForChart = "USD"
 
 let currencyCountry = ["Argentine Peso",
                        "Australian Dollar",
@@ -50,3 +51,9 @@ let currencyCountry = ["Argentine Peso",
                        "South African Rand – R"]
 
 let currencyDic = ["Argentine Peso":"ARS","Australian Dollar":"AUD","Bulgarian Lev – лв.":"BGN","Brazilian Real – R$":"BRL", "Canadian Dollar":"CAD","Swiss Franc – CHF":"CHF","Chilean Peso":"CLP","Chinese Renminbi Yuan – ¥":"CNY", "Colombian Peso":"COP", "Czech Koruna – Kč":"CZK","Danish Krone – kr.":"DKK","Euro – €":"EUR", "British Pound – £":"GBP", "Hong Kong Dollar":"HKD","Croatian Kuna – kn":"HRK", "Hungarian Forint – Ft":"HUF", "Indonesian Rupiah – Rp":"IDR", "Israeli New Sheqel – ₪":"ILS", "Indian Rupee – ₹":"INR", "Japanese Yen":"JPY", "South Korean Won – ₩":"KRW", "Mexican Peso":"MXN", "Malaysian Ringgit – RM":"MYR", "Norwegian Krone – kr":"NOK", "Peruvian Sol – S/":"PEN", "Philippine Peso – ₱":"PHP", "Polish Złoty – zł":"PLN", "Romanian Leu – Lei":"RON", "Russian Ruble – ₽":"RUB", "Swedish Krona – kr":"SEK", "Singapore Dollar":"SGD", "Thai Baht – ฿":"THB","United States Dollar":"USD", "Turkish Lira – ₺":"TRY", "New Taiwan Dollar":"TWD", "Ukrainian Hryvnia – ₴":"UAH", "South African Rand – R":"ZAR", "New Zealand Dollar":"NZD"]
+
+extension Dictionary where Value: Equatable {
+    func somekey(from value: Value) -> Key? {
+        return self.first(where: { $0.value == value })?.key
+    }
+}

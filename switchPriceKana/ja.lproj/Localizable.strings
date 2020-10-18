@@ -11,6 +11,10 @@
 
 "SwitchViewController.SCalert.ErrorDetail" = "メニュー検索を使用する方がよい";
 
+"WebChartViewController.goToChart.text" = "チャートに移動";
+
+"WebChartViewController.errorGuideLabel.text" = "ボタンを押してもグラフが表示されない場合は、前の画面に戻ってやり直してください。";
+
 "DetalViewController.textView.text" =
 
 "他の国のアカウントでゲームを購入する方法

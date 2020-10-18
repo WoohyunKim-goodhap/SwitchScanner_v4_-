@@ -40,11 +40,14 @@ class CurrencyViewController: UIViewController, UITableViewDelegate, UITableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "unwindSegue"{
             if let svc = segue.destination as? SwitchViewController{
+                //SVC에 테이블 셀에 필요 값을 넣어줌
                 svc.currency = selectedCurrency
                 if svc.searchBar.text?.isEmpty == false{
                     svc.searchBarSearchButtonClicked(svc.searchBar)
                 }else{ return }
             }
+            //차트뷰에 currency text를 전달
+            currencyForChart = selectedCurrency
         }
     }
 }
