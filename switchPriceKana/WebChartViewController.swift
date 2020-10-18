@@ -38,7 +38,7 @@ class WebChartViewController: UIViewController, GADRewardedAdDelegate {
     }
     
     func createAndLoadRewardedAd() -> GADRewardedAd{
-        rewardedAd = GADRewardedAd(adUnitID: "ca-app-pub-3940256099942544/1712485313")
+        rewardedAd = GADRewardedAd(adUnitID: "ca-app-pub-8456076322553323/4330366365")
         rewardedAd?.load(GADRequest()) { error in
         if let error = error {
           print("Loading failed: \(error)")
