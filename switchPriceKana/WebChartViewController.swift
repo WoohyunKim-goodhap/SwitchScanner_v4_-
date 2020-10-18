@@ -10,8 +10,45 @@ import UIKit
 import WebKit
 import Kanna
 import SCLAlertView
+import GoogleMobileAds
 
-class WebChartViewController: UIViewController {
+
+class WebChartViewController: UIViewController, GADRewardedAdDelegate {
+    
+    /// The rewarded video ad.
+      var rewardedAd: GADRewardedAd?
+
+    
+    /// Tells the delegate that the user earned a reward.
+    func rewardedAd(_ rewardedAd: GADRewardedAd, userDidEarn reward: GADAdReward) {
+      print("Reward received with currency: \(reward.type), amount \(reward.amount).")
+    }
+    /// Tells the delegate that the rewarded ad was presented.
+    func rewardedAdDidPresent(_ rewardedAd: GADRewardedAd) {
+      print("Rewarded ad presented.")
+    }
+    /// Tells the delegate that the rewarded ad was dismissed.
+    func rewardedAdDidDismiss(_ rewardedAd: GADRewardedAd) {
+         createAndLoadRewardedAd()
+      print("Rewarded ad dismissed.")
+    }
+    /// Tells the delegate that the rewarded ad failed to present.
+    func rewardedAd(_ rewardedAd: GADRewardedAd, didFailToPresentWithError error: Error) {
+      print("Rewarded ad failed to present.")
+    }
+    
+    func createAndLoadRewardedAd() -> GADRewardedAd{
+        rewardedAd = GADRewardedAd(adUnitID: "ca-app-pub-3940256099942544/1712485313")
+        rewardedAd?.load(GADRequest()) { error in
+        if let error = error {
+          print("Loading failed: \(error)")
+        } else {
+          print("Loading Succeeded")
+        }
+      }
+        return rewardedAd!
+    }
+    
 
     @IBOutlet var coverView: UIView!
     @IBOutlet var goToChart: UIButton!
@@ -34,8 +71,13 @@ class WebChartViewController: UIViewController {
         coverView.removeFromSuperview()
     }
     
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        rewardedAd = createAndLoadRewardedAd()
+
+        
         self.showSpinner()
 
         Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) {_ in
@@ -64,11 +106,8 @@ class WebChartViewController: UIViewController {
         webViewController.didMove(toParent: self)
 
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        print("count in viewDidAppear\(dateSeparator.count)")
 
-    }
+    
     
 class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHandler {
     
@@ -190,7 +229,13 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
             return
         }
     }
-    
 }
+    
+    @IBAction func goToChartClicked(_ sender: Any) {
+        if rewardedAd?.isReady == true {
+           rewardedAd?.present(fromRootViewController: self, delegate:self)
+        }
+    }
+    
 
 }

@@ -63,6 +63,7 @@
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="그래프 보기"/>
                                         <connections>
+                                            <action selector="goToChartClicked:" destination="Lej-zJ-qdh" eventType="touchUpInside" id="k9g-ls-BfM"/>
                                             <segue destination="8bB-eo-yDG" kind="show" identifier="goToChart" id="nvb-2Q-BvZ"/>
                                         </connections>
                                     </button>
