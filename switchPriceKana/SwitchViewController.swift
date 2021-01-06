@@ -6,6 +6,11 @@
 //  Copyright © 2020 Woohyun Kim. All rights reserved.
 //
 
+// 199행에 반복 명령 생성 완료
+// input vc만들기, 현재 최저가도 표현
+// 목표 가격 도달시 notification 구현
+
+
 import UIKit
 import Kanna
 import SCLAlertView
@@ -27,6 +32,7 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet var menuViewContraints: NSLayoutConstraint!
     @IBOutlet var MoveChart: UIButton!
     @IBOutlet var chartLabel: UIButton!
+    @IBOutlet var MoveAlarm: UIButton!
     
 
     @IBAction func menuButtonPressed(_ sender: Any) {
@@ -60,6 +66,10 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     var countryPrice: [String: String] = [:]
     var array = [String]()
 
+    //반복실행을 위한 메소드 인스턴스
+    var checker = Timer()
+
+    
     // 각 테이블 별 갯수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return noDigitalCountryArray.count
@@ -174,9 +184,11 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
         if searchedGemeTitle.text?.isEmpty == false {
             MoveChart.isHidden = false
             chartLabel.isHidden = false
+            MoveAlarm.isHidden = false
         }else{
             MoveChart.isHidden = true
             chartLabel.isHidden = true
+            MoveAlarm.isHidden = true
         }
     }
     
@@ -188,6 +200,14 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     
     @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue){
     }
+    
+    @IBAction func alarmTapped(_ sender: Any) {
+        Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { checker in
+            self.search(term: self.searchBar.text!)
+        }
+    }
+    
+    
     
 }
 
@@ -265,6 +285,8 @@ extension SwitchViewController: UISearchBarDelegate {
                 }
                 let onlyPriceArray = trimmedPriceArray.filter{ $0 != "List continues after this ad" && $0 != "" }
                 priceArray.append(contentsOf: onlyPriceArray)
+                print(priceArray)
+
             }
         
             if let itemImage = itemDocBody?.at_xpath("/html/body/div[1]/div[2]/picture/img/@src") {

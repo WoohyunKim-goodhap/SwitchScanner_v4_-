@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Vqm-Pg-Y5R">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Vqm-Pg-Y5R">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -313,6 +313,16 @@
                                     <segue destination="Lej-zJ-qdh" kind="show" id="tiA-xG-lqM"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yFm-AP-NkT">
+                                <rect key="frame" x="43" y="220" width="24" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="alarm.fill" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="alarmTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oHv-dC-1kL"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sam-w2-oeE">
                                 <rect key="frame" x="5" y="197" width="100" height="15"/>
                                 <constraints>
@@ -322,6 +332,18 @@
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                 <color key="tintColor" systemColor="systemBlueColor"/>
                                 <state key="normal" title="Price HIstory">
+                                    <color key="titleColor" systemColor="systemGray2Color"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6QG-PL-ye4">
+                                <rect key="frame" x="5" y="256" width="100" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="JRd-gC-aUD"/>
+                                    <constraint firstAttribute="height" constant="15" id="Kam-pK-gZq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                <color key="tintColor" systemColor="systemBlueColor"/>
+                                <state key="normal" title="Price Alarm">
                                     <color key="titleColor" systemColor="systemGray2Color"/>
                                 </state>
                             </button>
@@ -342,19 +364,25 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bJm-ZM-pcw" secondAttribute="trailing" id="Q9n-RI-Dfb"/>
                             <constraint firstItem="sam-w2-oeE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="5" id="W4q-Bi-ugZ"/>
                             <constraint firstItem="Sk6-mf-Fcz" firstAttribute="top" secondItem="bJm-ZM-pcw" secondAttribute="bottom" constant="3" id="YIQ-5l-gg4"/>
+                            <constraint firstItem="6QG-PL-ye4" firstAttribute="centerX" secondItem="yFm-AP-NkT" secondAttribute="centerX" id="bcb-I4-lzS"/>
                             <constraint firstItem="X9f-t1-6gW" firstAttribute="top" secondItem="CgR-tv-bHF" secondAttribute="bottom" constant="10" id="cfL-3W-zY7"/>
                             <constraint firstItem="CgR-tv-bHF" firstAttribute="top" secondItem="8yt-46-FDx" secondAttribute="bottom" constant="10" id="ckn-FR-Eoq"/>
                             <constraint firstItem="Sk6-mf-Fcz" firstAttribute="centerX" secondItem="sam-w2-oeE" secondAttribute="centerX" id="cre-5P-9fo"/>
+                            <constraint firstItem="6QG-PL-ye4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="5" id="eum-QQ-bkP"/>
                             <constraint firstItem="zYy-Nh-5oF" firstAttribute="top" secondItem="Wvx-RQ-mup" secondAttribute="bottom" constant="5" id="gQm-kz-PVs"/>
                             <constraint firstItem="ZIR-dZ-Lrf" firstAttribute="top" secondItem="bJm-ZM-pcw" secondAttribute="bottom" constant="3" id="mDV-ET-YQ8"/>
                             <constraint firstItem="X9f-t1-6gW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="o31-m4-5P8"/>
+                            <constraint firstItem="yFm-AP-NkT" firstAttribute="centerY" secondItem="8yt-46-FDx" secondAttribute="centerY" id="o6C-3W-hzZ"/>
+                            <constraint firstItem="yFm-AP-NkT" firstAttribute="centerX" secondItem="Sk6-mf-Fcz" secondAttribute="centerX" id="oNa-NW-lQe"/>
                             <constraint firstItem="8yt-46-FDx" firstAttribute="top" secondItem="bJm-ZM-pcw" secondAttribute="bottom" constant="20" id="pNV-7Z-bHT"/>
+                            <constraint firstItem="6QG-PL-ye4" firstAttribute="top" secondItem="yFm-AP-NkT" secondAttribute="bottom" id="rq5-vc-nvM"/>
                             <constraint firstItem="CgR-tv-bHF" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="wng-gH-QZE"/>
                             <constraint firstAttribute="trailing" secondItem="Wvx-RQ-mup" secondAttribute="trailing" constant="5" id="x9h-RA-OzZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Switch e shop Scanner" largeTitleDisplayMode="always" id="xlh-y6-aGr"/>
                     <connections>
+                        <outlet property="MoveAlarm" destination="yFm-AP-NkT" id="T9i-Li-lrF"/>
                         <outlet property="MoveChart" destination="Sk6-mf-Fcz" id="xK9-ww-VRO"/>
                         <outlet property="chartLabel" destination="sam-w2-oeE" id="Zkj-UO-Urd"/>
                         <outlet property="imgView" destination="8yt-46-FDx" id="rQp-4U-NOS"/>
@@ -589,6 +617,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="alarm.fill" catalog="system" width="124" height="128"/>
         <image name="chart.bar.xaxis" catalog="system" width="128" height="98"/>
         <image name="kr" width="60" height="40"/>
         <systemColor name="labelColor">
