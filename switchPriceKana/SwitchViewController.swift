@@ -10,6 +10,7 @@
 // [0]input vc만들기, 현재 최저가도 표현
 // []목표 가격 도달시 notification 구현
 // alarmview는 세팅용으로
+// []내폰에 설치해서 알람오는지랑 가격 바뀌는지 확인
 // []알람 스위치는 스위치뷰에 놓고 설정이 저장되어 있지 않다면 alert를 띄움
 // []차트에서 y축 단위구간 표시
 // []알람이 1번 오고 이후 다시 오지 않음 WKProcessAssertionBackgroundTaskManager와 관련?
@@ -45,8 +46,6 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet var alarmSettingButton: UIButton!
     @IBOutlet var alarmSwitch: UISwitch!
     
-    
-    
 
     @IBAction func menuButtonPressed(_ sender: Any) {
         if menuView.isHidden == true{
@@ -60,36 +59,43 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     
     @IBAction func alarmSwitchTouch(_ sender: Any) {
         if alarmSwitch.isOn{
-        Timer.scheduledTimer(withTimeInterval: 20, repeats: true) { checker in
-            print("4")
+            if let textfield = AlarmViewController().targetPriceTF.text?.isEmpty {
+                SCLAlertView().showError("There is no game", subTitle: "Please find game in Menu")
+            }
+            if searchedGemeTitle.text == "" {
+                SCLAlertView().showError("There is no game", subTitle: "Please find game in Menu")
+                alarmSwitch.isOn == false
+            }
+        }
+        
+        if alarmSwitch.isOn{
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.badge, .sound, .alert]) { (grant, error) in
-            }
+        }
+
         let content = UNMutableNotificationContent()
 
         guard let searchTerm = self.searchBar.text, searchTerm.isEmpty == false else {return}
         self.search(term: searchTerm)
-        print("5")
 
         guard let gameTitleForAlarm = self.searchedGemeTitle.text else {
             return
         }
         content.title = "\(gameTitleForAlarm)"
         content.body = "\(self.priceArray[0])"
-        print(self.priceArray)
         self.priceArray.removeAll()
 
-        let date = Date().addingTimeInterval(1)
-        let dateCompenent = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateCompenent, repeats: false)
-        let uuid = UUID().uuidString
-        let request = UNNotificationRequest(identifier: uuid, content: content, trigger: trigger)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: true)
+        let request = UNNotificationRequest(identifier: "switchNoti", content: content, trigger: trigger)
         center.add(request) { (error) in
         }
-        print("6")
+        if alarmSwitch.isOn == false{
+            center.removePendingNotificationRequests(withIdentifiers: ["switchNoti"])
         }
         }
     }
+    
+    
     
     
     private func prepareAnimation(){
@@ -266,14 +272,12 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
             chartLabel.isHidden = false
             alarmLabel.isHidden = false
             alarmSettingButton.isHidden = false
-            alarmSwitch.isHidden = false
             
         }else{
             MoveChart.isHidden = true
             chartLabel.isHidden = true
             alarmLabel.isHidden = true
             alarmSettingButton.isHidden = true
-            alarmSwitch.isHidden = true
         }
     }
     
