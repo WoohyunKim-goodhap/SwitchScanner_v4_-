@@ -32,6 +32,7 @@ class CurrencyViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let userCurrency = currencyDic[currencyCountry[indexPath.row]]{
+            print(userCurrency)
             selectedCurrency = userCurrency
         }
         self.performSegue(withIdentifier: "unwindSegue", sender: self)

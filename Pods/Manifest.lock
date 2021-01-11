@@ -85,7 +85,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Google-Mobile-Ads-SDK
-  - Kanna (~> 5.2.2)
+  - Kanna
   - SCLAlertView
 
 SPEC REPOS:
@@ -125,6 +125,6 @@ SPEC CHECKSUMS:
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
   SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
 
-PODFILE CHECKSUM: e6b2b545ed3454aad2e3135fbe449f5beab8c092
+PODFILE CHECKSUM: 20002ff8e0cb061872c5cd5f18419895a782604b
 
 COCOAPODS: 1.8.4

@@ -6,7 +6,7 @@ target 'switchPriceKana' do
   use_frameworks!
 
   # Pods for switchPriceKana
-  pod 'Kanna', '~> 5.2.2'
+  pod 'Kanna'
   pod 'SCLAlertView'
   pod 'Firebase/Analytics'
   pod 'Firebase/Database'

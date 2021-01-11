@@ -6,9 +6,17 @@
 //  Copyright © 2020 Woohyun Kim. All rights reserved.
 //
 
-// 199행에 반복 명령 생성 완료
-// input vc만들기, 현재 최저가도 표현
-// 목표 가격 도달시 notification 구현
+// [0]199행에 반복 명령 생성 완료
+// [0]input vc만들기, 현재 최저가도 표현
+// []목표 가격 도달시 notification 구현
+// alarmview는 세팅용으로
+// []알람 스위치는 스위치뷰에 놓고 설정이 저장되어 있지 않다면 alert를 띄움
+// []차트에서 y축 단위구간 표시
+// []알람이 1번 오고 이후 다시 오지 않음 WKProcessAssertionBackgroundTaskManager와 관련?
+// []알람 인터벌을 1일로 연장
+// []알람 세팅의 값과 현재 최저가를 비교하는 로직
+// []광고 2개를 모두 테스트에서 실제로 변경
+// []알람세팅 화면 넘어갈 때 보상형 광고 띄움
 
 
 import UIKit
@@ -17,6 +25,7 @@ import SCLAlertView
 import Firebase
 import Kingfisher
 import GoogleMobileAds
+import UserNotifications
 
 
 class SwitchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, GADBannerViewDelegate {
@@ -32,7 +41,11 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet var menuViewContraints: NSLayoutConstraint!
     @IBOutlet var MoveChart: UIButton!
     @IBOutlet var chartLabel: UIButton!
-    @IBOutlet var MoveAlarm: UIButton!
+    @IBOutlet var alarmLabel: UIButton!
+    @IBOutlet var alarmSettingButton: UIButton!
+    @IBOutlet var alarmSwitch: UISwitch!
+    
+    
     
 
     @IBAction func menuButtonPressed(_ sender: Any) {
@@ -44,6 +57,40 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
 //            prepareAnimation()
         }
     }
+    
+    @IBAction func alarmSwitchTouch(_ sender: Any) {
+        if alarmSwitch.isOn{
+        Timer.scheduledTimer(withTimeInterval: 20, repeats: true) { checker in
+            print("4")
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.badge, .sound, .alert]) { (grant, error) in
+            }
+        let content = UNMutableNotificationContent()
+
+        guard let searchTerm = self.searchBar.text, searchTerm.isEmpty == false else {return}
+        self.search(term: searchTerm)
+        print("5")
+
+        guard let gameTitleForAlarm = self.searchedGemeTitle.text else {
+            return
+        }
+        content.title = "\(gameTitleForAlarm)"
+        content.body = "\(self.priceArray[0])"
+        print(self.priceArray)
+        self.priceArray.removeAll()
+
+        let date = Date().addingTimeInterval(1)
+        let dateCompenent = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateCompenent, repeats: false)
+        let uuid = UUID().uuidString
+        let request = UNNotificationRequest(identifier: uuid, content: content, trigger: trigger)
+        center.add(request) { (error) in
+        }
+        print("6")
+        }
+        }
+    }
+    
     
     private func prepareAnimation(){
         menuViewContraints.constant = 5
@@ -58,7 +105,7 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     var noDigitalCountryArray = [String]()
     var priceArray = [String]()
     var trimmedPriceArray = [String]()
-    var gameTitle: String = ""
+    var gameTitle: String = "?"
     var totalGameList: [String] = Array()
     var selectDatas = [UserData]()
     var currency = "USD"
@@ -68,6 +115,7 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
 
     //반복실행을 위한 메소드 인스턴스
     var checker = Timer()
+
 
     
     // 각 테이블 별 갯수
@@ -91,6 +139,8 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
         selectDatas.append(selectedData)
             performSegue(withIdentifier: "showRecord", sender: nil)
     }
+    
+    
 
 
     override func viewDidLoad() {
@@ -98,14 +148,14 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
         prepareAnimation()
         searchBar.placeholder = LocalizaionClass.Placeholder.searchBarPlaceholder
         UILabel.appearance(whenContainedInInstancesOf: [UISearchBar.self]).font = UIFont.systemFont(ofSize: 13)
-        
+
         
         //Admob
 
         var bannerView: GADBannerView!
         
         bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
-        bannerView.adUnitID = "ca-app-pub-8456076322553323/1569435686"
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
         bannerView.delegate = self
@@ -116,25 +166,55 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func addBannerViewToView(_ bannerView: GADBannerView) {
-        bannerView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(bannerView)
-        view.addConstraints(
-          [NSLayoutConstraint(item: bannerView,
-                              attribute: .bottom,
-                              relatedBy: .equal,
-                              toItem: bottomLayoutGuide,
-                              attribute: .top,
-                              multiplier: 1,
-                              constant: 0),
-           NSLayoutConstraint(item: bannerView,
-                              attribute: .centerX,
-                              relatedBy: .equal,
-                              toItem: view,
-                              attribute: .centerX,
-                              multiplier: 1,
-                              constant: 0)
-          ])
-       }
+      bannerView.translatesAutoresizingMaskIntoConstraints = false
+      view.addSubview(bannerView)
+      if #available(iOS 11.0, *) {
+        // In iOS 11, we need to constrain the view to the safe area.
+        positionBannerViewFullWidthAtBottomOfSafeArea(bannerView)
+      }
+      else {
+        // In lower iOS versions, safe area is not available so we use
+        // bottom layout guide and view edges.
+        positionBannerViewFullWidthAtBottomOfView(bannerView)
+      }
+    }
+
+    // MARK: - view positioning
+    @available (iOS 11, *)
+    func positionBannerViewFullWidthAtBottomOfSafeArea(_ bannerView: UIView) {
+      // Position the banner. Stick it to the bottom of the Safe Area.
+      // Make it constrained to the edges of the safe area.
+      let guide = view.safeAreaLayoutGuide
+      NSLayoutConstraint.activate([
+        guide.leftAnchor.constraint(equalTo: bannerView.leftAnchor),
+        guide.rightAnchor.constraint(equalTo: bannerView.rightAnchor),
+        guide.bottomAnchor.constraint(equalTo: bannerView.bottomAnchor)
+      ])
+    }
+
+    func positionBannerViewFullWidthAtBottomOfView(_ bannerView: UIView) {
+      view.addConstraint(NSLayoutConstraint(item: bannerView,
+                                            attribute: .leading,
+                                            relatedBy: .equal,
+                                            toItem: view,
+                                            attribute: .leading,
+                                            multiplier: 1,
+                                            constant: 0))
+      view.addConstraint(NSLayoutConstraint(item: bannerView,
+                                            attribute: .trailing,
+                                            relatedBy: .equal,
+                                            toItem: view,
+                                            attribute: .trailing,
+                                            multiplier: 1,
+                                            constant: 0))
+      view.addConstraint(NSLayoutConstraint(item: bannerView,
+                                            attribute: .bottom,
+                                            relatedBy: .equal,
+                                            toItem: bottomLayoutGuide,
+                                            attribute: .top,
+                                            multiplier: 1,
+                                            constant: 0))
+    }
 
     //GADBannerViewDelegate 메소드
     /// Tells the delegate an ad request loaded an ad.
@@ -184,11 +264,16 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
         if searchedGemeTitle.text?.isEmpty == false {
             MoveChart.isHidden = false
             chartLabel.isHidden = false
-            MoveAlarm.isHidden = false
+            alarmLabel.isHidden = false
+            alarmSettingButton.isHidden = false
+            alarmSwitch.isHidden = false
+            
         }else{
             MoveChart.isHidden = true
             chartLabel.isHidden = true
-            MoveAlarm.isHidden = true
+            alarmLabel.isHidden = true
+            alarmSettingButton.isHidden = true
+            alarmSwitch.isHidden = true
         }
     }
     
@@ -196,18 +281,17 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
         if let rvc = segue.destination as? RecordViewController {
             rvc.userDatas = selectDatas
         }
+        if let avc = segue.destination as? AlarmViewController {
+            avc.searchedGameTitle = gameTitle
+            avc.currentCurrency = currency
+            let currentMinPrice = priceArray[0]
+            avc.currentMinPriceLabel = "\(currentMinPrice.onlyNumbers()[0])"
+        }
+        
     }
     
     @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue){
     }
-    
-    @IBAction func alarmTapped(_ sender: Any) {
-        Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { checker in
-            self.search(term: self.searchBar.text!)
-        }
-    }
-    
-    
     
 }
 
@@ -285,13 +369,16 @@ extension SwitchViewController: UISearchBarDelegate {
                 }
                 let onlyPriceArray = trimmedPriceArray.filter{ $0 != "List continues after this ad" && $0 != "" }
                 priceArray.append(contentsOf: onlyPriceArray)
-                print(priceArray)
 
             }
         
             if let itemImage = itemDocBody?.at_xpath("/html/body/div[1]/div[2]/picture/img/@src") {
-                let url = URL(string: itemImage.content!)
-                imgView.kf.setImage(with: url)
+                if let itemContent = itemImage.content{
+                    guard let url = URL(string: itemContent) else { return }
+                    self.imgView.reloadInputViews()
+                    imgView.kf.setImage(with: url)
+                }
+
             }
     }
     
@@ -320,6 +407,26 @@ extension SwitchViewController: UISearchBarDelegate {
         
         if noDigitalCountryArray.count < 1 {
             SCLAlertView().showError("\(LocalizaionClass.SCalertText.error)", subTitle: "\(LocalizaionClass.SCalertText.errorDetail)")
+        }
+    }
+}
+
+extension String {
+    func onlyNumbers() -> [NSNumber] {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        let charset = CharacterSet.init(charactersIn: " ,")
+        return matches(for: "[+-]?([0-9]+([., ][0-9]*)*|[.][0-9]+)").compactMap { string in
+            return formatter.number(from: string.trimmingCharacters(in: charset))
+        }
+    }
+    
+    func matches(for regex: String) -> [String] {
+        guard let regex = try? NSRegularExpression(pattern: regex, options: [.caseInsensitive]) else { return [] }
+        let matches  = regex.matches(in: self, options: [], range: NSMakeRange(0, self.count))
+        return matches.compactMap { match in
+            guard let range = Range(match.range, in: self) else { return nil }
+            return String(self[range])
         }
     }
 }
