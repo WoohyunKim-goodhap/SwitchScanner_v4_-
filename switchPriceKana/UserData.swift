@@ -13,6 +13,7 @@ struct UserData{
     var recordTitle: String
     var recordCountryName: String
     var recordMinPrice: String
+
     static var recordTime: String {
         let currentDateTime = Date()
         let userCalendar = Calendar.current
@@ -35,5 +36,4 @@ var dateSeparator = [String]()
 
 var selectedUrl = URL(string: "")
 var gameTitelForChart = ""
-
 
