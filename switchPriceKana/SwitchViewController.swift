@@ -6,20 +6,8 @@
 //  Copyright © 2020 Woohyun Kim. All rights reserved.
 //
 
-// [0]199행에 반복 명령 생성 완료
-// [0]input vc만들기, 현재 최저가도 표현
-// []목표 가격 도달시 notification 구현
-// [0]알람이 1번 오고 이후 다시 오지 않음 WKProcessAssertionBackgroundTaskManager와 관련?
-// []내폰에 설치해서 알람오는지랑 가격 바뀌는지 확인
-// [0]알람 스위치는 스위치뷰에 놓고 설정이 저장되어 있지 않다면 alert를 띄움
-// []차트에서 y축 단위구간 표시
-// []알람 인터벌을 1일로 연장
-// []알람 세팅의 값과 현재 최저가를 비교하는 로직
+
 // []광고 2개를 모두 테스트에서 실제로 변경
-// []알람세팅 화면 넘어갈 때 보상형 광고 띄움
-// []target price textfield 입력 후 키보드 resign
-// []alarm setting menu 삭제
-// []alarm switch on 하면 옆에 현재 설정한 game 과 price update로 표시-> 그래야 그 이후 다른겜 검색
 
 
 import UIKit
@@ -31,9 +19,11 @@ import GoogleMobileAds
 import UserNotifications
 
 
-class SwitchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, GADBannerViewDelegate {
 
-    let db = Database.database().reference().child("searchHistory")
+class SwitchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, GADBannerViewDelegate {
+        
+    var db: DatabaseReference!
+
     let center = UNUserNotificationCenter.current()
 
 
@@ -47,9 +37,7 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet var MoveChart: UIButton!
     @IBOutlet var chartLabel: UIButton!
     @IBOutlet var alarmLabel: UIButton!
-    @IBOutlet var alarmSettingButton: UIButton!
     @IBOutlet var alarmSwitch: UISwitch!
-    @IBOutlet var targetPriceTextField: UITextField!
     
     
 
@@ -65,39 +53,24 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     
     @IBAction func alarmSwitchTouch(_ sender: Any) {
         
-        if alarmSwitch.isOn && !targetPriceTextField.hasText {
-            SCLAlertView().showError("There is no target price", subTitle: "Please type target price in below")
-            alarmSwitch.isOn = false
-        }
         
         if alarmSwitch.isOn && searchedGemeTitle.text == "" {
-            SCLAlertView().showError("There is no game", subTitle: "Please find game in Menu")
+            SCLAlertView().showError("\(LocalizaionClass.SCalertText.error)", subTitle: "\(LocalizaionClass.SCalertText.errorDetail)")
             alarmSwitch.isOn = false
         }
         
-        if alarmSwitch.isOn && targetPriceTextField.hasText && searchedGemeTitle.text != ""{
-            self.center.requestAuthorization(options: [.badge, .sound, .alert]) { (grant, error) in
-            }
-
-            let content = UNMutableNotificationContent()
-
-            guard let searchTerm = self.searchBar.text, searchTerm.isEmpty == false else {return}
-            self.search(term: searchTerm)
-
-            guard let gameTitleForAlarm = self.searchedGemeTitle.text else {
-                return
-            }
-            content.title = "\(gameTitleForAlarm)"
-            content.body = "\(self.priceArray[0])"
-            self.priceArray.removeAll()
-
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 21600, repeats: true)
-            let request = UNNotificationRequest(identifier: "switchNoti", content: content, trigger: trigger)
-            self.center.add(request) { (error) in
-            }
+        if alarmSwitch.isOn && searchedGemeTitle.text != ""{
+            
+            SCLAlertView().showSuccess("Price alarm for\n\(titleForAlarm)\n started", subTitle: "\(LocalizaionClass.SCalertTextForSwitch.findInMenu)")
+            let selectedData = UserData(recordTitle: gameTitle, recordCountryName: noDigitalCountryArray[0], recordMinPrice: priceArray[0])
+            selectDatas.append(selectedData)
+            
+            alarmSwitchStatusIson = true
 
         }
         if alarmSwitch.isOn == false{
+            alarmSwitchStatusIson = false
+
             self.center.removePendingNotificationRequests(withIdentifiers: ["switchNoti"])
         }
     }
@@ -124,9 +97,6 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     var countryPrice: [String: String] = [:]
     var array = [String]()
 
-    //반복실행을 위한 메소드 인스턴스
-    var checker = Timer()
-
 
     
     // 각 테이블 별 갯수
@@ -148,7 +118,7 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
         //price cell 눌렀을 때
         let selectedData = UserData(recordTitle: gameTitle, recordCountryName: noDigitalCountryArray[indexPath.row], recordMinPrice: priceArray[indexPath.row])
         selectDatas.append(selectedData)
-            performSegue(withIdentifier: "showRecord", sender: nil)
+        performSegue(withIdentifier: "showRecord", sender: nil)
     }
     
     
@@ -156,6 +126,9 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        db = Database.database().reference()
+
         prepareAnimation()
         searchBar.placeholder = LocalizaionClass.Placeholder.searchBarPlaceholder
         UILabel.appearance(whenContainedInInstancesOf: [UISearchBar.self]).font = UIFont.systemFont(ofSize: 13)
@@ -166,7 +139,7 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
         var bannerView: GADBannerView!
         
         bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.adUnitID = "ca-app-pub-8456076322553323/1569435686"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
         bannerView.delegate = self
@@ -276,17 +249,13 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
             MoveChart.isHidden = false
             chartLabel.isHidden = false
             alarmLabel.isHidden = false
-            alarmSettingButton.isHidden = false
             alarmSwitch.isHidden = false
-            targetPriceTextField.isHidden = false
             
         }else{
             MoveChart.isHidden = true
             chartLabel.isHidden = true
             alarmLabel.isHidden = true
-            alarmSettingButton.isHidden = true
             alarmSwitch.isHidden = true
-            targetPriceTextField.isHidden = true
         }
     }
     
@@ -387,6 +356,9 @@ extension SwitchViewController: UISearchBarDelegate {
                 }
 
             }
+        priceForAlarm = priceArray[0]
+        titleForAlarm = gameTitle
+        print("titleForAlarm\(titleForAlarm)")
     }
     
     func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {

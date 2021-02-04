@@ -5,6 +5,9 @@
   Created by Woohyun Kim on 2020/10/04.
   Copyright © 2020 Woohyun Kim. All rights reserved.
 */
+
+"SwitchViewController.SCalert.findInMenu" = "تم حفظ الحد الأدنى للسعر الحالي. \n يمكنك العثور عليه في القائمة حفظ. \n يرجى التنبيه في الإعدادات ، وسوف نرسل لك السعر عن طريق إشعار الدفع";
+
 "SwitchViewController.seachBar.Placeholder" = "أدخل عنوان اللعبة أو ابحث عن اللعبة في القائمة";
 
 "SwitchViewController.SCalert.Error" = "لا نتيجة";

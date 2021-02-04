@@ -5,6 +5,9 @@
   Created by Woohyun Kim on 2020/10/04.
   Copyright © 2020 Woohyun Kim. All rights reserved.
 */
+
+"SwitchViewController.SCalert.findInMenu" = "Текущая минимальная цена сохраняется\n Вы можете найти его в меню-Сохранить\n Пожалуйста, включите будильник в настройках, мы вышлем вам цену push-уведомлением";
+
 "SwitchViewController.seachBar.Placeholder" = "Введите название игры или найдите игру в меню";
 
 "SwitchViewController.SCalert.Error" = "Безрезультатно";

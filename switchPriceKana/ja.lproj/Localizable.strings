@@ -5,6 +5,9 @@
   Created by Woohyun Kim on 2020/10/04.
   Copyright © 2020 Woohyun Kim. All rights reserved.
 */
+
+"SwitchViewController.SCalert.findInMenu" = "現在の最低価格が保存されます\n メニュー-保存することができます\n 設定でアラームをオンにしてください、プッシュ通知で価格を送信します";
+
 "SwitchViewController.seachBar.Placeholder" = "ゲームタイトルを入力するか、メニューでゲームを検索します";
 
 "SwitchViewController.SCalert.Error" = "検索結果はありません";

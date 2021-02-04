@@ -5,9 +5,7 @@
 //  Created by Woohyun Kim on 2020/10/14.
 //  Copyright © 2020 Woohyun Kim. All rights reserved.
 //
-// userdata에서 값을 받아오는 방식으로 해결
-// 알람 버튼 또는 스위치 상태에 따라 dispatchque를 reload, load하도록
-// 그안에 timer함수를 넣어볼 것
+
 
 
 import UIKit
@@ -43,7 +41,7 @@ class WebChartViewController: UIViewController, GADRewardedAdDelegate {
     }
     
     func createAndLoadRewardedAd() -> GADRewardedAd{
-        rewardedAd = GADRewardedAd(adUnitID: "ca-app-pub-3940256099942544/1712485313")
+        rewardedAd = GADRewardedAd(adUnitID: "ca-app-pub-8456076322553323/4330366365")
         rewardedAd?.load(GADRequest()) { error in
         if let error = error {
           print("Loading failed: \(error)")
@@ -86,17 +84,15 @@ class WebChartViewController: UIViewController, GADRewardedAdDelegate {
 
         
         self.showSpinner()
-
-        Timer.scheduledTimer(withTimeInterval: 4.0, repeats: false) {_ in
+        
+        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) {_ in
             self.removeSpinner()
             print("done")
         }
         
         goToChart.setTitle("\(LocalizaionClass.WebChartText.goToChart)", for: .normal)
         errorGuideLabel.text = LocalizaionClass.WebChartText.errorGuide
-        
 
- 
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -122,7 +118,6 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
     
     var webView: WKWebView!
     var webViewContentIsLoaded = false
-    var checker = Timer()
 
 
     init() {
@@ -156,11 +151,6 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         webView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         webView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         webView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        
-
-        
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -251,22 +241,6 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         if rewardedAd?.isReady == true {
            rewardedAd?.present(fromRootViewController: self, delegate:self)
         }
-    }
-    
-    @IBAction func saveAlarmButtonClicked(_ sender: Any) {
-        
-        Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { checker in
-            let webvc = WebViewController()
-            if self.alaramStatus.isOn && !webvc.webViewContentIsLoaded{
-            DispatchQueue.main.async { [webvc] in
-                let request = URLRequest(url: selectedUrl!)
-                webvc.webView.load(request)
-                webvc.webViewContentIsLoaded = true
-            }
-            }
-        }
-        
-
     }
 
 }

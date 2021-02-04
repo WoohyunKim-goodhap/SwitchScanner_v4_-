@@ -5,6 +5,9 @@
   Created by Woohyun Kim on 2020/10/04.
   Copyright © 2020 Woohyun Kim. All rights reserved.
 */
+
+"SwitchViewController.SCalert.findInMenu" = "Se ahorra el precio mínimo actual\n Puede encontrarlo Menú-Guardar\n Encienda la alarma en la Configuración, le enviaremos el precio mediante notificación push";
+
 "SwitchViewController.seachBar.Placeholder" = "Saisissez le titre du jeu ou recherchez le jeu dans le menu";
 
 "SwitchViewController.SCalert.Error" = "Pas de résultat";

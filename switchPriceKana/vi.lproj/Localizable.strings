@@ -5,6 +5,8 @@
   Created by Woohyun Kim on 2020/10/04.
   Copyright © 2020 Woohyun Kim. All rights reserved.
 */
+"SwitchViewController.SCalert.findInMenu" = "Giá tối thiểu hiện tại đã được lưu\n Bạn có thể tìm thấy nó trong Menu-Save\n Vui lòng bật báo thức trong Cài đặt, chúng tôi sẽ gửi cho bạn giá bằng thông báo đẩy";
+
 "SwitchViewController.seachBar.Placeholder" = "Nhập tiêu đề trò chơi hoặc Tìm trò chơi trong menu";
 
 "SwitchViewController.SCalert.Error" = "Không kết quả";
