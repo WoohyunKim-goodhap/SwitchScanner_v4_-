@@ -6,7 +6,7 @@
   Copyright © 2020 Woohyun Kim. All rights reserved.
 */
 
-"SwitchViewController.SCalert.findInMenu" = "Se ahorra el precio mínimo actual\n Puede encontrarlo Menú-Guardar\n Encienda la alarma en la Configuración, le enviaremos el precio mediante notificación push";
+"SwitchViewController.SCalert.findInMenu" = "Le prix le plus bas actuel a été enregistré dans Menu-Enregistrer\nNous vous enverrons le prix actuel par alarme push\nPour changer le jeu qui reçoit l'alarme\n recherchez un nouveau jeu et désactivez puis rallumez l'alarme.";
 
 "SwitchViewController.seachBar.Placeholder" = "Saisissez le titre du jeu ou recherchez le jeu dans le menu";
 

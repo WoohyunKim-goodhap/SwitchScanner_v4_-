@@ -6,7 +6,7 @@
   Copyright © 2020 Woohyun Kim. All rights reserved.
 */
 
-"SwitchViewController.SCalert.findInMenu" = "Current minium price is Saved\nYou can find it Menu-Save\n Please the alarm on in the Settings, we will send you the price by push notification";
+"SwitchViewController.SCalert.findInMenu" = "The current lowest price has been saved in Menu-Save\nWe will send you the current price by push alarm\nTo change the game that receives the alarm,\nsearch for a new game and turn the alarm off and then back on.";
 
 "SwitchViewController.seachBar.Placeholder" = "Input game title or Find game in menu";
 

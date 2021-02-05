@@ -93,7 +93,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         do {
             if alarmSwitchStatusIson {
                 try BGTaskScheduler.shared.submit(request)
-                print("submitted request")
+                print("startBGProcessingTask submitted request")
             }
         } catch {
             print("Could not schedule image fetch: \(error)")

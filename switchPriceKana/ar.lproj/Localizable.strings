@@ -6,7 +6,7 @@
   Copyright © 2020 Woohyun Kim. All rights reserved.
 */
 
-"SwitchViewController.SCalert.findInMenu" = "تم حفظ الحد الأدنى للسعر الحالي. \n يمكنك العثور عليه في القائمة حفظ. \n يرجى التنبيه في الإعدادات ، وسوف نرسل لك السعر عن طريق إشعار الدفع";
+"SwitchViewController.SCalert.findInMenu" = "تم حفظ السعر الأدنى الحالي في Menu-Save. سوف نرسل لك السعر الحالي عن طريق إنذار الدفع. لتغيير اللعبة التي تتلقى التنبيه ، ابحث عن لعبة جديدة وأوقف تشغيل المنبه ثم أعد تشغيله.";
 
 "SwitchViewController.seachBar.Placeholder" = "أدخل عنوان اللعبة أو ابحث عن اللعبة في القائمة";
 
