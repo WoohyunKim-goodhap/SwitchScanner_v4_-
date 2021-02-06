@@ -13,8 +13,6 @@ import WebKit
 import Kanna
 import SCLAlertView
 import GoogleMobileAds
-import UserNotifications
-
 
 class WebChartViewController: UIViewController, GADRewardedAdDelegate {
     
@@ -40,8 +38,11 @@ class WebChartViewController: UIViewController, GADRewardedAdDelegate {
       print("Rewarded ad failed to present.")
     }
     
+    //    test-id: ca-app-pub-3940256099942544/1712485313
+    //    adunit-id: ca-app-pub-8456076322553323/4330366365
+    
     func createAndLoadRewardedAd() -> GADRewardedAd{
-        rewardedAd = GADRewardedAd(adUnitID: "ca-app-pub-8456076322553323/4330366365")
+        rewardedAd = GADRewardedAd(adUnitID: "ca-app-pub-3940256099942544/1712485313")
         rewardedAd?.load(GADRequest()) { error in
         if let error = error {
           print("Loading failed: \(error)")
@@ -56,9 +57,7 @@ class WebChartViewController: UIViewController, GADRewardedAdDelegate {
     @IBOutlet var coverView: UIView!
     @IBOutlet var goToChart: UIButton!
     @IBOutlet var errorGuideLabel: UILabel!
-    
-    @IBOutlet var alaramStatus: UISwitch!
-    
+        
     
     //activity indicator
     func  showSpinner() {

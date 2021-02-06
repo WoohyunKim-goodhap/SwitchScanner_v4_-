@@ -15,6 +15,7 @@
 		5F2C60A9250C3487007DBF0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F2C60A7250C3487007DBF0F /* LaunchScreen.storyboard */; };
 		5F3D8D4F251B593300F3389C /* Kanna in Frameworks */ = {isa = PBXBuildFile; productRef = 5F3D8D4E251B593300F3389C /* Kanna */; };
 		5F4731B625236F6900650CC2 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4731B525236F6900650CC2 /* SearchTableViewController.swift */; };
+		5F5DFA8125CEB66D00349BCF /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5DFA8025CEB66D00349BCF /* AlarmViewController.swift */; };
 		5F64D140251171DB003BE57C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F64D13F251171DB003BE57C /* DetailViewController.swift */; };
 		5F65DEFC25299CD80012B9A9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5F65DEFE25299CD80012B9A9 /* Localizable.strings */; };
 		5F65DF0725299E010012B9A9 /* LocalizaionClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F65DF0625299E010012B9A9 /* LocalizaionClass.swift */; };
@@ -48,6 +49,8 @@
 		5F2C60AA250C3487007DBF0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F2D4E8C253322B300761AAA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5F4731B525236F6900650CC2 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
+		5F5DFA8025CEB66D00349BCF /* AlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
+		5F5DFA9A25CED6C000349BCF /* switchPriceKana.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = switchPriceKana.entitlements; sourceTree = "<group>"; };
 		5F64D13F251171DB003BE57C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		5F65DEFA25299C200012B9A9 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		5F65DEFD25299CD80012B9A9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -116,6 +119,7 @@
 		5F2C6098250C3485007DBF0F /* switchPriceKana */ = {
 			isa = PBXGroup;
 			children = (
+				5F5DFA9A25CED6C000349BCF /* switchPriceKana.entitlements */,
 				5F2C6099250C3485007DBF0F /* AppDelegate.swift */,
 				5F2C609B250C3485007DBF0F /* SceneDelegate.swift */,
 				5F2C609D250C3485007DBF0F /* SwitchViewController.swift */,
@@ -125,6 +129,7 @@
 				5F64D13F251171DB003BE57C /* DetailViewController.swift */,
 				5F9CB5D12537108900387B6A /* WebChartViewController.swift */,
 				5FF3EA9F2537321500967CDA /* ChartViewController.swift */,
+				5F5DFA8025CEB66D00349BCF /* AlarmViewController.swift */,
 				5F2C609F250C3485007DBF0F /* Main.storyboard */,
 				5F65DF0625299E010012B9A9 /* LocalizaionClass.swift */,
 				5F65DEFE25299CD80012B9A9 /* Localizable.strings */,
@@ -285,6 +290,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F5DFA8125CEB66D00349BCF /* AlarmViewController.swift in Sources */,
 				5F6DDDFC251D44DF0096B86B /* SwitchViewController.swift in Sources */,
 				5F7A04BF25274C010086F993 /* CurrencyViewController.swift in Sources */,
 				5F2C60A4250C3485007DBF0F /* switchPriceKana.xcdatamodeld in Sources */,
@@ -466,8 +472,9 @@
 			baseConfigurationReference = 209381B866D2F66C1952E7F4 /* Pods-switchPriceKana.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = switchPriceKana/switchPriceKana.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3.1;
+				CURRENT_PROJECT_VERSION = 4.0;
 				DEVELOPMENT_TEAM = MMT8T7BSNF;
 				INFOPLIST_FILE = switchPriceKana/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -487,8 +494,9 @@
 			baseConfigurationReference = 4C1E8CEBE7CF82C0125183A9 /* Pods-switchPriceKana.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = switchPriceKana/switchPriceKana.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3.1;
+				CURRENT_PROJECT_VERSION = 4.0;
 				DEVELOPMENT_TEAM = MMT8T7BSNF;
 				INFOPLIST_FILE = switchPriceKana/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

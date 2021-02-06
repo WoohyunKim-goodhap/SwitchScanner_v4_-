@@ -37,8 +37,11 @@ var dateSeparator = [String]()
 var selectedUrl = URL(string: "")
 var gameTitelForChart = ""
 
+
 var priceForAlarm : String = ""
 var titleForAlarm : String = ""
+var currencyForAlarm : String = ""
+var alarmStatusIson : Bool = false
 
-var alarmSwitchStatusIson : Bool = false
+var userToken : String = ""
 

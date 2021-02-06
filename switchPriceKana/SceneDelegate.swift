@@ -51,9 +51,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Save changes in the application's managed object context when the application transitions to the background.
         
-        (UIApplication.shared.delegate as! AppDelegate).startBGProcessingTask()
-        (UIApplication.shared.delegate as! AppDelegate).startBGAppRefreshTask()
-        
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
 

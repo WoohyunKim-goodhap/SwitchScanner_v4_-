@@ -5,131 +5,81 @@
 //  Created by Woohyun Kim on 2020/09/12.
 //  Copyright © 2020 Woohyun Kim. All rights reserved.
 //
-/// e -l objc -- (void)[[BGTaskScheduler sharedScheduler] _simulateLaunchForTaskWithIdentifier:@"com.Woohyun-kim.switchPriceKana.refresh"]
-/// e -l objc -- (void)[[BGTaskScheduler sharedScheduler] _simulateLaunchForTaskWithIdentifier:@"com.Woohyun-kim.switchPriceKana.processing"]
 
 import UIKit
 import CoreData
 import Firebase
 import GoogleMobileAds
-import BackgroundTasks
-import NotificationCenter
-
-
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     
-    let processingID = "com.Woohyun-kim.switchPriceKana.processing"
-    let refreshingID = "com.Woohyun-kim.switchPriceKana.refresh"
-    
-    let svc = SwitchViewController()
+    var window: UIWindow?
+
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
         FirebaseApp.configure()
         GADMobileAds.sharedInstance().start(completionHandler: nil)
-        
-        //bgtask
-        registerLocalNotification()
-        UserDefaults.standard.setValue("???", forKey: "title")
-        UserDefaults.standard.setValue("none", forKey: "price")
-        
-        BGTaskScheduler.shared.cancelAllTaskRequests()
-        BGTaskScheduler.shared.register(forTaskWithIdentifier: processingID, using: nil) { (task) in
-            print("background task triggered")
-            self.handleBGProcessingTask(task as! BGProcessingTask)
-        }
+        self.SetupPushNotification(application: application)
 
-        BGTaskScheduler.shared.register(forTaskWithIdentifier: refreshingID, using: nil) { (task) in
-            print("background task triggered")
-            self.handleBGAppRefreshTask(task as! BGAppRefreshTask)
-        }
-        
         return true
     }
     
-    func handleBGProcessingTask(_ task: BGProcessingTask) {
-        task.expirationHandler = {
-            // TODO
-        }
-        UserDefaults.standard.setValue("\(priceForAlarm)", forKey: "title")
-        UserDefaults.standard.setValue("\(titleForAlarm)", forKey: "price")
-
-        print("backgroundProcessing called")
+    // Setup appdelegate for push notifications
+    func SetupPushNotification(application: UIApplication) -> () {
         
-        scheduleLocalNotification(price: "\(priceForAlarm)", title: "\(titleForAlarm)")
-        
-        task.setTaskCompleted(success: true)
-    }
-    
-    func handleBGAppRefreshTask(_ task: BGAppRefreshTask) {
-        task.expirationHandler = {
-            // TODO
-        }
-        UserDefaults.standard.setValue("\(priceForAlarm)", forKey: "title")
-        UserDefaults.standard.setValue("\(titleForAlarm)", forKey: "price")
-        
-        print("backgroundRefresh called")
-        
-        scheduleLocalNotification(price: "\(priceForAlarm)", title: "\(titleForAlarm)")
-
-        task.setTaskCompleted(success: true)
-    }
-    
-    /// e -l objc -- (void)[[BGTaskScheduler sharedScheduler] _simulateLaunchForTaskWithIdentifier:@"com.Woohyun-kim.switchPriceKana.processing"]
-
-
-    func startBGProcessingTask() {
-        print("BackgroundProcessing called")
-        let request = BGProcessingTaskRequest(identifier: processingID)
-        request.requiresNetworkConnectivity = true // Need to true if your task need to network process. Defaults to false.
-        request.requiresExternalPower = false
-        
-         request.earliestBeginDate = Date(timeIntervalSinceNow: 1 * 60)
-        // Featch Image Count after 1 minute.
-        //Note :: EarliestBeginDate should not be set to too far into the future.
-        do {
-            if alarmSwitchStatusIson {
-                try BGTaskScheduler.shared.submit(request)
-                print("startBGProcessingTask submitted request")
-            }
-        } catch {
-            print("Could not schedule image fetch: \(error)")
-        }
-    }
-    
-    /// e -l objc -- (void)[[BGTaskScheduler sharedScheduler] _simulateLaunchForTaskWithIdentifier:@"com.Woohyun-kim.switchPriceKana.refresh"]
-    
-    func startBGAppRefreshTask() {
-        print("BackgroundRefresh called")
-
-        let appRefreshTaskReq = BGAppRefreshTaskRequest(identifier: refreshingID)
-        appRefreshTaskReq.earliestBeginDate = Date(timeIntervalSinceNow: 60)
-        do {
-            if alarmSwitchStatusIson {
-                try BGTaskScheduler.shared.submit(appRefreshTaskReq)
-                print("submitted request")
-            }
-        } catch {
-            print("Unable to submit task: \(error.localizedDescription)")
-        }
-    }
-    
-    
-    func registerLocalNotification() {
-        let notificationCenter = UNUserNotificationCenter.current()
-        let options: UNAuthorizationOptions = [.alert, .sound, .badge]
-        
-        notificationCenter.requestAuthorization(options: options) {
-            (didAllow, error) in
-            if !didAllow {
-                print("User has declined notifications")
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound,.badge])
+        {(granted,error) in
+            if granted{
+                DispatchQueue.main.async {
+                    application.registerForRemoteNotifications()
+                }
+            } else {
+                print("User Notification permission denied: \(error?.localizedDescription ?? "error")")
             }
         }
     }
     
+    //  MARK: UNUserNotificationCenter Delegate methods
+    
+    
+    // Method: 1 -  Will register app on apns to receieve token
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        
+        print("Successful registration. Token is:")
+        print(tokenString(deviceToken)) // this method will convert token "Data" to string formate
+        userToken = tokenString(deviceToken)
+        print("userToken\(userToken)")
+    }
+    
+    
+    // Method: 2 - Failed registration. Explain why.
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Failed to register for remote notifications: \(error.localizedDescription)")
+    }
+    
+    
+    // Method: 3 - In this method app will receive notifications in [userInfo]
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        print(userInfo)
+    }
+    
+    
+    //code to make a token string
+    func tokenString(_ deviceToken:Data) -> String{
+        let bytes = [UInt8](deviceToken)
+        var token = ""
+        for byte in bytes{
+            token += String(format: "%02x",byte)
+        }
+        return token //  this token will be passed to your backend that can be written in php, js, .net etc.
+    }
+    
+    
+ 
     //notification
     func scheduleLocalNotification(price: String, title: String) {
         let notificationCenter = UNUserNotificationCenter.current()

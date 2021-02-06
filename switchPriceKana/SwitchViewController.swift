@@ -6,8 +6,8 @@
 //  Copyright © 2020 Woohyun Kim. All rights reserved.
 //
 
+//[l localString에 avc에 있는 텍스트들 번역하기
 
-// []광고 2개를 모두 테스트에서 실제로 변경
 
 
 import UIKit
@@ -37,7 +37,7 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet var MoveChart: UIButton!
     @IBOutlet var chartLabel: UIButton!
     @IBOutlet var alarmLabel: UIButton!
-    @IBOutlet var alarmSwitch: UISwitch!
+    @IBOutlet var alarmButton: UIButton!
     
     
 
@@ -48,30 +48,6 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
         }else {
             menuView.isHidden = true
 //            prepareAnimation()
-        }
-    }
-    
-    @IBAction func alarmSwitchTouch(_ sender: Any) {
-        
-        
-        if alarmSwitch.isOn && searchedGemeTitle.text == "" {
-            SCLAlertView().showError("\(LocalizaionClass.SCalertText.error)", subTitle: "\(LocalizaionClass.SCalertText.errorDetail)")
-            alarmSwitch.isOn = false
-        }
-        
-        if alarmSwitch.isOn && searchedGemeTitle.text != ""{
-            
-            SCLAlertView().showSuccess("Price alarm for\n\(titleForAlarm)\n started", subTitle: "\(LocalizaionClass.SCalertTextForSwitch.findInMenu)")
-            let selectedData = UserData(recordTitle: gameTitle, recordCountryName: noDigitalCountryArray[0], recordMinPrice: priceArray[0])
-            selectDatas.append(selectedData)
-            
-            alarmSwitchStatusIson = true
-
-        }
-        if alarmSwitch.isOn == false{
-            alarmSwitchStatusIson = false
-
-            self.center.removePendingNotificationRequests(withIdentifiers: ["switchNoti"])
         }
     }
     
@@ -97,6 +73,8 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     var countryPrice: [String: String] = [:]
     var array = [String]()
 
+    /// The rewarded video ad.
+    var rewardedAd: GADRewardedAd?
 
     
     // 각 테이블 별 갯수
@@ -133,13 +111,18 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
         searchBar.placeholder = LocalizaionClass.Placeholder.searchBarPlaceholder
         UILabel.appearance(whenContainedInInstancesOf: [UISearchBar.self]).font = UIFont.systemFont(ofSize: 13)
 
+        //RewardAD
+        rewardedAd = createAndLoadRewardedAd()
+
         
         //Admob
-
+        //        test-id: ca-app-pub-3940256099942544/2934735716
+        //      ad-id: ca-app-pub-8456076322553323/1569435686
+        
         var bannerView: GADBannerView!
         
         bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
-        bannerView.adUnitID = "ca-app-pub-8456076322553323/1569435686"
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
         bannerView.delegate = self
@@ -249,13 +232,13 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
             MoveChart.isHidden = false
             chartLabel.isHidden = false
             alarmLabel.isHidden = false
-            alarmSwitch.isHidden = false
+            alarmButton.isHidden = false
             
         }else{
             MoveChart.isHidden = true
             chartLabel.isHidden = true
             alarmLabel.isHidden = true
-            alarmSwitch.isHidden = true
+            alarmButton.isHidden = true
         }
     }
     
@@ -269,13 +252,68 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue){
     }
     
+    @IBAction func alarmButtonTapped(_ sender: Any) {
+        
+        if rewardedAd?.isReady == true && alarmStatusIson == false{
+           rewardedAd?.present(fromRootViewController: self, delegate:self)
+        }
+        
+//        if alarmStatusIson == true {
+//            self.alarmButton.setImage(UIImage(named: "alarm"), for: .normal)
+//
+//            SCLAlertView().showNotice("Alarm off", subTitle: "If you want another price alarm, press button again")
+//        }
+    }
 }
+
+//GADRewardAD
+extension SwitchViewController: GADRewardedAdDelegate{
+    
+
+    /// Tells the delegate that the user earned a reward.
+    func rewardedAd(_ rewardedAd: GADRewardedAd, userDidEarn reward: GADAdReward) {
+      print("Reward received with currency: \(reward.type), amount \(reward.amount).")
+    }
+    /// Tells the delegate that the rewarded ad was presented.
+    func rewardedAdDidPresent(_ rewardedAd: GADRewardedAd) {
+      print("Rewarded ad presented.")
+    }
+    /// Tells the delegate that the rewarded ad was dismissed.
+    func rewardedAdDidDismiss(_ rewardedAd: GADRewardedAd) {
+         createAndLoadRewardedAd()
+      print("Rewarded ad dismissed.")
+    }
+    /// Tells the delegate that the rewarded ad failed to present.
+    func rewardedAd(_ rewardedAd: GADRewardedAd, didFailToPresentWithError error: Error) {
+      print("Rewarded ad failed to present.")
+    }
+    
+    //    test-id: ca-app-pub-3940256099942544/1712485313
+    //    adunit-id: ca-app-pub-8456076322553323/4330366365
+    
+    func createAndLoadRewardedAd() -> GADRewardedAd{
+        rewardedAd = GADRewardedAd(adUnitID: "ca-app-pub-3940256099942544/1712485313")
+        rewardedAd?.load(GADRequest()) { error in
+        if let error = error {
+          print("Loading failed: \(error)")
+        } else {
+          print("Loading Succeeded")
+        }
+      }
+        return rewardedAd!
+    }
+    
+
+}
+
 
 class ListCell: UITableViewCell {
     @IBOutlet weak var countryLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet var flagimg: UIImageView!
 }
+
+
 
 //search 관련 구문
 extension SwitchViewController: UISearchBarDelegate {
@@ -358,6 +396,7 @@ extension SwitchViewController: UISearchBarDelegate {
             }
         priceForAlarm = priceArray[0]
         titleForAlarm = gameTitle
+        currencyForAlarm = currency
         print("titleForAlarm\(titleForAlarm)")
     }
     
@@ -377,8 +416,6 @@ extension SwitchViewController: UISearchBarDelegate {
         noDigitalCountryArray.removeAll()
         
         search(term: searchTerm)
-
-        self.db.childByAutoId().setValue(searchTerm)
         
         searchedGemeTitle.text = gameTitle
         gameTitelForChart = gameTitle
@@ -409,6 +446,8 @@ extension String {
         }
     }
 }
+
+
 
 
         
