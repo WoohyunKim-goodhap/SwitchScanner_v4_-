@@ -5,6 +5,26 @@
   Created by Woohyun Kim on 2020/10/04.
   Copyright © 2020 Woohyun Kim. All rights reserved.
 */
+
+
+
+"AlarmViewController.showSuccess.head" = "Preisalarm starten";
+
+"AlarmViewController.showSuccess.sub" = "Wenn das Kursziel erreicht ist, senden wir Ihnen eine Push-Benachrichtigung";
+
+"AlarmViewController.showError.head" = "Zielpreis leer";
+
+"AlarmViewController.showError.sub" = "Bitte geben Sie das Kursziel ein";
+
+"AlarmViewController.selectedGame" = "Ausgewähltes Spiel";
+
+"AlarmViewController.currentPrice" = "Derzeitiger Preis";
+
+"AlarmViewController.TargetPrice" = "Zielpreis";
+
+"AlarmViewController.alarmRequestButton" = "Alarm speichern";
+
+
 "SwitchViewController.SCalert.findInMenu" = "Der aktuell niedrigste Preis wurde in Menü-Speichern gespeichert\n Wir senden Ihnen den aktuellen Preis per Push-Alarm\n Um das Spiel zu ändern, das den Alarm erhält\nsuchen Sie nach einem neuen Spiel und schalten Sie den Alarm aus und wieder ein.";
 
 "SwitchViewController.seachBar.Placeholder" = "Geben Sie den Spieltitel oder das Spiel im Menü suchen ein";

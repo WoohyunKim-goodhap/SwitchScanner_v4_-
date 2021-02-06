@@ -6,6 +6,23 @@
   Copyright © 2020 Woohyun Kim. All rights reserved.
 */
 
+
+"AlarmViewController.showSuccess.head" = "价格报警开始";
+
+"AlarmViewController.showSuccess.sub" = "达到目标价格后，我们会向您发送推送通知";
+
+"AlarmViewController.showError.head" = "目标价为空";
+
+"AlarmViewController.showError.sub" = "请填写价格目标";
+
+"AlarmViewController.selectedGame" = "入选游戏";
+
+"AlarmViewController.currentPrice" = "时价";
+
+"AlarmViewController.TargetPrice" = "目标价";
+
+"AlarmViewController.alarmRequestButton" = "报警保存";
+
 "SwitchViewController.SCalert.findInMenu" = "当前的最低价格已保存在菜单保存中\n 我们将通过推送警报向您发送当前价格\n 要更改接收警报的游戏\n请搜索新游戏并关闭警报，然后再打开。";
 
 "SwitchViewController.seachBar.Placeholder" = "输入游戏标题或在菜单中查找游戏";

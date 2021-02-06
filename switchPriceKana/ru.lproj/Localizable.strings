@@ -6,6 +6,23 @@
   Copyright © 2020 Woohyun Kim. All rights reserved.
 */
 
+
+"AlarmViewController.showSuccess.head" = "Начало тревоги по цене";
+
+"AlarmViewController.showSuccess.sub" = "Когда целевая цена будет достигнута, мы отправим вам push-уведомление";
+
+"AlarmViewController.showError.head" = "Целевая цена пуста";
+
+"AlarmViewController.showError.sub" = "Пожалуйста, укажите целевую цену";
+
+"AlarmViewController.selectedGame" = "Выбранная игра";
+
+"AlarmViewController.currentPrice" = "Текущая цена";
+
+"AlarmViewController.TargetPrice" = "Целевая цена";
+
+"AlarmViewController.alarmRequestButton" = "Тревога Сохранить";
+
 "SwitchViewController.SCalert.findInMenu" = "Текущая самая низкая цена была сохранена в Меню-Сохранить. Мы отправим вам текущую цену с помощью push-уведомления. Чтобы изменить игру, которая получает сигнал тревоги, найдите новую игру, выключите и снова включите будильник.";
 
 "SwitchViewController.seachBar.Placeholder" = "Введите название игры или найдите игру в меню";

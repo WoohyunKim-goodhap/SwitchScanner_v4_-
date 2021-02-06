@@ -6,6 +6,23 @@
   Copyright © 2020 Woohyun Kim. All rights reserved.
 */
 
+
+"AlarmViewController.showSuccess.head" = "価格アラーム開始";
+
+"AlarmViewController.showSuccess.sub" = "目標価格に達すると、プッシュ通知を送信します";
+
+"AlarmViewController.showError.head" = "目標価格が空";
+
+"AlarmViewController.showError.sub" = "価格目標を記入してください";
+
+"AlarmViewController.selectedGame" = "選択したゲーム";
+
+"AlarmViewController.currentPrice" = "現在の価格";
+
+"AlarmViewController.TargetPrice" = "目標価格";
+
+"AlarmViewController.alarmRequestButton" = "アラーム保存";
+
 "SwitchViewController.SCalert.findInMenu" = "現在の最低価格はメニュー-保存に保存されています\n プッシュアラームで現在の価格をお送りします\n アラームを受信するゲームを変更するには\n新しいゲームを検索し、アラームをオフにしてからオンに戻します。";
 
 "SwitchViewController.seachBar.Placeholder" = "ゲームタイトルを入力するか、メニューでゲームを検索します";

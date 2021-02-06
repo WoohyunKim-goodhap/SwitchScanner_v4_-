@@ -6,6 +6,24 @@
   Copyright © 2020 Woohyun Kim. All rights reserved.
 */
 
+
+"AlarmViewController.showSuccess.head" = "بدء إنذار السعر";
+
+"AlarmViewController.showSuccess.sub" = "عندما يتم الوصول إلى السعر المستهدف ، سنرسل إليك إشعارًا بالدفع";
+
+"AlarmViewController.showError.head" = "السعر المستهدف فارغ";
+
+"AlarmViewController.showError.sub" = "يرجى ملء السعر المستهدف";
+
+"AlarmViewController.selectedGame" = "لعبة مختارة";
+
+"AlarmViewController.currentPrice" = "السعر الحالي";
+
+"AlarmViewController.TargetPrice" = "السعر المستهدف";
+
+"AlarmViewController.alarmRequestButton" = "حفظ التنبيه";
+
+
 "SwitchViewController.SCalert.findInMenu" = "تم حفظ السعر الأدنى الحالي في Menu-Save. سوف نرسل لك السعر الحالي عن طريق إنذار الدفع. لتغيير اللعبة التي تتلقى التنبيه ، ابحث عن لعبة جديدة وأوقف تشغيل المنبه ثم أعد تشغيله.";
 
 "SwitchViewController.seachBar.Placeholder" = "أدخل عنوان اللعبة أو ابحث عن اللعبة في القائمة";

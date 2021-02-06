@@ -6,6 +6,23 @@
   Copyright © 2020 Woohyun Kim. All rights reserved.
 */
 
+
+"AlarmViewController.showSuccess.head" = "Début de l'alarme de prix";
+
+"AlarmViewController.showSuccess.sub" = "Lorsque le prix cible est atteint, nous vous enverrons une notification push";
+
+"AlarmViewController.showError.head" = "Prix cible vide";
+
+"AlarmViewController.showError.sub" = "Veuillez remplir l'objectif de prix";
+
+"AlarmViewController.selectedGame" = "Jeu sélectionné";
+
+"AlarmViewController.currentPrice" = "Prix actuel";
+
+"AlarmViewController.TargetPrice" = "Prix cible";
+
+"AlarmViewController.alarmRequestButton" = "Sauvegarde d'alarme";
+
 "SwitchViewController.SCalert.findInMenu" = "Le prix le plus bas actuel a été enregistré dans Menu-Enregistrer\nNous vous enverrons le prix actuel par alarme push\nPour changer le jeu qui reçoit l'alarme\n recherchez un nouveau jeu et désactivez puis rallumez l'alarme.";
 
 "SwitchViewController.seachBar.Placeholder" = "Saisissez le titre du jeu ou recherchez le jeu dans le menu";

@@ -6,6 +6,22 @@
   Copyright © 2020 Woohyun Kim. All rights reserved.
 */
 
+"AlarmViewController.showSuccess.head" = "Price alarm start";
+
+"AlarmViewController.showSuccess.sub" = "When the target price is reached, we will send you a push notification";
+
+"AlarmViewController.showError.head" = "Target price empty";
+
+"AlarmViewController.showError.sub" = "Please fill in price target";
+
+"AlarmViewController.selectedGame" = "Selected Game";
+
+"AlarmViewController.currentPrice" = "Current Price";
+
+"AlarmViewController.TargetPrice" = "Target Price";
+
+"AlarmViewController.alarmRequestButton" = "Alarm Save";
+
 "SwitchViewController.SCalert.findInMenu" = "The current lowest price has been saved in Menu-Save\nWe will send you the current price by push alarm\nTo change the game that receives the alarm,\nsearch for a new game and turn the alarm off and then back on.";
 
 "SwitchViewController.seachBar.Placeholder" = "Input game title or Find game in menu";

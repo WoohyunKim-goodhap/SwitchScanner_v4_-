@@ -20,6 +20,11 @@ class AlarmViewController: UIViewController {
     @IBOutlet var alarmRequestButton: UIButton!
     
     
+    @IBOutlet var selectedGame: UILabel!
+    @IBOutlet var currentPrice: UILabel!
+    @IBOutlet var TargetPrice: UILabel!
+    
+    
     var searchedGameTitle = ""
     var currentMinPriceLabel = ""
     var currentCurrency = ""
@@ -28,6 +33,12 @@ class AlarmViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        alarmRequestButton.setTitle(LocalizaionClass.AVCLabels.alarmRequestButton, for: .normal)
+        selectedGame.text = LocalizaionClass.AVCLabels.selectedGame
+        currentPrice.text = LocalizaionClass.AVCLabels.currentPrice
+        TargetPrice.text = LocalizaionClass.AVCLabels.TargetPrice
+        
         
         
         targetPriceTF.layer.shadowOffset = CGSize(width: 3, height: 3)
@@ -44,24 +55,21 @@ class AlarmViewController: UIViewController {
     
     @IBAction func TFediting(_ sender: Any) {
         alarmRequestButton.isHidden = false
-        alarmStatusIson = true
     }
     
     @IBAction func alarmRequestClicked(_ sender: Any) {
         
         if targetPriceTF.text?.isEmpty == false {
-            print("userToken print\(userToken)")
-            db.child("token \(userToken)").setValue(["game": "\(gameTitelForChart)", "currency": "\(currencyForAlarm)", "price": "\(String(describing: targetPriceTF.text))"])
+            guard let targetPrice = targetPriceTF.text else {
+                return            }
+            db.child("Alarm Request").setValue(["token": "\(userToken)", "game": "\(gameTitelForChart)", "currency": "\(currencyForAlarm)", "price": "\(targetPrice)"])
           
-            SCLAlertView().showSuccess("Price alarm start", subTitle: "When the target price is reached, we will send you a push notification")
+            SCLAlertView().showSuccess("\(LocalizaionClass.AVCAlert.successHead)", subTitle: "\(LocalizaionClass.AVCAlert.successSub)")
         }else{
-            SCLAlertView().showError("Target price empty", subTitle: "Please fill in price target")
+            SCLAlertView().showError("\(LocalizaionClass.AVCAlert.errorHead)", subTitle: "\(LocalizaionClass.AVCAlert.errorSub)")
         }
         
     }
-    
-    
-    
     /*
     // MARK: - Navigation
 

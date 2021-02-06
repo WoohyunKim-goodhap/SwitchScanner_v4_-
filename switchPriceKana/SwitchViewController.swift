@@ -9,7 +9,6 @@
 //[l localString에 avc에 있는 텍스트들 번역하기
 
 
-
 import UIKit
 import Kanna
 import SCLAlertView
@@ -115,14 +114,12 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
         rewardedAd = createAndLoadRewardedAd()
 
         
-        //Admob
-        //        test-id: ca-app-pub-3940256099942544/2934735716
-        //      ad-id: ca-app-pub-8456076322553323/1569435686
-        
+        //bannerAD
+ 
         var bannerView: GADBannerView!
         
         bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.adUnitID = "ca-app-pub-8456076322553323/1569435686"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
         bannerView.delegate = self
@@ -254,7 +251,7 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     
     @IBAction func alarmButtonTapped(_ sender: Any) {
         
-        if rewardedAd?.isReady == true && alarmStatusIson == false{
+        if rewardedAd?.isReady == true{
            rewardedAd?.present(fromRootViewController: self, delegate:self)
         }
         
@@ -288,11 +285,9 @@ extension SwitchViewController: GADRewardedAdDelegate{
       print("Rewarded ad failed to present.")
     }
     
-    //    test-id: ca-app-pub-3940256099942544/1712485313
-    //    adunit-id: ca-app-pub-8456076322553323/4330366365
     
     func createAndLoadRewardedAd() -> GADRewardedAd{
-        rewardedAd = GADRewardedAd(adUnitID: "ca-app-pub-3940256099942544/1712485313")
+        rewardedAd = GADRewardedAd(adUnitID: "ca-app-pub-8456076322553323/4330366365")
         rewardedAd?.load(GADRequest()) { error in
         if let error = error {
           print("Loading failed: \(error)")

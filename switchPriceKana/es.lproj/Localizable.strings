@@ -5,6 +5,24 @@
   Created by Woohyun Kim on 2020/10/04.
   Copyright © 2020 Woohyun Kim. All rights reserved.
 */
+
+
+"AlarmViewController.showSuccess.head" = "Inicio de alarma de precio";
+
+"AlarmViewController.showSuccess.sub" = "Cuando se alcance el precio objetivo, le enviaremos una notificación push";
+
+"AlarmViewController.showError.head" = "Precio objetivo vacío";
+
+"AlarmViewController.showError.sub" = "Por favor complete el precio objetivo";
+
+"AlarmViewController.selectedGame" = "Juego seleccionado";
+
+"AlarmViewController.currentPrice" = "Precio actual";
+
+"AlarmViewController.TargetPrice" = "Precio objetivo";
+
+"AlarmViewController.alarmRequestButton" = "Guardar alarma";
+
 "SwitchViewController.SCalert.findInMenu" = "El precio más bajo actual se ha guardado en Menú-Guardar/n Le enviaremos el precio actual mediante alarma push\nPara cambiar el juego que recibe la alarma, busque un nuevo juego\n apague la alarma y vuelva a encenderla.";
 
 "SwitchViewController.seachBar.Placeholder" = "Ingrese el título del juego o Buscar juego en el menú";

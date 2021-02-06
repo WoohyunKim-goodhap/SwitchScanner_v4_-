@@ -6,6 +6,23 @@
   Copyright © 2020 Woohyun Kim. All rights reserved.
 */
 
+
+"AlarmViewController.showSuccess.head" = "Báo giá bắt đầu";
+
+"AlarmViewController.showSuccess.sub" = "Khi đạt được giá mục tiêu, chúng tôi sẽ gửi cho bạn một thông báo đẩy";
+
+"AlarmViewController.showError.head" = "Giá mục tiêu trống";
+
+"AlarmViewController.showError.sub" = "Vui lòng điền vào mục tiêu giá";
+
+"AlarmViewController.selectedGame" = "Trò chơi đã chọn";
+
+"AlarmViewController.currentPrice" = "Giá hiện tại";
+
+"AlarmViewController.TargetPrice" = "Giá mục tiêu";
+
+"AlarmViewController.alarmRequestButton" = "Lưu báo thức";
+
 "SwitchViewController.SCalert.findInMenu" = "Текущая самая низкая цена была сохранена в Меню-Сохранить\n Мы отправим вам текущую цену с помощью push-уведомления\n Чтобы изменить игру, которая получает сигнал тревоги, найдите новую игру, выключите и снова включите будильник.";
 
 "SwitchViewController.seachBar.Placeholder" = "Nhập tiêu đề trò chơi hoặc Tìm trò chơi trong menu";

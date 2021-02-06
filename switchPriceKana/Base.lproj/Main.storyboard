@@ -723,12 +723,12 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vBc-Cb-90M">
-                                        <rect key="frame" x="107" y="412.33333333333331" width="200" height="36"/>
+                                        <rect key="frame" x="132" y="412.33333333333331" width="150" height="36"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="200" id="ujG-RG-VC6"/>
+                                            <constraint firstAttribute="width" constant="150" id="ujG-RG-VC6"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
-                                        <state key="normal" title="Alarm Request"/>
+                                        <state key="normal" title="Alarm Save"/>
                                         <connections>
                                             <action selector="alarmRequestClicked:" destination="ayx-Qa-uUq" eventType="touchUpInside" id="4G0-VU-uPC"/>
                                         </connections>
@@ -780,10 +780,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="vkO-LU-cGQ"/>
                     <connections>
+                        <outlet property="TargetPrice" destination="MNc-eo-mRv" id="cu4-Cs-5x2"/>
                         <outlet property="alarmRequestButton" destination="vBc-Cb-90M" id="by8-WF-bny"/>
                         <outlet property="currentCurrencyAlarm" destination="tmA-nU-42O" id="Bj7-aL-0Fz"/>
+                        <outlet property="currentPrice" destination="5K3-eC-LZo" id="fUq-jm-IJd"/>
                         <outlet property="currentPriceLabel" destination="It6-E7-UwZ" id="eIw-jU-4kB"/>
                         <outlet property="searchedGame" destination="ioQ-q2-8BA" id="g3P-67-0k8"/>
+                        <outlet property="selectedGame" destination="k3Y-ET-b7T" id="tag-wb-dj1"/>
                         <outlet property="targetCurrencyAlarm" destination="f8d-yZ-RAi" id="Hyv-Bj-bjp"/>
                         <outlet property="targetPriceTF" destination="qZg-s7-FEs" id="4fx-jK-E27"/>
                     </connections>
