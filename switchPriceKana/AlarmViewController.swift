@@ -59,7 +59,7 @@ class AlarmViewController: UIViewController {
         
         if targetPriceTF.text?.isEmpty == false {
             guard let targetPrice = targetPriceTF.text else {return}
-            db.child("Alarm Request").child("\(userToken)").setValue(["game": "\(gameTitelForChart)", "currency": "\(currencyForAlarm)", "price": "\(targetPrice)"])
+            db.child("Alarm Request").child("token-\(userToken)").setValue(["game": "\(gameTitelForChart)", "currency": "\(currencyForAlarm)", "price": "\(targetPrice)"])
           
             SCLAlertView().showSuccess("\(LocalizaionClass.AVCAlert.successHead)", subTitle: "\(LocalizaionClass.AVCAlert.successSub)")
         }else{
