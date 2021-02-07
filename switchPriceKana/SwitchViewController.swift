@@ -254,12 +254,7 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
         if rewardedAd?.isReady == true{
            rewardedAd?.present(fromRootViewController: self, delegate:self)
         }
-        
-//        if alarmStatusIson == true {
-//            self.alarmButton.setImage(UIImage(named: "alarm"), for: .normal)
-//
-//            SCLAlertView().showNotice("Alarm off", subTitle: "If you want another price alarm, press button again")
-//        }
+       
     }
 }
 
