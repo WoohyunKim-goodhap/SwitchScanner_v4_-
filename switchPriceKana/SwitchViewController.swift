@@ -6,7 +6,11 @@
 //  Copyright © 2020 Woohyun Kim. All rights reserved.
 //
 
-//[l localString에 avc에 있는 텍스트들 번역하기
+//[l user app 코드에서 파이어베이스 Request 노드 구조를 관리자 앱에 맞추어 재설계
+//[]db에 있는 request 값들 보여주기
+//[]observeSingleEvent에서 data add를 사용하면 신규 data 생길 때 알람을 받을수도?
+//[]사용자앱에 알람뷰컨트롤러에 timestamp추가할 것
+//[]break point에서 각 reuseable cell에 들어갈 값 설정해줄 것. decode한 값.price 와 같이 각 label값 표현하면 됨
 
 
 import UIKit
@@ -20,9 +24,7 @@ import UserNotifications
 
 
 class SwitchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, GADBannerViewDelegate {
-        
-    var db: DatabaseReference!
-
+            
     let center = UNUserNotificationCenter.current()
 
 
@@ -51,10 +53,7 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     
-    private func prepareAnimation(){
-        menuViewContraints.constant = 5
-    }
-    
+
     private func showAnimation(){
         menuViewContraints.constant = 2
         UIView.animate(withDuration: 0.3) {self.view.layoutIfNeeded()}
@@ -63,6 +62,7 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     var countryArray = [String]()
     var noDigitalCountryArray = [String]()
     var priceArray = [String]()
+    var priceArrayForCheck = [String]()
     var trimmedPriceArray = [String]()
     var gameTitle: String = "?"
     var totalGameList: [String] = Array()
@@ -71,24 +71,33 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     
     var countryPrice: [String: String] = [:]
     var array = [String]()
+    var requests: [Request] = []
 
     /// The rewarded video ad.
     var rewardedAd: GADRewardedAd?
 
-    
     // 각 테이블 별 갯수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return noDigitalCountryArray.count
+            return self.requests.count
     }
 
     //각 테이블 별 내용
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListCell else { return UITableViewCell()}
-            cell.countryLabel.text = noDigitalCountryArray[indexPath.row]
-            cell.priceLabel.text = priceArray[indexPath.row]
-            cell.flagimg.image = UIImage(named: countryNames.key(from: noDigitalCountryArray[indexPath.row]) ?? "")
-            return cell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListCell else { return UITableViewCell()}
+        
+        let currency = self.requests[indexPath.row].currency
+        let game = self.requests[indexPath.row].game
+        
+        cell.requestCurrencyLabel.text = currency
+        cell.requestGameLabel.text = game
+        cell.requestTokenLabel.text = self.requests[indexPath.row].token
+        cell.requestPriceLabel.text = self.requests[indexPath.row].price
+        print("game&currency\(game),\(currency)")
+        print(priceArrayForCheck)
+        cell.checkPriceLabel.text = search(term: game, currency: currency)[indexPath.row]
+          
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -98,35 +107,27 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
         performSegue(withIdentifier: "showRecord", sender: nil)
     }
     
-    
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        db = Database.database().reference()
-
-        prepareAnimation()
+        print("REQUESTS\(self.requests)")
+        
         searchBar.placeholder = LocalizaionClass.Placeholder.searchBarPlaceholder
         UILabel.appearance(whenContainedInInstancesOf: [UISearchBar.self]).font = UIFont.systemFont(ofSize: 13)
 
         //RewardAD
         rewardedAd = createAndLoadRewardedAd()
-
         
         //bannerAD
  
         var bannerView: GADBannerView!
         
         bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
-        bannerView.adUnitID = "ca-app-pub-8456076322553323/1569435686"
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
         bannerView.delegate = self
         addBannerViewToView(bannerView)
-
-        
-        //addbannerviewto...없음
     }
     
     func addBannerViewToView(_ bannerView: GADBannerView) {
@@ -220,22 +221,21 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidAppear(animated)
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
-        menuView.isHidden = true
-        prepareAnimation()
         
-        //검색된 game이 있을 때만 chart이동 버튼 노출
-        if searchedGemeTitle.text?.isEmpty == false {
-            MoveChart.isHidden = false
-            chartLabel.isHidden = false
-            alarmLabel.isHidden = false
-            alarmButton.isHidden = false
+        let db = Database.database().reference().child("Alarm Request")
+        
+        db.observeSingleEvent(of: .value) { (snapshot) in
             
-        }else{
-            MoveChart.isHidden = true
-            chartLabel.isHidden = true
-            alarmLabel.isHidden = true
-            alarmButton.isHidden = true
+            guard let request = snapshot.value as? [String : Any] else { return }
+            let data = try! JSONSerialization.data(withJSONObject: Array(request.values), options: [])
+            
+            let decoder = JSONDecoder()
+            let requestGames = try! decoder.decode([Request].self, from: data)
+            self.requests = requestGames
+            self.tableView.reloadData()
+            print("request\(self.requests[2].game)")
         }
     }
     
@@ -247,14 +247,6 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue){
-    }
-    
-    @IBAction func alarmButtonTapped(_ sender: Any) {
-        
-        if rewardedAd?.isReady == true{
-           rewardedAd?.present(fromRootViewController: self, delegate:self)
-        }
-       
     }
 }
 
@@ -282,7 +274,7 @@ extension SwitchViewController: GADRewardedAdDelegate{
     
     
     func createAndLoadRewardedAd() -> GADRewardedAd{
-        rewardedAd = GADRewardedAd(adUnitID: "ca-app-pub-8456076322553323/4330366365")
+        rewardedAd = GADRewardedAd(adUnitID: "ca-app-pub-3940256099942544/1712485313")
         rewardedAd?.load(GADRequest()) { error in
         if let error = error {
           print("Loading failed: \(error)")
@@ -292,17 +284,26 @@ extension SwitchViewController: GADRewardedAdDelegate{
       }
         return rewardedAd!
     }
-    
-
 }
 
 
 class ListCell: UITableViewCell {
-    @IBOutlet weak var countryLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet var flagimg: UIImageView!
+    
+    @IBOutlet var requestGameLabel: UILabel!
+    @IBOutlet var requestTokenLabel: UILabel!
+    @IBOutlet var requestCurrencyLabel: UILabel!
+    @IBOutlet var requestPriceLabel: UILabel!
+    @IBOutlet var checkPriceLabel: UILabel!
+    
 }
 
+
+//extension SwitchViewController {
+//    func check(term: String) {
+//        let currency = self.requests[indexPath.row].currency
+//        let game = self.requests[indexPath.row].game
+//    }
+//}
 
 
 //search 관련 구문
@@ -312,15 +313,15 @@ extension SwitchViewController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
     }
       
-    func search(term: String) {
+    func search(term: String, currency: String) -> [String]{
             getCountryNames()
             var titleUrl = [String]()
             let noEmptyWithloweredTerm = term.replacingOccurrences(of: " ", with: "+").lowercased()
         
             let myURLString = "https://eshop-prices.com/games?q=\(noEmptyWithloweredTerm)"
-            guard let addPercentURL = myURLString.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.urlQueryAllowed) else { return }
-            guard let myURL = URL(string: addPercentURL) else {return}
-            let myHTMLString = try? String(contentsOf: myURL, encoding: .utf8)
+            let addPercentURL = myURLString.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.urlQueryAllowed)
+            let myURL = URL(string: addPercentURL!)
+            let myHTMLString = try? String(contentsOf: myURL!, encoding: .utf8)
             let preDoc = try? HTML(html: myHTMLString!, encoding: .utf8)
             
             for link in preDoc!.xpath("//a/@href") {
@@ -329,13 +330,13 @@ extension SwitchViewController: UISearchBarDelegate {
                     titleUrl.append(link.content!)
                 }
             }
-            guard let firstUrl = titleUrl.first else { return }
-            let itemURLString = "https://eshop-prices.com/\(firstUrl)?currency=\(currency)"
-            guard let itemURL = URL(string: itemURLString) else {return}
-            selectedUrl = itemURL
-            let itemHTMLString = try? String(contentsOf: itemURL, encoding: .utf8)
-            let itemDoc = try? HTML(html: itemHTMLString!, encoding: .utf8)
-            let itemDocBody = itemDoc!.body
+        let firstUrl = titleUrl.first
+        let itemURLString = "https://eshop-prices.com/\(String(describing: firstUrl!))?currency=\(currency)"
+        let itemURL = URL(string: itemURLString)
+        selectedUrl = itemURL
+        let itemHTMLString = try? String(contentsOf: itemURL!, encoding: .utf8)
+        let itemDoc = try? HTML(html: itemHTMLString!, encoding: .utf8)
+        let itemDocBody = itemDoc!.body
         
             if let itemNodesForCountry = itemDocBody?.xpath("/html/body/div[1]/div[2]/div/h1/text()") {
                 for item in itemNodesForCountry {
@@ -375,19 +376,11 @@ extension SwitchViewController: UISearchBarDelegate {
                 priceArray.append(contentsOf: onlyPriceArray)
 
             }
-        
-            if let itemImage = itemDocBody?.at_xpath("/html/body/div[1]/div[2]/picture/img/@src") {
-                if let itemContent = itemImage.content{
-                    guard let url = URL(string: itemContent) else { return }
-                    self.imgView.reloadInputViews()
-                    imgView.kf.setImage(with: url)
-                }
-
-            }
-        priceForAlarm = priceArray[0]
-        titleForAlarm = gameTitle
-        currencyForAlarm = currency
-        print("titleForAlarm\(titleForAlarm)")
+        priceArrayForCheck.append(priceArray[0])
+        priceArray.removeAll()
+        print("PriceArray-->\(priceArray)")
+        print("ForCheckPriceArray-->\(priceArrayForCheck)")
+        return priceArrayForCheck
     }
     
     func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
@@ -405,7 +398,7 @@ extension SwitchViewController: UISearchBarDelegate {
         countryArray.removeAll()
         noDigitalCountryArray.removeAll()
         
-        search(term: searchTerm)
+        search(term: searchTerm, currency: "")
         
         searchedGemeTitle.text = gameTitle
         gameTitelForChart = gameTitle
@@ -437,7 +430,18 @@ extension String {
     }
 }
 
-
+struct Request: Codable {
+    let token: String
+    let currency: String
+    let game: String
+    let price: String
+    
+//    var toDictionary: [String: Any]{
+//        let dict: [String: Any] = ["token" : token, "currency" : currency, "game" : game, "price" : price]
+//        return dict
+//    }
+    
+    }
 
 
         
