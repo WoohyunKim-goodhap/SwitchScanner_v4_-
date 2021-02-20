@@ -67,9 +67,6 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
         }
         
     }
-    
-    
-    
 
     private func showAnimation(){
         menuViewContraints.constant = 2
