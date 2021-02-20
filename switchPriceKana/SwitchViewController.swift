@@ -6,11 +6,10 @@
 //  Copyright © 2020 Woohyun Kim. All rights reserved.
 //
 
-//[l user app 코드에서 파이어베이스 Request 노드 구조를 관리자 앱에 맞추어 재설계
-//[]db에 있는 request 값들 보여주기
+//[x]user app 코드에서 파이어베이스 Request 노드 구조를 관리자 앱에 맞추어 재설계
+//[x]db에 있는 request 값들 보여주기
 //[]observeSingleEvent에서 data add를 사용하면 신규 data 생길 때 알람을 받을수도?
-//[]사용자앱에 알람뷰컨트롤러에 timestamp추가할 것
-//[]break point에서 각 reuseable cell에 들어갈 값 설정해줄 것. decode한 값.price 와 같이 각 label값 표현하면 됨
+//[x]break point에서 각 reuseable cell에 들어갈 값 설정해줄 것. decode한 값.price 와 같이 각 label값 표현하면 됨
 
 
 import UIKit
@@ -51,6 +50,24 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
 //            prepareAnimation()
         }
     }
+    
+    @IBAction func reloadClicked(_ sender: Any) {
+        let db = Database.database().reference().child("Alarm Request")
+        
+        db.observeSingleEvent(of: .value) { (snapshot) in
+            
+            guard let request = snapshot.value as? [String : Any] else { return }
+            let data = try! JSONSerialization.data(withJSONObject: Array(request.values), options: [])
+            
+            let decoder = JSONDecoder()
+            let requestGames = try! decoder.decode([Request].self, from: data)
+            self.requests = requestGames
+            self.priceArrayForCheck.removeAll()
+            self.tableView.reloadData()
+        }
+        
+    }
+    
     
     
 
@@ -96,7 +113,21 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
         print("game&currency\(game),\(currency)")
         print(priceArrayForCheck)
         cell.checkPriceLabel.text = search(term: game, currency: currency)[indexPath.row]
-          
+//        let strRequestPrice = priceArrayForCheck[0]
+
+        let strRequestPrice = cell.requestPriceLabel.text!.filter("0123456789".contains)
+        let intRequestPrice = Int(strRequestPrice)
+        
+        let strCheckPrice = cell.checkPriceLabel.text!.filter("0123456789".contains)
+        let intCheckPrice  = Int(strCheckPrice)
+        
+        guard let bndIntCheckPrice = intCheckPrice else { return cell }
+        guard let bndIntRequestPrice = intRequestPrice else { return cell }
+        
+        if bndIntCheckPrice < bndIntRequestPrice {
+            cell.backgroundColor = UIColor.systemGray2
+        }
+
         return cell
     }
     
@@ -114,20 +145,20 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
         
         searchBar.placeholder = LocalizaionClass.Placeholder.searchBarPlaceholder
         UILabel.appearance(whenContainedInInstancesOf: [UISearchBar.self]).font = UIFont.systemFont(ofSize: 13)
-
-        //RewardAD
-        rewardedAd = createAndLoadRewardedAd()
-        
-        //bannerAD
- 
-        var bannerView: GADBannerView!
-        
-        bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-        bannerView.rootViewController = self
-        bannerView.load(GADRequest())
-        bannerView.delegate = self
-        addBannerViewToView(bannerView)
+//
+//        //RewardAD
+//        rewardedAd = createAndLoadRewardedAd()
+//
+//        //bannerAD
+//
+//        var bannerView: GADBannerView!
+//
+//        bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+//        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+//        bannerView.rootViewController = self
+//        bannerView.load(GADRequest())
+//        bannerView.delegate = self
+//        addBannerViewToView(bannerView)
     }
     
     func addBannerViewToView(_ bannerView: GADBannerView) {
@@ -224,19 +255,18 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewWillAppear(_ animated: Bool) {
         
-        let db = Database.database().reference().child("Alarm Request")
-        
-        db.observeSingleEvent(of: .value) { (snapshot) in
-            
-            guard let request = snapshot.value as? [String : Any] else { return }
-            let data = try! JSONSerialization.data(withJSONObject: Array(request.values), options: [])
-            
-            let decoder = JSONDecoder()
-            let requestGames = try! decoder.decode([Request].self, from: data)
-            self.requests = requestGames
-            self.tableView.reloadData()
-            print("request\(self.requests[2].game)")
-        }
+//        let db = Database.database().reference().child("Alarm Request")
+//
+//        db.observeSingleEvent(of: .value) { (snapshot) in
+//
+//            guard let request = snapshot.value as? [String : Any] else { return }
+//            let data = try! JSONSerialization.data(withJSONObject: Array(request.values), options: [])
+//
+//            let decoder = JSONDecoder()
+//            let requestGames = try! decoder.decode([Request].self, from: data)
+//            self.requests = requestGames
+////            self.tableView.reloadData()
+//        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
