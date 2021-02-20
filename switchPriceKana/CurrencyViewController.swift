@@ -43,7 +43,6 @@ class CurrencyViewController: UIViewController, UITableViewDelegate, UITableView
             if let svc = segue.destination as? SwitchViewController{
                 //SVC에 테이블 셀에 필요 값을 넣어줌
                 svc.currency = selectedCurrency
-                currencyForAlarm = selectedCurrency
                 if svc.searchBar.text?.isEmpty == false{
                     svc.searchBarSearchButtonClicked(svc.searchBar)
                 }else{ return }

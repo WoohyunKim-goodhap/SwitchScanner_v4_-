@@ -209,6 +209,14 @@
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kfb-bX-uaF">
+                                                    <rect key="frame" x="359" y="48.000000000000007" width="40" height="38.666666666666664"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="nqB-eP-ZGI"/>
+                                                        <constraint firstAttribute="width" constant="40" id="qZg-p8-EPr"/>
+                                                    </constraints>
+                                                    <state key="normal" backgroundImage="checkmark.circle" catalog="system"/>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="GDq-os-EYT" firstAttribute="centerX" secondItem="UIH-8K-NTg" secondAttribute="centerX" id="1T0-5X-XqO"/>
@@ -221,6 +229,8 @@
                                                 <constraint firstItem="XiW-cE-zGO" firstAttribute="top" secondItem="1ho-yW-L31" secondAttribute="bottom" constant="30" id="YDD-r5-K1s"/>
                                                 <constraint firstItem="YUM-Wx-q46" firstAttribute="leading" secondItem="8Jf-jV-UHX" secondAttribute="leading" constant="10" id="d6d-qz-8Rp"/>
                                                 <constraint firstAttribute="bottom" secondItem="YUM-Wx-q46" secondAttribute="bottom" constant="15" id="diP-xU-n7P"/>
+                                                <constraint firstItem="kfb-bX-uaF" firstAttribute="centerY" secondItem="GDq-os-EYT" secondAttribute="centerY" id="g2w-36-BlW"/>
+                                                <constraint firstAttribute="trailing" secondItem="kfb-bX-uaF" secondAttribute="trailing" constant="15" id="khl-2Z-egH"/>
                                                 <constraint firstItem="1ho-yW-L31" firstAttribute="top" secondItem="8Jf-jV-UHX" secondAttribute="top" constant="5" id="nTa-PX-lHt"/>
                                                 <constraint firstItem="1ho-yW-L31" firstAttribute="leading" secondItem="8Jf-jV-UHX" secondAttribute="leading" constant="8" id="o5e-Fw-b8t"/>
                                                 <constraint firstItem="XiW-cE-zGO" firstAttribute="leading" secondItem="1ho-yW-L31" secondAttribute="leading" id="pKY-az-tcP"/>
@@ -234,6 +244,7 @@
                                             <outlet property="requestGameLabel" destination="1ho-yW-L31" id="w7z-DV-BjN"/>
                                             <outlet property="requestPriceLabel" destination="loY-vY-sit" id="xdd-fn-boo"/>
                                             <outlet property="requestTokenLabel" destination="YUM-Wx-q46" id="FUJ-FI-UJZ"/>
+                                            <outlet property="sendNotiBtn" destination="kfb-bX-uaF" id="tnT-pL-fAa"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -690,6 +701,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="checkmark.circle" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

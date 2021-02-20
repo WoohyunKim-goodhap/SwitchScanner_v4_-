@@ -38,11 +38,13 @@ var selectedUrl = URL(string: "")
 var gameTitelForChart = ""
 
 
-var priceForAlarm : String = ""
-var titleForAlarm : String = ""
-var currencyForAlarm : String = ""
-var pushNotiDone : Bool = false
+var requestPriceForNoti : String = ""
+var checkPriceForNoti : String = ""
+var titleForNoti : String = ""
+var currencyNoti : String = ""
 
 var userToken : String = ""
 var userFCMToken : String = ""
+
+
 

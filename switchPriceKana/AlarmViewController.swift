@@ -42,9 +42,7 @@ class AlarmViewController: UIViewController {
         targetPriceTF.layer.shadowOffset = CGSize(width: 3, height: 3)
         
         searchedGame.text = gameTitelForChart
-        currentCurrencyAlarm.text = currencyForAlarm
-        currentPriceLabel.text = priceForAlarm
-        targetCurrencyAlarm.text = currencyForAlarm
+
         
         alarmRequestButton.isHidden = true
         
@@ -56,17 +54,6 @@ class AlarmViewController: UIViewController {
     }
     
     @IBAction func alarmRequestClicked(_ sender: Any) {
-        
-        if targetPriceTF.text?.isEmpty == false {
-                        
-            guard let targetPrice = targetPriceTF.text else {return}
-            db.child("Alarm Request").childByAutoId().setValue(["token":"\(userToken)","game": "\(gameTitelForChart)", "currency": "\(currencyForAlarm)", "price": "\(targetPrice)"])
-          
-            SCLAlertView().showSuccess("\(LocalizaionClass.AVCAlert.successHead)", subTitle: "\(LocalizaionClass.AVCAlert.successSub)")
-        }else{
-            SCLAlertView().showError("\(LocalizaionClass.AVCAlert.errorHead)", subTitle: "\(LocalizaionClass.AVCAlert.errorSub)")
-        }
-        
     }
     /*
     // MARK: - Navigation

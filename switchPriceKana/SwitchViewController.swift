@@ -10,10 +10,10 @@
 //[x]db에 있는 request 값들 보여주기
 //[x]break point에서 각 reuseable cell에 들어갈 값 설정해줄 것. decode한 값.price 와 같이 각 label값 표현하면 됨
 //[]test id change in user app
-//[]cell bgcolor 수정
-//[]cell 눌렀을 때 user의 noti수정
-//[]cell 눌렀을 때 bgcolor 원래대로
-//[]cell 에 'fcm'token 이라고 추가
+//[x]cell bgcolor 수정
+//[x]cell 눌렀을 때 user의 noti수정
+//[x]cell 눌렀을 때 bgcolor 원래대로
+//[x]cell 에 'fcm'token 이라고 추가
 
 
 import UIKit
@@ -103,14 +103,19 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListCell else { return UITableViewCell()}
         
+        let gameForSearch = self.requests[indexPath.row].game
         let currency = self.requests[indexPath.row].currency
-        let game = self.requests[indexPath.row].game
         
-        cell.requestCurrencyLabel.text = currency
-        cell.requestGameLabel.text = game
-        cell.requestTokenLabel.text = self.requests[indexPath.row].FCMtoken
-        cell.requestPriceLabel.text = self.requests[indexPath.row].price
-        cell.checkPriceLabel.text = search(term: game, currency: currency)[indexPath.row]
+        checkPriceForNoti = search(term: gameForSearch, currency: currency)[indexPath.row]
+        requestPriceForNoti = self.requests[indexPath.row].price
+        titleForNoti = self.requests[indexPath.row].game
+        currencyNoti = currency
+                
+        cell.requestCurrencyLabel.text = currencyNoti
+        cell.requestGameLabel.text = titleForNoti
+        cell.requestPriceLabel.text = requestPriceForNoti
+        cell.checkPriceLabel.text = checkPriceForNoti
+        cell.requestTokenLabel.text = "FCM token: \(self.requests[indexPath.row].FCMtoken)"
 
         let strRequestPrice = cell.requestPriceLabel.text!.filter("0123456789".contains)
         let intRequestPrice = Int(strRequestPrice)
@@ -121,20 +126,23 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
         guard let bndIntCheckPrice = intCheckPrice else { return cell }
         guard let bndIntRequestPrice = intRequestPrice else { return cell }
         
-        if bndIntCheckPrice < bndIntRequestPrice {
-            if pushNotiDone == false {
-                cell.backgroundColor = UIColor.systemGray4
-            }
+        if bndIntCheckPrice < bndIntRequestPrice && cell.pushNotiDone == false {
+            cell.backgroundColor = UIColor.systemGray4
         }
-
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let cell = tableView.cellForRow(at: indexPath) as! ListCell
+                
         //cell 눌렀을 때
+        cell.pushNotiDone = true
         userFCMToken = self.requests[indexPath.row].FCMtoken
         let sender = PushNotificationSender()
-        sender.sendPushNotification(to: "\(userFCMToken)", title: "test", body: "FCMpush")
+        sender.sendPushNotification(to: "\(userFCMToken)", title: "\(cell.requestGameLabel.text ?? "Target game") price is \(cell.checkPriceLabel.text ?? "cloase to that you want")", body: "Don't miss the lowest price in the world!")
+ 
         self.tableView.reloadData()
         
     }
@@ -292,11 +300,14 @@ extension SwitchViewController: GADRewardedAdDelegate{
 
 class ListCell: UITableViewCell {
     
+    var pushNotiDone : Bool = false
+    
     @IBOutlet var requestGameLabel: UILabel!
     @IBOutlet var requestTokenLabel: UILabel!
     @IBOutlet var requestCurrencyLabel: UILabel!
     @IBOutlet var requestPriceLabel: UILabel!
     @IBOutlet var checkPriceLabel: UILabel!
+    @IBOutlet var sendNotiBtn: UIButton!
     
 }
 
@@ -433,6 +444,7 @@ struct Request: Codable {
 //Device to Device
 
 class PushNotificationSender {
+        
     func sendPushNotification(to token: String, title: String, body: String) {
         let urlString = "https://fcm.googleapis.com/fcm/send"
         let url = NSURL(string: urlString)!
@@ -458,7 +470,6 @@ class PushNotificationSender {
                             if Int(truncating: FCMReponse as! NSNumber) == 1 {
                                 DispatchQueue.main.async {
                                     SCLAlertView().showSuccess("FCM success", subTitle: "Good job")
-                                    pushNotiDone = true
                                 }
                             }else{
                                 DispatchQueue.main.async {
@@ -475,4 +486,40 @@ class PushNotificationSender {
         task.resume()
     }
 }
+
+//For button
+
+extension UIImage {
+
+    public convenience init?(_ systemItem: UIBarButtonItem.SystemItem) {
+
+        guard let sysImage = UIImage.imageFrom(systemItem: systemItem)?.cgImage else {
+            return nil
+        }
+
+        self.init(cgImage: sysImage)
+    }
+
+    private class func imageFrom(systemItem: UIBarButtonItem.SystemItem) -> UIImage? {
+
+        let sysBarButtonItem = UIBarButtonItem(barButtonSystemItem: systemItem, target: nil, action: nil)
+
+        //MARK:- Adding barButton into tool bar and rendering it.
+        let toolBar = UIToolbar()
+        toolBar.setItems([sysBarButtonItem], animated: false)
+        toolBar.snapshotView(afterScreenUpdates: true)
+
+        if  let buttonView = sysBarButtonItem.value(forKey: "view") as? UIView{
+            for subView in buttonView.subviews {
+                if subView is UIButton {
+                    let button = subView as! UIButton
+                    let image = button.imageView!.image!
+                    return image
+                }
+            }
+        }
+        return nil
+    }
+}
+
         
