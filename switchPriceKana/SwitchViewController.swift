@@ -8,8 +8,12 @@
 
 //[x]user app 코드에서 파이어베이스 Request 노드 구조를 관리자 앱에 맞추어 재설계
 //[x]db에 있는 request 값들 보여주기
-//[]observeSingleEvent에서 data add를 사용하면 신규 data 생길 때 알람을 받을수도?
 //[x]break point에서 각 reuseable cell에 들어갈 값 설정해줄 것. decode한 값.price 와 같이 각 label값 표현하면 됨
+//[]test id change in user app
+//[]cell bgcolor 수정
+//[]cell 눌렀을 때 user의 noti수정
+//[]cell 눌렀을 때 bgcolor 원래대로
+//[]cell 에 'fcm'token 이라고 추가
 
 
 import UIKit
@@ -65,7 +69,6 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
             self.priceArrayForCheck.removeAll()
             self.tableView.reloadData()
         }
-        
     }
 
     private func showAnimation(){
@@ -105,12 +108,9 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
         
         cell.requestCurrencyLabel.text = currency
         cell.requestGameLabel.text = game
-        cell.requestTokenLabel.text = self.requests[indexPath.row].token
+        cell.requestTokenLabel.text = self.requests[indexPath.row].FCMtoken
         cell.requestPriceLabel.text = self.requests[indexPath.row].price
-        print("game&currency\(game),\(currency)")
-        print(priceArrayForCheck)
         cell.checkPriceLabel.text = search(term: game, currency: currency)[indexPath.row]
-//        let strRequestPrice = priceArrayForCheck[0]
 
         let strRequestPrice = cell.requestPriceLabel.text!.filter("0123456789".contains)
         let intRequestPrice = Int(strRequestPrice)
@@ -122,17 +122,21 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
         guard let bndIntRequestPrice = intRequestPrice else { return cell }
         
         if bndIntCheckPrice < bndIntRequestPrice {
-            cell.backgroundColor = UIColor.systemGray2
+            if pushNotiDone == false {
+                cell.backgroundColor = UIColor.systemGray4
+            }
         }
 
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //price cell 눌렀을 때
-        let selectedData = UserData(recordTitle: gameTitle, recordCountryName: noDigitalCountryArray[indexPath.row], recordMinPrice: priceArray[indexPath.row])
-        selectDatas.append(selectedData)
-        performSegue(withIdentifier: "showRecord", sender: nil)
+        //cell 눌렀을 때
+        userFCMToken = self.requests[indexPath.row].FCMtoken
+        let sender = PushNotificationSender()
+        sender.sendPushNotification(to: "\(userFCMToken)", title: "test", body: "FCMpush")
+        self.tableView.reloadData()
+        
     }
     
     override func viewDidLoad() {
@@ -142,20 +146,7 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
         
         searchBar.placeholder = LocalizaionClass.Placeholder.searchBarPlaceholder
         UILabel.appearance(whenContainedInInstancesOf: [UISearchBar.self]).font = UIFont.systemFont(ofSize: 13)
-//
-//        //RewardAD
-//        rewardedAd = createAndLoadRewardedAd()
-//
-//        //bannerAD
-//
-//        var bannerView: GADBannerView!
-//
-//        bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
-//        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-//        bannerView.rootViewController = self
-//        bannerView.load(GADRequest())
-//        bannerView.delegate = self
-//        addBannerViewToView(bannerView)
+
     }
     
     func addBannerViewToView(_ bannerView: GADBannerView) {
@@ -249,22 +240,7 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidAppear(animated)
     }
     
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-//        let db = Database.database().reference().child("Alarm Request")
-//
-//        db.observeSingleEvent(of: .value) { (snapshot) in
-//
-//            guard let request = snapshot.value as? [String : Any] else { return }
-//            let data = try! JSONSerialization.data(withJSONObject: Array(request.values), options: [])
-//
-//            let decoder = JSONDecoder()
-//            let requestGames = try! decoder.decode([Request].self, from: data)
-//            self.requests = requestGames
-////            self.tableView.reloadData()
-//        }
-    }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let rvc = segue.destination as? RecordViewController {
@@ -323,14 +299,6 @@ class ListCell: UITableViewCell {
     @IBOutlet var checkPriceLabel: UILabel!
     
 }
-
-
-//extension SwitchViewController {
-//    func check(term: String) {
-//        let currency = self.requests[indexPath.row].currency
-//        let game = self.requests[indexPath.row].game
-//    }
-//}
 
 
 //search 관련 구문
@@ -405,8 +373,7 @@ extension SwitchViewController: UISearchBarDelegate {
             }
         priceArrayForCheck.append(priceArray[0])
         priceArray.removeAll()
-        print("PriceArray-->\(priceArray)")
-        print("ForCheckPriceArray-->\(priceArrayForCheck)")
+
         return priceArrayForCheck
     }
     
@@ -424,9 +391,6 @@ extension SwitchViewController: UISearchBarDelegate {
         priceArray.removeAll()
         countryArray.removeAll()
         noDigitalCountryArray.removeAll()
-        
-        search(term: searchTerm, currency: "")
-        
         searchedGemeTitle.text = gameTitle
         gameTitelForChart = gameTitle
         self.tableView.reloadData()
@@ -458,17 +422,57 @@ extension String {
 }
 
 struct Request: Codable {
-    let token: String
+    let APNtoken: String
     let currency: String
     let game: String
     let price: String
-    
-//    var toDictionary: [String: Any]{
-//        let dict: [String: Any] = ["token" : token, "currency" : currency, "game" : game, "price" : price]
-//        return dict
-//    }
-    
+    let FCMtoken : String
     }
 
 
+//Device to Device
+
+class PushNotificationSender {
+    func sendPushNotification(to token: String, title: String, body: String) {
+        let urlString = "https://fcm.googleapis.com/fcm/send"
+        let url = NSURL(string: urlString)!
+        let paramString: [String : Any] = ["to" : userFCMToken,
+                                           "notification" : ["title" : title, "body" : body],
+                                           "data" : ["user" : "test_id"]
+        ]
+
+        let serverKey = "AAAAQ32WXfg:APA91bE7EakVwHnG7_P3-5lQYvrDPit3nCwLRcOcMwHOX5plMPW4JfgXNZeCPs-Yekg3OQFZiy-ouWSwjoe3ZaOVaLuvIFsk73m9JHogTow3Vxk9jc6fogbz0pyoyx1WOml7XtAMr06C"
+        
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = "POST"
+        request.httpBody = try? JSONSerialization.data(withJSONObject:paramString, options: [.prettyPrinted])
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("key=\(serverKey)", forHTTPHeaderField: "Authorization")
+
+        let task =  URLSession.shared.dataTask(with: request as URLRequest)  { (data, response, error) in
+            do {
+                if let jsonData = data {
+                    if let jsonDataDict  = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.allowFragments) as? [String: AnyObject] {
+                        NSLog("Received data:\n\(jsonDataDict))")
+                        if let FCMReponse = jsonDataDict["success"] {
+                            if Int(truncating: FCMReponse as! NSNumber) == 1 {
+                                DispatchQueue.main.async {
+                                    SCLAlertView().showSuccess("FCM success", subTitle: "Good job")
+                                    pushNotiDone = true
+                                }
+                            }else{
+                                DispatchQueue.main.async {
+                                    SCLAlertView().showError("FCM Fail", subTitle: "error")
+                                }
+                            }
+                        }
+                    }
+                }
+            } catch let err as NSError {
+                print(err.debugDescription)
+            }
+        }
+        task.resume()
+    }
+}
         

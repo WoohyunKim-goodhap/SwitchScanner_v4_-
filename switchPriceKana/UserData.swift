@@ -41,7 +41,8 @@ var gameTitelForChart = ""
 var priceForAlarm : String = ""
 var titleForAlarm : String = ""
 var currencyForAlarm : String = ""
-var alarmStatusIson : Bool = false
+var pushNotiDone : Bool = false
 
 var userToken : String = ""
+var userFCMToken : String = ""
 

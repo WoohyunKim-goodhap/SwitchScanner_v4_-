@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -142,7 +141,7 @@
                                 </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="152" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="X9f-t1-6gW">
-                                <rect key="frame" x="0.0" y="258" width="414" height="604"/>
+                                <rect key="frame" x="0.0" y="253" width="414" height="609"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="120" id="6kO-l4-JDf" customClass="ListCell" customModule="switchPriceKana" customModuleProvider="target">
@@ -162,20 +161,13 @@
                                                     <color key="textColor" systemColor="systemBlueColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dip-A4-R75">
-                                                    <rect key="frame" x="349.66666666666669" y="25.333333333333329" width="29.333333333333314" height="36"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                    <state key="normal">
-                                                        <imageReference key="image" image="checkmark.icloud" catalog="system" symbolScale="large"/>
-                                                    </state>
-                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Request" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2g-5y-nKM">
                                                     <rect key="frame" x="129" y="35" width="52.333333333333343" height="16.333333333333329"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="16.333333333333329" id="O7P-2H-MYs"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                                    <color key="textColor" systemColor="systemGray2Color"/>
+                                                    <color key="textColor" systemColor="linkColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="₩57,000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="loY-vY-sit">
@@ -190,7 +182,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Check" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UIH-8K-NTg">
                                                     <rect key="frame" x="231.33333333333334" y="35" width="40.333333333333343" height="16.333333333333329"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                                    <color key="textColor" systemColor="systemGray2Color"/>
+                                                    <color key="textColor" systemColor="linkColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="₩57,000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GDq-os-EYT">
@@ -221,7 +213,6 @@
                                             <constraints>
                                                 <constraint firstItem="GDq-os-EYT" firstAttribute="centerX" secondItem="UIH-8K-NTg" secondAttribute="centerX" id="1T0-5X-XqO"/>
                                                 <constraint firstItem="loY-vY-sit" firstAttribute="top" secondItem="j2g-5y-nKM" secondAttribute="bottom" constant="5" id="4j4-1b-rzG"/>
-                                                <constraint firstAttribute="trailing" secondItem="dip-A4-R75" secondAttribute="trailing" constant="35" id="62M-D4-BKJ"/>
                                                 <constraint firstItem="UIH-8K-NTg" firstAttribute="centerY" secondItem="j2g-5y-nKM" secondAttribute="centerY" id="B19-Kt-hE2"/>
                                                 <constraint firstItem="GDq-os-EYT" firstAttribute="centerY" secondItem="loY-vY-sit" secondAttribute="centerY" id="B6N-8d-0WB"/>
                                                 <constraint firstItem="j2g-5y-nKM" firstAttribute="leading" secondItem="XiW-cE-zGO" secondAttribute="trailing" constant="50" id="BbA-pT-aTP"/>
@@ -234,7 +225,6 @@
                                                 <constraint firstItem="1ho-yW-L31" firstAttribute="leading" secondItem="8Jf-jV-UHX" secondAttribute="leading" constant="8" id="o5e-Fw-b8t"/>
                                                 <constraint firstItem="XiW-cE-zGO" firstAttribute="leading" secondItem="1ho-yW-L31" secondAttribute="leading" id="pKY-az-tcP"/>
                                                 <constraint firstItem="YUM-Wx-q46" firstAttribute="top" secondItem="XiW-cE-zGO" secondAttribute="bottom" constant="10" id="pfH-yv-xk9"/>
-                                                <constraint firstItem="dip-A4-R75" firstAttribute="centerY" secondItem="UIH-8K-NTg" secondAttribute="centerY" id="rdL-hy-xdJ"/>
                                                 <constraint firstItem="loY-vY-sit" firstAttribute="centerX" secondItem="j2g-5y-nKM" secondAttribute="centerX" id="tW8-RR-MLt"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -264,7 +254,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XiF-rP-pdr">
-                                <rect key="frame" x="167" y="223" width="80" height="30"/>
+                                <rect key="frame" x="167" y="213" width="80" height="30"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="1Ic-nt-4hK"/>
@@ -280,10 +270,10 @@
                         <constraints>
                             <constraint firstItem="bJm-ZM-pcw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5HV-GI-kQa"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="X9f-t1-6gW" secondAttribute="trailing" id="BTC-3B-CJO"/>
-                            <constraint firstItem="X9f-t1-6gW" firstAttribute="top" secondItem="XiF-rP-pdr" secondAttribute="bottom" constant="5" id="C3H-te-6Yk"/>
+                            <constraint firstItem="X9f-t1-6gW" firstAttribute="top" secondItem="XiF-rP-pdr" secondAttribute="bottom" constant="10" id="C3H-te-6Yk"/>
                             <constraint firstItem="bJm-ZM-pcw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="CvA-m7-1DI"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="X9f-t1-6gW" secondAttribute="bottom" id="M9Q-ti-LAh"/>
-                            <constraint firstItem="XiF-rP-pdr" firstAttribute="top" secondItem="CgR-tv-bHF" secondAttribute="bottom" constant="30" id="OUT-Ue-Nzy"/>
+                            <constraint firstItem="XiF-rP-pdr" firstAttribute="top" secondItem="CgR-tv-bHF" secondAttribute="bottom" constant="20" id="OUT-Ue-Nzy"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bJm-ZM-pcw" secondAttribute="trailing" id="Q9n-RI-Dfb"/>
                             <constraint firstItem="XiF-rP-pdr" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="eva-Nv-wD7"/>
                             <constraint firstItem="CgR-tv-bHF" firstAttribute="centerX" secondItem="bJm-ZM-pcw" secondAttribute="centerX" id="m20-Fh-hGt"/>
@@ -700,7 +690,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="checkmark.icloud" catalog="system" width="128" height="88"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
