@@ -14,6 +14,8 @@
 //[x]cell 눌렀을 때 user의 noti수정
 //[x]cell 눌렀을 때 bgcolor 원래대로
 //[x]cell 에 'fcm'token 이라고 추가
+//[x]값 비교 제대로 되지 않음
+//[]셀이 눌리는 것과 그렇지 않은 것을 구분해줘야 함
 
 
 import UIKit
@@ -29,7 +31,6 @@ import UserNotifications
 class SwitchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, GADBannerViewDelegate {
             
     let center = UNUserNotificationCenter.current()
-
 
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var imgView: UIImageView!
@@ -93,6 +94,7 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     /// The rewarded video ad.
     var rewardedAd: GADRewardedAd?
 
+
     // 각 테이블 별 갯수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return self.requests.count
@@ -100,6 +102,7 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
 
     //각 테이블 별 내용
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListCell else { return UITableViewCell()}
         
@@ -117,16 +120,19 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
         cell.checkPriceLabel.text = checkPriceForNoti
         cell.requestTokenLabel.text = "FCM token: \(self.requests[indexPath.row].FCMtoken)"
 
-        let strRequestPrice = cell.requestPriceLabel.text!.filter("0123456789".contains)
-        let intRequestPrice = Int(strRequestPrice)
+        let strRequestPrice = cell.requestPriceLabel.text!.filter("0123456789.".contains)
+        let intRequestPrice = Double(strRequestPrice)
         
-        let strCheckPrice = cell.checkPriceLabel.text!.filter("0123456789".contains)
-        let intCheckPrice  = Int(strCheckPrice)
+        let strCheckPrice = cell.checkPriceLabel.text!.filter("0123456789.".contains)
+        let intCheckPrice  = Double(strCheckPrice)
         
         guard let bndIntCheckPrice = intCheckPrice else { return cell }
         guard let bndIntRequestPrice = intRequestPrice else { return cell }
         
-        if bndIntCheckPrice < bndIntRequestPrice && cell.pushNotiDone == false {
+        print("checkPrice--->\(bndIntCheckPrice)")
+        print("requestPrice--->\(bndIntRequestPrice)")
+        
+        if bndIntCheckPrice < bndIntRequestPrice{
             cell.backgroundColor = UIColor.systemGray4
         }
         
@@ -142,19 +148,28 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
         userFCMToken = self.requests[indexPath.row].FCMtoken
         let sender = PushNotificationSender()
         sender.sendPushNotification(to: "\(userFCMToken)", title: "\(cell.requestGameLabel.text ?? "Target game") price is \(cell.checkPriceLabel.text ?? "cloase to that you want")", body: "Don't miss the lowest price in the world!")
- 
-        self.tableView.reloadData()
-        
+         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("REQUESTS\(self.requests)")
-        
+                    
         searchBar.placeholder = LocalizaionClass.Placeholder.searchBarPlaceholder
         UILabel.appearance(whenContainedInInstancesOf: [UISearchBar.self]).font = UIFont.systemFont(ofSize: 13)
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
 
+         if #available(iOS 10.0, *) {
+             tableView.refreshControl = refreshControl
+         } else {
+             tableView.backgroundView = refreshControl
+         }
+    }
+    
+    @objc func refresh(_ refreshControl: UIRefreshControl) {
+        // Do your job, when done:
+        refreshControl.endRefreshing()
     }
     
     func addBannerViewToView(_ bannerView: GADBannerView) {
