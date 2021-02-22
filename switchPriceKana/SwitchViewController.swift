@@ -23,12 +23,11 @@ import Kanna
 import SCLAlertView
 import Firebase
 import Kingfisher
-import GoogleMobileAds
 import UserNotifications
 
 
 
-class SwitchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, GADBannerViewDelegate {
+class SwitchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
             
     let center = UNUserNotificationCenter.current()
 
@@ -57,10 +56,13 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     @IBAction func reloadClicked(_ sender: Any) {
+        DBLoad()
+    }
+    
+    func DBLoad() {
         let db = Database.database().reference().child("Alarm Request")
         
         db.observeSingleEvent(of: .value) { (snapshot) in
-            
             guard let request = snapshot.value as? [String : Any] else { return }
             let data = try! JSONSerialization.data(withJSONObject: Array(request.values), options: [])
             
@@ -103,7 +105,6 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     //각 테이블 별 내용
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListCell else { return UITableViewCell()}
         
         let gameForSearch = self.requests[indexPath.row].game
@@ -129,8 +130,8 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
         guard let bndIntCheckPrice = intCheckPrice else { return cell }
         guard let bndIntRequestPrice = intRequestPrice else { return cell }
         
-        print("checkPrice--->\(bndIntCheckPrice)")
-        print("requestPrice--->\(bndIntRequestPrice)")
+//        print("checkPrice--->\(bndIntCheckPrice)")
+//        print("requestPrice--->\(bndIntRequestPrice)")
         
         if bndIntCheckPrice < bndIntRequestPrice{
             cell.backgroundColor = UIColor.systemGray4
@@ -147,15 +148,16 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
         cell.pushNotiDone = true
         userFCMToken = self.requests[indexPath.row].FCMtoken
         let sender = PushNotificationSender()
-        sender.sendPushNotification(to: "\(userFCMToken)", title: "\(cell.requestGameLabel.text ?? "Target game") price is \(cell.checkPriceLabel.text ?? "cloase to that you want")", body: "Don't miss the lowest price in the world!")
+        sender.sendPushNotification(to: "\(userFCMToken)", title: "\(cell.requestGameLabel.text ?? "Target game") price is \(cell.checkPriceLabel.text ?? "close to that you want")", body: "Don't miss the lowest price in the world!")
          
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        DBLoad()
+        print("------->\(priceArrayForCheck)")
                     
-        searchBar.placeholder = LocalizaionClass.Placeholder.searchBarPlaceholder
-        UILabel.appearance(whenContainedInInstancesOf: [UISearchBar.self]).font = UIFont.systemFont(ofSize: 13)
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
@@ -223,41 +225,6 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
                                             constant: 0))
     }
 
-    //GADBannerViewDelegate 메소드
-    /// Tells the delegate an ad request loaded an ad.
-    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
-      print("adViewDidReceiveAd")
-        //화면에 베너뷰를 추가
-    }
-
-    /// Tells the delegate an ad request failed.
-    func adView(_ bannerView: GADBannerView,
-        didFailToReceiveAdWithError error: GADRequestError) {
-      print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
-    }
-
-    /// Tells the delegate that a full-screen view will be presented in response
-    /// to the user clicking on an ad.
-    func adViewWillPresentScreen(_ bannerView: GADBannerView) {
-      print("adViewWillPresentScreen")
-    }
-
-    /// Tells the delegate that the full-screen view will be dismissed.
-    func adViewWillDismissScreen(_ bannerView: GADBannerView) {
-      print("adViewWillDismissScreen")
-    }
-
-    /// Tells the delegate that the full-screen view has been dismissed.
-    func adViewDidDismissScreen(_ bannerView: GADBannerView) {
-      print("adViewDidDismissScreen")
-    }
-
-    /// Tells the delegate that a user click will open another app (such as
-    /// the App Store), backgrounding the current app.
-    func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
-      print("adViewWillLeaveApplication")
-    }
-
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -273,42 +240,6 @@ class SwitchViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue){
-    }
-}
-
-//GADRewardAD
-extension SwitchViewController: GADRewardedAdDelegate{
-    
-
-    /// Tells the delegate that the user earned a reward.
-    func rewardedAd(_ rewardedAd: GADRewardedAd, userDidEarn reward: GADAdReward) {
-      print("Reward received with currency: \(reward.type), amount \(reward.amount).")
-    }
-    /// Tells the delegate that the rewarded ad was presented.
-    func rewardedAdDidPresent(_ rewardedAd: GADRewardedAd) {
-      print("Rewarded ad presented.")
-    }
-    /// Tells the delegate that the rewarded ad was dismissed.
-    func rewardedAdDidDismiss(_ rewardedAd: GADRewardedAd) {
-         createAndLoadRewardedAd()
-      print("Rewarded ad dismissed.")
-    }
-    /// Tells the delegate that the rewarded ad failed to present.
-    func rewardedAd(_ rewardedAd: GADRewardedAd, didFailToPresentWithError error: Error) {
-      print("Rewarded ad failed to present.")
-    }
-    
-    
-    func createAndLoadRewardedAd() -> GADRewardedAd{
-        rewardedAd = GADRewardedAd(adUnitID: "ca-app-pub-3940256099942544/1712485313")
-        rewardedAd?.load(GADRequest()) { error in
-        if let error = error {
-          print("Loading failed: \(error)")
-        } else {
-          print("Loading Succeeded")
-        }
-      }
-        return rewardedAd!
     }
 }
 
@@ -335,6 +266,7 @@ extension SwitchViewController: UISearchBarDelegate {
     }
       
     func search(term: String, currency: String) -> [String]{
+                
             getCountryNames()
             var titleUrl = [String]()
             let noEmptyWithloweredTerm = term.replacingOccurrences(of: " ", with: "+").lowercased()
